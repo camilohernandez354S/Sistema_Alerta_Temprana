@@ -255,17 +255,17 @@ const barChartData = computed(() => ({
       data: lecturas.value.map(l => l.nivel),
       backgroundColor: lecturas.value.map(l => {
         switch (l.estado) {
-          case 'Normal': return 'rgba(71, 85, 105, 0.7)' // slate-600
-          case 'Sequía': return 'rgba(156, 163, 175, 0.7)' // gray-400
-          case 'Inundación': return 'rgba(55, 65, 81, 0.7)' // gray-700
+          case 'Normal': return 'rgba(34, 197, 94, 0.8)' // green-500
+          case 'Sequía': return 'rgba(251, 191, 36, 0.8)' // amber-400
+          case 'Inundación': return 'rgba(239, 68, 68, 0.8)' // red-500
           default: return 'rgba(71, 85, 105, 0.7)'
         }
       }),
       borderColor: lecturas.value.map(l => {
         switch (l.estado) {
-          case 'Normal': return 'rgb(71, 85, 105)'
-          case 'Sequía': return 'rgb(156, 163, 175)'
-          case 'Inundación': return 'rgb(55, 65, 81)'
+          case 'Normal': return 'rgb(34, 197, 94)' // green-500
+          case 'Sequía': return 'rgb(251, 191, 36)' // amber-400
+          case 'Inundación': return 'rgb(239, 68, 68)' // red-500
           default: return 'rgb(71, 85, 105)'
         }
       }),
@@ -333,14 +333,14 @@ const doughnutChartData = computed(() => {
       {
         data: Object.values(estados),
         backgroundColor: [
-          'rgba(71, 85, 105, 0.8)',   // Normal - slate-600
-          'rgba(156, 163, 175, 0.8)', // Sequía - gray-400
-          'rgba(55, 65, 81, 0.8)'     // Inundación - gray-700
+          'rgba(34, 197, 94, 0.8)',   // Normal - green-500
+          'rgba(251, 191, 36, 0.8)',  // Sequía - amber-400
+          'rgba(239, 68, 68, 0.8)'    // Inundación - red-500
         ],
         borderColor: [
-          'rgb(71, 85, 105)',
-          'rgb(156, 163, 175)',
-          'rgb(55, 65, 81)'
+          'rgb(34, 197, 94)',   // green-500
+          'rgb(251, 191, 36)',  // amber-400
+          'rgb(239, 68, 68)'    // red-500
         ],
         borderWidth: 2,
         hoverOffset: 8,
