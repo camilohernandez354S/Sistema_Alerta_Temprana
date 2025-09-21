@@ -1,17 +1,13 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import DashboardView from './views/DashboardView.vue'
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <nav style="display:flex; gap:2rem; margin-bottom:2rem;">
+    <router-link to="/">Usuario</router-link>
+    <router-link to="/admin">Administrador</router-link>
+  </nav>
+  <router-view />
 </template>
 
 <style scoped>
