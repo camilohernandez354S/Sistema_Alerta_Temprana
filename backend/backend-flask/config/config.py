@@ -14,8 +14,8 @@ class Config:
     MONGO_DB = os.getenv('MONGO_DB', 'sensor_database')
     MONGO_COLLECTION = os.getenv('MONGO_COLLECTION', 'sensor_readings')
     
-    # Configuración de CORS - Priorizar puerto 8080 para frontend
-    CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:8080,http://127.0.0.1:8080').split(',')
+    # Configuración de CORS - Incluir puertos 8080 (Vue CLI) y 5173 (Vite)
+    CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:8080,http://127.0.0.1:8080,http://localhost:5173,http://127.0.0.1:5173').split(',')
     
     # Configuración de logging
     LOG_LEVEL = os.getenv('LOG_LEVEL', 'INFO')
@@ -55,14 +55,14 @@ class DevelopmentConfig(Config):
     def __init__(self):
         super().__init__()
         # Configurar CORS_ORIGINS como lista directa
-        base_origins = os.getenv('CORS_ORIGINS', 'http://localhost:8080,http://127.0.0.1:8080')
+        base_origins = os.getenv('CORS_ORIGINS', 'http://localhost:8080,http://127.0.0.1:8080,http://localhost:5173,http://127.0.0.1:5173')
         if isinstance(base_origins, str):
             self.CORS_ORIGINS = [origin.strip() for origin in base_origins.split(',')]
         else:
-            self.CORS_ORIGINS = base_origins if isinstance(base_origins, list) else ['http://localhost:8080', 'http://127.0.0.1:8080']
+            self.CORS_ORIGINS = base_origins if isinstance(base_origins, list) else ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
         
         # Asegurar que los orígenes de desarrollo estén incluidos
-        dev_origins = ['http://localhost:8080', 'http://127.0.0.1:8080']
+        dev_origins = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
         for origin in dev_origins:
             if origin not in self.CORS_ORIGINS:
                 self.CORS_ORIGINS.append(origin)

@@ -33,7 +33,7 @@ def create_app(config_name=None):
         config.validate_config()
     
     # Configurar CORS de manera simple y robusta
-    cors_origins = ['http://localhost:8080', 'http://127.0.0.1:8080']
+    cors_origins = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
     
     # Configurar CORS con Flask-CORS
     CORS(app, 
@@ -49,7 +49,7 @@ def create_app(config_name=None):
     @app.after_request
     def after_request(response):
         origin = request.headers.get('Origin')
-        allowed_origins = ['http://localhost:8080', 'http://127.0.0.1:8080']
+        allowed_origins = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
         
         if origin and origin in allowed_origins:
             response.headers['Access-Control-Allow-Origin'] = origin

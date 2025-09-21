@@ -2927,3 +2927,56 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-21 18:33:04,324 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b30aee658c049c65919
 2025-09-21 18:33:04,325 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 4.22cm
 2025-09-21 18:33:04,326 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:49:31,166 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:49:50,877 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:50:21,851 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:50:43,806 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:50:52,981 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:50:59,020 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:51:04,920 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:51:35,890 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:52:05,867 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:52:07,132 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 18:52:18,522 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:52:22,604 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:52:22,610 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:52:22,611 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:52:22,716 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:52:22,716 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:52:22,717 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:52:22,717 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:52:22,718 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:52:24,182 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:52:24,183 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:52:24,184 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:52:24,185 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:52:24,185 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:52:24,185 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:52:37,371 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:52:37,808 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:52:37,816 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:52:37,817 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:52:37,818 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:52:38,203 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:52:56,357 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 18:53:05,728 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:53:09,809 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:53:09,815 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:53:09,816 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:53:10,080 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:53:10,088 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:53:10,104 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:53:10,117 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:53:10,122 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:53:11,575 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:53:11,576 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:53:11,578 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:53:11,579 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:53:11,580 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:53:11,581 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:53:13,559 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:53:14,033 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:53:14,039 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:53:14,040 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:53:14,041 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:53:14,720 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
