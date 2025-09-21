@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
 from datetime import datetime
+from .auth_routes import registrar_rutas_auth
+from .user_routes import registrar_rutas_usuario
 
 
 app = Flask(__name__)
@@ -11,6 +13,20 @@ CORS(app)
 client = MongoClient('mongodb://localhost:27017/')
 db = client['sistema_alerta']
 coleccion = db['mediciones']
+
+registrar_rutas_auth(app)
+registrar_rutas_usuario(app)
+
+# Estructura sugerida para login modular:
+# auth/
+#   - auth_controller.py
+#   - auth_service.py
+#   - jwt_middleware.py
+# routes/
+#   - auth_routes.py
+#   - user_routes.py
+#
+# Este archivo (main.py) será el punto de entrada principal del backend.
 
 @app.route('/api/mediciones', methods=['POST'])
 def recibir_medicion():
