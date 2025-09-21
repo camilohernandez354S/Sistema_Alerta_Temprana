@@ -1,10 +1,10 @@
 import serial
 import time
-import requests
+import requests 
 import re
 
 # Cambia el puerto según tu sistema (ejemplo: 'COM3' en Windows, '/dev/ttyACM0' en Linux)
-PUERTO = 'COM5'
+PUERTO = 'COM10'
 BAUDIOS = 9600
 BACKEND_URL = 'http://127.0.0.1:5000/api/mediciones'
 
