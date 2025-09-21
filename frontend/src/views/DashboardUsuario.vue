@@ -1,40 +1,49 @@
 <template>
-  <DashboardLayout>
-    <div class="max-w-3xl mx-auto mt-8 space-y-6">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <StatsCard title="Última medición" :value="ultimaMedicion" accent="blue" />
-        <StatsCard title="Estado actual" :value="estadoActual" accent="green" />
-        <StatsCard title="Fecha/Hora" :value="fechaActual" accent="gray" />
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white rounded-xl shadow p-3 flex items-center justify-center min-h-[160px]">
-          <NivelAguaChart />
+  <div class="min-h-screen bg-gray-50 flex flex-col items-center py-8">
+    <h1 class="text-2xl font-bold text-gray-800 mb-6">Sistema de Alerta Temprana</h1>
+    <div class="bg-white rounded-xl shadow p-6 w-full max-w-md mb-6 flex flex-col items-center">
+      <div class="text-4xl font-bold text-blue-600 mb-2">{{ ultimaMedicion }}</div>
+      <div class="text-gray-500 text-sm mb-4">Última distancia medida</div>
+      <div class="flex justify-between w-full text-center text-sm text-gray-600">
+        <div>
+          <div class="font-semibold">Promedio</div>
+          <div>{{ promedio }}</div>
         </div>
-        <div class="bg-white rounded-xl shadow p-3 flex items-center justify-center min-h-[160px]">
-          <!-- Aquí puedes poner un gráfico secundario o información relevante -->
-          <span class="text-gray-400 text-sm">Gráfico secundario</span>
+        <div>
+          <div class="font-semibold">Máximo</div>
+          <div>{{ maximo }}</div>
+        </div>
+        <div>
+          <div class="font-semibold">Mínimo</div>
+          <div>{{ minimo }}</div>
         </div>
       </div>
     </div>
-  </DashboardLayout>
+    <div class="bg-white rounded-xl shadow p-4 w-full max-w-2xl">
+      <NivelAguaChart />
+    </div>
+  </div>
 </template>
 
 <script setup>
-import DashboardLayout from '../layouts/DashboardLayout.vue'
-import StatsCard from '../components/StatsCard.vue'
 import NivelAguaChart from '../components/NivelAguaChart.vue'
 import { ref, onMounted } from 'vue'
 import { obtenerMediciones } from '../services/medicionesService'
 
 const ultimaMedicion = ref('--')
-const estadoActual = ref('--')
-const fechaActual = ref('--')
+const promedio = ref('--')
+const maximo = ref('--')
+const minimo = ref('--')
 
 onMounted(async () => {
-  // Aquí puedes cargar datos reales si lo deseas
-  ultimaMedicion.value = '44 cm'
-  estadoActual.value = 'Normal'
-  fechaActual.value = '2025-09-21 23:00'
+  const mediciones = await obtenerMediciones()
+  if (mediciones.length > 0) {
+    ultimaMedicion.value = mediciones[0].distancia + ' cm'
+    const distancias = mediciones.map(m => m.distancia)
+    promedio.value = (distancias.reduce((a, b) => a + b, 0) / distancias.length).toFixed(1) + ' cm'
+    maximo.value = Math.max(...distancias) + ' cm'
+    minimo.value = Math.min(...distancias) + ' cm'
+  }
 })
 </script>
 
@@ -48,3 +57,4 @@ onMounted(async () => {
   margin-bottom: 2rem;
 }
 </style>
+
