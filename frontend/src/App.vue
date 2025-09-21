@@ -1,12 +1,4 @@
-<script setup>
-import DashboardView from './views/DashboardView.vue'
-</script>
-
 <template>
-  <nav style="display:flex; gap:2rem; margin-bottom:2rem;">
-    <router-link to="/">Usuario</router-link>
-    <router-link to="/admin">Administrador</router-link>
-  </nav>
   <router-view />
 </template>
 
