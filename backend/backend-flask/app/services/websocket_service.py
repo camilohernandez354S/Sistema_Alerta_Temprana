@@ -5,6 +5,7 @@ from flask_socketio import SocketIO, emit, join_room, leave_room
 from flask import current_app, request
 from typing import Dict, Any, Optional
 import json
+import logging
 from datetime import datetime
 
 class WebSocketService:
@@ -19,7 +20,24 @@ class WebSocketService:
             'operator': set(),
             'public': set()
         }
-        current_app.logger.info("WebSocketService inicializado")
+        self._logger = logging.getLogger(__name__)
+        self._logger.info("WebSocketService inicializado")
+    
+    def _log(self, level: str, message: str):
+        """
+        Método helper para logging que funciona con o sin contexto de Flask
+        
+        Args:
+            level: Nivel de log (info, warning, error, debug)
+            message: Mensaje a loggear
+        """
+        try:
+            # Intentar usar el logger de Flask si está disponible
+            flask_logger = current_app.logger
+            getattr(flask_logger, level)(message)
+        except RuntimeError:
+            # Si no hay contexto de Flask, usar el logger estándar
+            getattr(self._logger, level)(message)
     
     def init_app(self, app):
         """Inicializar SocketIO con la aplicación Flask"""
@@ -32,7 +50,7 @@ class WebSocketService:
         
         # Registrar eventos
         self._register_events()
-        current_app.logger.info("SocketIO inicializado")
+        self._log("info", "SocketIO inicializado")
     
     def _register_events(self):
         """Registrar eventos de WebSocket"""
@@ -40,13 +58,13 @@ class WebSocketService:
         @self.socketio.on('connect')
         def handle_connect():
             """Manejar conexión de cliente"""
-            current_app.logger.info(f"Cliente conectado: {request.sid}")
+            self._log("info", f"Cliente conectado: {request.sid}")
             emit('connected', {'message': 'Conectado al servidor', 'timestamp': datetime.utcnow().isoformat()})
         
         @self.socketio.on('disconnect')
         def handle_disconnect():
             """Manejar desconexión de cliente"""
-            current_app.logger.info(f"Cliente desconectado: {request.sid}")
+            self._log("info", f"Cliente desconectado: {request.sid}")
             
             # Remover usuario de todas las salas
             for room, users in self.room_users.items():
@@ -82,7 +100,7 @@ class WebSocketService:
                 if user_id:
                     self.connected_users[user_id] = request.sid
                 
-                current_app.logger.info(f"Usuario {user_id} se unió a la sala {room}")
+                self._log("info", f"Usuario {user_id} se unió a la sala {room}")
                 emit('joined_room', {
                     'room': room,
                     'user_id': user_id,
@@ -96,7 +114,7 @@ class WebSocketService:
                 }, room=room, include_self=False)
                 
             except Exception as e:
-                current_app.logger.error(f"Error uniéndose a sala: {e}")
+                self._log("error", f"Error uniéndose a sala: {e}")
                 emit('error', {'message': 'Error uniéndose a la sala'})
         
         @self.socketio.on('leave_room')
@@ -111,7 +129,7 @@ class WebSocketService:
                 if room in self.room_users:
                     self.room_users[room].discard(request.sid)
                 
-                current_app.logger.info(f"Usuario {user_id} salió de la sala {room}")
+                self._log("info", f"Usuario {user_id} salió de la sala {room}")
                 emit('left_room', {
                     'room': room,
                     'user_id': user_id,
@@ -125,7 +143,7 @@ class WebSocketService:
                 }, room=room, include_self=False)
                 
             except Exception as e:
-                current_app.logger.error(f"Error saliendo de sala: {e}")
+                self._log("error", f"Error saliendo de sala: {e}")
                 emit('error', {'message': 'Error saliendo de la sala'})
         
         @self.socketio.on('sensor_data_update')
@@ -143,10 +161,10 @@ class WebSocketService:
                     'timestamp': datetime.utcnow().isoformat()
                 }, broadcast=True)
                 
-                current_app.logger.info("Datos de sensor actualizados via WebSocket")
+                self._log("info", "Datos de sensor actualizados via WebSocket")
                 
             except Exception as e:
-                current_app.logger.error(f"Error manejando datos de sensor: {e}")
+                self._log("error", f"Error manejando datos de sensor: {e}")
                 emit('error', {'message': 'Error procesando datos de sensor'})
         
         @self.socketio.on('alert_notification')
@@ -166,10 +184,10 @@ class WebSocketService:
                     'timestamp': datetime.utcnow().isoformat()
                 }, room=target_room)
                 
-                current_app.logger.info(f"Alerta enviada a sala {target_room}")
+                self._log("info", f"Alerta enviada a sala {target_room}")
                 
             except Exception as e:
-                current_app.logger.error(f"Error manejando alerta: {e}")
+                self._log("error", f"Error manejando alerta: {e}")
                 emit('error', {'message': 'Error procesando alerta'})
     
     def _validate_sensor_data(self, data: Dict[str, Any]) -> bool:
@@ -194,7 +212,7 @@ class WebSocketService:
                 'data': sensor_data,
                 'timestamp': datetime.utcnow().isoformat()
             }, broadcast=True)
-            current_app.logger.info("Datos de sensor broadcast via WebSocket")
+            self._log("info", "Datos de sensor broadcast via WebSocket")
     
     def send_alert(self, alert_data: Dict[str, Any], target_room: str = 'public'):
         """
@@ -209,7 +227,7 @@ class WebSocketService:
                 'alert': alert_data,
                 'timestamp': datetime.utcnow().isoformat()
             }, room=target_room)
-            current_app.logger.info(f"Alerta enviada a sala {target_room}")
+            self._log("info", f"Alerta enviada a sala {target_room}")
     
     def send_system_notification(self, message: str, notification_type: str = 'info', target_room: str = 'public'):
         """
@@ -226,7 +244,7 @@ class WebSocketService:
                 'type': notification_type,
                 'timestamp': datetime.utcnow().isoformat()
             }, room=target_room)
-            current_app.logger.info(f"Notificación del sistema enviada a {target_room}")
+            self._log("info", f"Notificación del sistema enviada a {target_room}")
     
     def get_connected_users_count(self) -> Dict[str, int]:
         """

@@ -2757,3 +2757,173 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-05 09:08:16,025 - app - INFO - _ensure_indexes:44 - Índices de usuarios verificados/creados
 2025-09-05 09:08:16,026 - app - INFO - __init__:28 - AuthService inicializado
 2025-09-05 09:08:16,902 - app - INFO - get_users:218 - Lista de usuarios obtenida por admin: admin
+2025-09-21 18:23:43,818 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:23:47,901 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:23:47,907 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:23:47,907 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:23:48,018 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:23:48,019 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:23:48,019 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:23:48,020 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:23:48,021 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:26:41,522 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:26:45,592 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:26:45,597 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:26:45,598 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:26:45,693 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:26:45,693 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:26:45,694 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:26:45,695 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:26:45,695 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:26:47,019 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:26:47,020 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:26:47,021 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:26:47,021 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:26:47,022 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:26:47,023 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:26:51,668 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:26:55,729 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:26:55,734 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:26:55,735 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:26:55,836 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:26:55,837 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:26:55,837 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:26:55,838 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:26:55,839 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:26:56,827 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:26:56,828 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:26:56,829 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:26:56,829 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:26:56,830 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:26:56,831 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:27:28,288 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:27:28,694 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:27:28,698 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:27:28,698 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:27:28,699 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:27:28,842 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089e0aee658c049c658f0
+2025-09-21 18:27:28,844 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.78cm
+2025-09-21 18:27:28,845 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:32,057 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089e3aee658c049c658f1
+2025-09-21 18:27:32,078 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.05cm
+2025-09-21 18:27:32,098 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:35,286 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089e7aee658c049c658f2
+2025-09-21 18:27:35,288 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.68cm
+2025-09-21 18:27:35,288 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:38,483 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089eaaee658c049c658f3
+2025-09-21 18:27:38,485 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.92cm
+2025-09-21 18:27:38,486 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:41,691 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089edaee658c049c658f4
+2025-09-21 18:27:41,692 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.07cm
+2025-09-21 18:27:41,692 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:44,883 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089f0aee658c049c658f5
+2025-09-21 18:27:44,884 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.68cm
+2025-09-21 18:27:44,885 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:48,060 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089f3aee658c049c658f6
+2025-09-21 18:27:48,062 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.82cm
+2025-09-21 18:27:48,063 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:51,293 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089f7aee658c049c658f7
+2025-09-21 18:27:51,294 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.25cm
+2025-09-21 18:27:51,295 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:54,507 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089faaee658c049c658f8
+2025-09-21 18:27:54,508 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.68cm
+2025-09-21 18:27:54,509 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:27:57,674 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d089fdaee658c049c658f9
+2025-09-21 18:27:57,675 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.83cm
+2025-09-21 18:27:57,676 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:00,890 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a00aee658c049c658fa
+2025-09-21 18:28:00,891 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.75cm
+2025-09-21 18:28:00,892 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:04,090 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a03aee658c049c658fb
+2025-09-21 18:28:04,092 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.07cm
+2025-09-21 18:28:04,093 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:07,283 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a07aee658c049c658fc
+2025-09-21 18:28:07,284 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.36cm
+2025-09-21 18:28:07,285 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:10,485 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a0aaee658c049c658fd
+2025-09-21 18:28:10,487 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.37cm
+2025-09-21 18:28:10,488 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:13,698 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a0daee658c049c658fe
+2025-09-21 18:28:13,699 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.83cm
+2025-09-21 18:28:13,700 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:16,918 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a10aee658c049c658ff
+2025-09-21 18:28:16,919 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.8cm
+2025-09-21 18:28:16,920 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:20,106 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a13aee658c049c65900
+2025-09-21 18:28:20,108 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.82cm
+2025-09-21 18:28:20,109 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:23,290 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a17aee658c049c65901
+2025-09-21 18:28:23,291 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.27cm
+2025-09-21 18:28:23,292 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:26,481 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a1aaee658c049c65902
+2025-09-21 18:28:26,482 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.39cm
+2025-09-21 18:28:26,483 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:29,673 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a1daee658c049c65903
+2025-09-21 18:28:29,694 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.51cm
+2025-09-21 18:28:29,698 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:32,890 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a20aee658c049c65904
+2025-09-21 18:28:32,891 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.7cm
+2025-09-21 18:28:32,892 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:36,068 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a23aee658c049c65905
+2025-09-21 18:28:36,069 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.7cm
+2025-09-21 18:28:36,070 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:39,282 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a27aee658c049c65906
+2025-09-21 18:28:39,284 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.8cm
+2025-09-21 18:28:39,285 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:42,511 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a2aaee658c049c65907
+2025-09-21 18:28:42,512 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.27cm
+2025-09-21 18:28:42,512 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:45,730 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a2daee658c049c65908
+2025-09-21 18:28:45,731 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.73cm
+2025-09-21 18:28:45,732 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:48,926 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a30aee658c049c65909
+2025-09-21 18:28:48,927 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.82cm
+2025-09-21 18:28:48,928 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:52,131 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a34aee658c049c6590a
+2025-09-21 18:28:52,132 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.7cm
+2025-09-21 18:28:52,133 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:55,353 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a37aee658c049c6590b
+2025-09-21 18:28:55,355 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.7cm
+2025-09-21 18:28:55,355 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:28:58,540 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a3aaee658c049c6590c
+2025-09-21 18:28:58,541 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.36cm
+2025-09-21 18:28:58,542 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:01,770 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a3daee658c049c6590d
+2025-09-21 18:29:01,772 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.68cm
+2025-09-21 18:29:01,773 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:04,960 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a40aee658c049c6590e
+2025-09-21 18:29:04,961 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.63cm
+2025-09-21 18:29:04,962 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:08,176 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a44aee658c049c6590f
+2025-09-21 18:29:08,178 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.8cm
+2025-09-21 18:29:08,178 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:11,377 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a47aee658c049c65910
+2025-09-21 18:29:11,379 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.71cm
+2025-09-21 18:29:11,380 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:14,545 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a4aaee658c049c65911
+2025-09-21 18:29:14,547 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.73cm
+2025-09-21 18:29:14,547 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:29:17,741 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08a4daee658c049c65912
+2025-09-21 18:29:17,742 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 164.82cm
+2025-09-21 18:29:17,743 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:32:45,118 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b1caee658c049c65913
+2025-09-21 18:32:45,121 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 168.86cm
+2025-09-21 18:32:45,122 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:32:48,325 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b20aee658c049c65914
+2025-09-21 18:32:48,327 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 167.79cm
+2025-09-21 18:32:48,328 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:32:51,515 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b23aee658c049c65915
+2025-09-21 18:32:51,517 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 166.35cm
+2025-09-21 18:32:51,517 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:32:54,698 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b26aee658c049c65916
+2025-09-21 18:32:54,700 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 167.25cm
+2025-09-21 18:32:54,701 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:32:57,923 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b29aee658c049c65917
+2025-09-21 18:32:57,925 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 11.19cm
+2025-09-21 18:32:57,926 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:33:01,112 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b2caee658c049c65918
+2025-09-21 18:33:01,113 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 4.2cm
+2025-09-21 18:33:01,114 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 18:33:04,324 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b30aee658c049c65919
+2025-09-21 18:33:04,325 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 4.22cm
+2025-09-21 18:33:04,326 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas

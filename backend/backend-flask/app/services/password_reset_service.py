@@ -4,7 +4,7 @@ Servicio para recuperación de contraseñas
 import secrets
 import hashlib
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from flask import current_app
 from http import HTTPStatus
 

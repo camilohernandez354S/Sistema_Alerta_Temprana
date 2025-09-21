@@ -26,10 +26,14 @@ class EmailService:
         self.from_email = None
         self.from_name = None
         self.templates_dir = None
-        current_app.logger.info("EmailService inicializado")
+        self.logger = None
     
     def init_app(self, app):
         """Inicializar Flask-Mail con la aplicación"""
+        # Configurar el logger
+        self.logger = app.logger
+        self.logger.info("EmailService inicializado")
+        
         try:
             # Configurar Flask-Mail
             app.config['MAIL_SERVER'] = app.config.get('MAIL_SERVER', 'smtp.gmail.com')
@@ -52,10 +56,10 @@ class EmailService:
             # Directorio de plantillas
             self.templates_dir = os.path.join(app.root_path, 'templates', 'email')
             
-            current_app.logger.info("✅ EmailService configurado correctamente")
+            self.logger.info("✅ EmailService configurado correctamente")
             
         except Exception as e:
-            current_app.logger.error(f"❌ Error configurando EmailService: {e}")
+            self.logger.error(f"❌ Error configurando EmailService: {e}")
             self.mail = None
     
     def send_email(self, to_emails: List[str], subject: str, body: str, 
@@ -74,7 +78,8 @@ class EmailService:
             bool: True si se envió correctamente
         """
         if not self.mail:
-            current_app.logger.warning("EmailService no configurado")
+            if self.logger:
+                self.logger.warning("EmailService no configurado")
             return False
         
         try:
@@ -97,11 +102,13 @@ class EmailService:
                         )
             
             self.mail.send(msg)
-            current_app.logger.info(f"✅ Email enviado a {len(to_emails)} destinatario(s)")
+            if self.logger:
+                self.logger.info(f"✅ Email enviado a {len(to_emails)} destinatario(s)")
             return True
             
         except Exception as e:
-            current_app.logger.error(f"❌ Error enviando email: {e}")
+            if self.logger:
+                self.logger.error(f"❌ Error enviando email: {e}")
             return False
     
     def send_notification_email(self, user_email: str, notification_type: str, 
@@ -127,11 +134,13 @@ class EmailService:
             elif notification_type == 'password_reset':
                 return self._send_password_reset_email(user_email, data)
             else:
-                current_app.logger.warning(f"Tipo de notificación no reconocido: {notification_type}")
+                if self.logger:
+                    self.logger.warning(f"Tipo de notificación no reconocido: {notification_type}")
                 return False
                 
         except Exception as e:
-            current_app.logger.error(f"Error enviando email de notificación: {e}")
+            if self.logger:
+                self.logger.error(f"Error enviando email de notificación: {e}")
             return False
     
     def _send_sensor_alert_email(self, user_email: str, data: Dict[str, Any]) -> bool:
@@ -396,7 +405,8 @@ Sistema de Monitoreo de Nivel de Agua
                 results['failed'] += 1
                 results['errors'].append(f"Error enviando a {email}: {str(e)}")
         
-        current_app.logger.info(f"Notificación masiva enviada: {results['success']}/{results['total']} exitosos")
+        if self.logger:
+            self.logger.info(f"Notificación masiva enviada: {results['success']}/{results['total']} exitosos")
         return results
     
     def test_connection(self) -> bool:
@@ -408,7 +418,8 @@ Sistema de Monitoreo de Nivel de Agua
         """
         try:
             if not all([self.smtp_server, self.smtp_port, self.smtp_username, self.smtp_password]):
-                current_app.logger.warning("Configuración SMTP incompleta")
+                if self.logger:
+                    self.logger.warning("Configuración SMTP incompleta")
                 return False
             
             # Probar conexión SMTP
@@ -417,11 +428,13 @@ Sistema de Monitoreo de Nivel de Agua
             server.login(self.smtp_username, self.smtp_password)
             server.quit()
             
-            current_app.logger.info("✅ Conexión SMTP exitosa")
+            if self.logger:
+                self.logger.info("✅ Conexión SMTP exitosa")
             return True
             
         except Exception as e:
-            current_app.logger.error(f"❌ Error probando conexión SMTP: {e}")
+            if self.logger:
+                self.logger.error(f"❌ Error probando conexión SMTP: {e}")
             return False
 
 # Instancia global del servicio de email

@@ -71,8 +71,7 @@ def create_app(config_name=None):
     
     # Inicializar rate limiter
     try:
-        rate_limiter._setup_redis()
-        rate_limiter._setup_limiter()
+        rate_limiter.init_app(app)
         app.logger.info("Rate limiter inicializado")
     except Exception as e:
         app.logger.warning(f"Error inicializando rate limiter: {e}")
