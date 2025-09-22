@@ -14,6 +14,9 @@ class Config:
     MONGO_DB = os.getenv('MONGO_DB', 'sensor_database')
     MONGO_COLLECTION = os.getenv('MONGO_COLLECTION', 'sensor_readings')
     
+    # Nueva colección para datos estructurados del Arduino
+    MONGO_COLLECTION_LECTURAS = os.getenv('MONGO_COLLECTION_LECTURAS', 'lecturas_sensor')
+    
     # Configuración de CORS - Incluir puertos 8080 (Vue CLI) y 5173 (Vite)
     CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:8080,http://127.0.0.1:8080,http://localhost:5173,http://127.0.0.1:5173').split(',')
     
@@ -48,9 +51,15 @@ class Config:
     # Configuración de predicciones
     DROUGHT_MAX_CM = float(os.getenv('DROUGHT_MAX_CM', '20.0'))
     NORMAL_MAX_CM = float(os.getenv('NORMAL_MAX_CM', '60.0'))
-    DEFAULT_HORIZONS = [30, 60, 180]  # minutos
-    REGRESSION_WINDOW_MIN = int(os.getenv('REGRESSION_WINDOW_MIN', '120'))
+    DEFAULT_HORIZONS = [30, 60, 120, 180, 360]  # minutos - horizontes extendidos
+    REGRESSION_WINDOW_MIN = int(os.getenv('REGRESSION_WINDOW_MIN', '180'))  # 3 horas por defecto
     PREDICTION_MIN_DATA_POINTS = int(os.getenv('PREDICTION_MIN_DATA_POINTS', '10'))
+    
+    # Configuración avanzada de predicciones
+    EXPONENTIAL_SMOOTHING_ALPHA = float(os.getenv('EXPONENTIAL_SMOOTHING_ALPHA', '0.3'))
+    OUTLIER_IQR_FACTOR = float(os.getenv('OUTLIER_IQR_FACTOR', '2.0'))  # Más conservador que 1.5
+    MIN_CONFIDENCE = float(os.getenv('MIN_CONFIDENCE', '0.3'))
+    MAX_CONFIDENCE = float(os.getenv('MAX_CONFIDENCE', '0.95'))
 
 class DevelopmentConfig(Config):
     """Configuración para desarrollo"""

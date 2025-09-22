@@ -463,44 +463,71 @@ const fetchWaterLevels = async () => {
  */
 const fetchPredictions = async () => {
   try {
+    console.log("🔍 Iniciando fetch de predicciones...")
     const response = await fetch('http://localhost:5000/api/sensor/predicciones')
     
+    console.log("📡 Respuesta recibida:", {
+      status: response.status,
+      statusText: response.statusText,
+      headers: Object.fromEntries(response.headers.entries())
+    })
+    
     if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`)
+      const errorText = await response.text()
+      console.error("❌ Error HTTP en predicciones:", {
+        status: response.status,
+        statusText: response.statusText,
+        body: errorText
+      })
+      throw new Error(`Error HTTP: ${response.status} - ${errorText}`)
     }
 
     const contentType = response.headers.get("content-type")
+    console.log("📋 Content-Type:", contentType)
+    
     if (!contentType || !contentType.includes("application/json")) {
       const text = await response.text()
+      console.error("❌ Respuesta no es JSON válido:", text.slice(0, 200))
       throw new Error("Respuesta no es JSON válido. Respuesta recibida: " + text.slice(0, 100))
     }
 
     const data = await response.json()
+    console.log("✅ Predicciones recibidas:", data)
     
     // Verificar si hay error en la respuesta
     if (data.error) {
+      console.error("❌ Error en respuesta de predicciones:", data.error)
       throw new Error(data.error.message || 'Error en predicciones')
     }
     
     // El endpoint devuelve: { meta, current, predicciones }
     // Devolver en el formato esperado
-    return {
+    const result = {
       meta: data.meta || {},
       current: data.current || {},
       predicciones: data.predicciones || []
     }
     
+    console.log("✅ Predicciones procesadas:", {
+      meta: result.meta,
+      current: result.current,
+      prediccionesCount: result.predicciones.length,
+      predicciones: result.predicciones
+    })
+    
+    return result
+    
   } catch (error) {
-    console.error("Error al obtener predicciones:", error)
+    console.error("❌ Error al obtener predicciones:", error)
     
     // Si es un error de red o API no disponible, usar datos de fallback
     if (error.message.includes('fetch') || error.message.includes('HTTP') || error.message.includes('Failed to fetch')) {
-      console.warn("API de predicciones no disponible, usando datos de demostración")
+      console.warn("⚠️ API de predicciones no disponible, usando datos de demostración")
       return fallbackPredictions
     }
     
     // Para otros errores, también usar fallback
-    console.warn("Error en predicciones, usando datos de fallback:", error.message)
+    console.warn("⚠️ Error en predicciones, usando datos de fallback:", error.message)
     return fallbackPredictions
   }
 }
@@ -552,6 +579,7 @@ const insertarDatosPrueba = async () => {
  */
 const loadData = async () => {
   try {
+    console.log("🚀 Iniciando carga de datos...")
     isLoading.value = true
     error.value = null
     connectionStatus.value = false
@@ -562,20 +590,33 @@ const loadData = async () => {
       fetchPredictions()
     ])
 
+    console.log("📊 Datos cargados:", {
+      waterLevelsCount: waterLevelsData.length,
+      predictionsData: predictionsData
+    })
+
     // Verificar si se están usando datos de fallback
     const usingFallbackWater = waterLevelsData === fallbackWaterLevels
     const usingFallbackPredictions = predictionsData === fallbackPredictions
     
     if (usingFallbackWater || usingFallbackPredictions) {
       connectionStatus.value = false
+      console.log("⚠️ Usando datos de fallback")
     } else {
       connectionStatus.value = true
+      console.log("✅ Datos reales de la API")
     }
 
     // Guardar datos en estados reactivos
     waterLevels.value = waterLevelsData || []
     predictions.value = predictionsData.predicciones || []
     currentState.value = predictionsData.current || {}
+
+    console.log("💾 Estados actualizados:", {
+      waterLevels: waterLevels.value.length,
+      predictions: predictions.value.length,
+      currentState: currentState.value
+    })
 
     // Si se están usando datos de demostración, mostrar mensaje informativo
     if ((usingFallbackWater || usingFallbackPredictions) && !error.value) {
@@ -586,7 +627,7 @@ const loadData = async () => {
     // Este catch solo se ejecutará para errores inesperados
     error.value = `Error crítico: ${err.message}`
     connectionStatus.value = false
-    console.error('Error crítico cargando datos:', err)
+    console.error('❌ Error crítico cargando datos:', err)
     
     // Como último recurso, usar datos de fallback
     waterLevels.value = fallbackWaterLevels
@@ -663,8 +704,16 @@ const statusIcon = computed(() => {
  * Las predicciones se muestran con línea discontinua y color más claro
  */
 const combinedChartData = computed(() => {
+  console.log("📈 Generando datos del gráfico combinado...")
+  
+  // Datos históricos
   const historicalLabels = waterLevels.value.map(item => formatDate(item.timestamp))
   const historicalData = waterLevels.value.map(item => item.level)
+  
+  console.log("📊 Datos históricos:", {
+    labels: historicalLabels.length,
+    data: historicalData.length
+  })
   
   // Calcular timestamps futuros para las predicciones
   const now = new Date()
@@ -674,12 +723,18 @@ const combinedChartData = computed(() => {
   })
   const predictionData = predictions.value.map(pred => pred.nivel_cm)
   
+  console.log("🔮 Predicciones para gráfico:", {
+    labels: predictionLabels,
+    data: predictionData,
+    horizons: predictions.value.map(p => p.horizon_min)
+  })
+  
   // Combinar labels y datos
   const allLabels = [...historicalLabels, ...predictionLabels]
   const allHistoricalData = [...historicalData, ...new Array(predictions.value.length).fill(null)]
   const allPredictionData = [...new Array(waterLevels.value.length).fill(null), ...predictionData]
   
-  return {
+  const chartData = {
     labels: allLabels,
     datasets: [
       {
@@ -713,6 +768,14 @@ const combinedChartData = computed(() => {
       }
     ]
   }
+  
+  console.log("📈 Datos del gráfico generados:", {
+    totalLabels: chartData.labels.length,
+    historicalPoints: allHistoricalData.filter(d => d !== null).length,
+    predictionPoints: allPredictionData.filter(d => d !== null).length
+  })
+  
+  return chartData
 })
 
 /**

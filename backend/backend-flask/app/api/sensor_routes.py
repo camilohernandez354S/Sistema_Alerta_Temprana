@@ -1,13 +1,115 @@
 """
-Rutas de la API para sensores
+Rutas de la API para sensores - Adaptadas para datos estructurados del Arduino
 """
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, current_app
 from app.utils.decorators import validate_json, handle_exceptions
-from app.models.sensor_model import EstadoSensorStats
+from app.models.sensor_model import (
+    EstadoSensorStats, 
+    LecturaArduinoRequest, 
+    LecturaArduinoResponse,
+    ConsultaLecturasRequest
+)
 from app.factory import service_factory
 
 # Crear el blueprint para las rutas del sensor
 sensor_bp = Blueprint('sensor', __name__)
+
+# =============================================================================
+# NUEVOS ENDPOINTS PARA DATOS ESTRUCTURADOS DEL ARDUINO
+# =============================================================================
+
+@sensor_bp.route('/api/sensor/lectura', methods=['POST'])
+@validate_json
+@handle_exceptions
+def procesar_lectura_arduino():
+    """
+    Procesa una nueva lectura estructurada del Arduino
+    
+    Request Body:
+    {
+        "nivel_cm": 45.2,
+        "estado": "Normal",
+        "intervalo_ms": 5000,
+        "velocidad_cm_por_s": 0.02,
+        "timestamp": "2025-09-21T15:20:00Z"
+    }
+    
+    Returns:
+    200: {
+        "mensaje": "Lectura procesada exitosamente",
+        "data": {
+            "_id": "ObjectId",
+            "nivel_cm": 45.2,
+            "estado": "Normal",
+            "intervalo_ms": 5000,
+            "velocidad_cm_por_s": 0.02,
+            "timestamp": "2025-09-21T15:20:00Z"
+        }
+    }
+    400: {"error": "Datos inválidos o corruptos"}
+    500: {"error": "Error interno del servidor"}
+    """
+    try:
+        # Validar datos usando Pydantic
+        lectura_data = LecturaArduinoRequest(**request.get_json())
+        
+        # Procesar lectura a través del controlador
+        response, status_code = service_factory.sensor_controller.procesar_lectura_arduino(lectura_data)
+        return jsonify(response), status_code
+        
+    except Exception as e:
+        # Loggear lecturas rechazadas para depuración
+        current_app.logger.warning(f"Lectura rechazada: {str(e)} - Datos: {request.get_json()}")
+        return jsonify({
+            "error": f"Datos corruptos o inválidos: {str(e)}",
+            "code": "INVALID_DATA"
+        }), 400
+
+@sensor_bp.route('/api/sensor/todas-lecturas', methods=['GET'])
+@handle_exceptions
+def consultar_todas_lecturas():
+    """
+    Obtiene todas las lecturas del sensor con filtros opcionales
+    
+    Query Parameters:
+        limit: Número máximo de resultados (default: 100, max: 1000)
+        since: Timestamp de inicio en formato ISO 8601 (ej: 2025-09-21T00:00:00Z)
+    
+    Returns:
+    200: Lista de lecturas ordenadas por timestamp desc
+    [
+        {
+            "nivel_cm": 45.2,
+            "estado": "Normal",
+            "intervalo_ms": 5000,
+            "velocidad_cm_por_s": 0.02,
+            "timestamp": "2025-09-21T15:20:00Z"
+        },
+        ...
+    ]
+    400: {"error": "Parámetros inválidos"}
+    500: {"error": "Error interno del servidor"}
+    """
+    try:
+        # Validar parámetros de consulta
+        consulta_params = ConsultaLecturasRequest(
+            limit=request.args.get('limit', 100, type=int),
+            since=request.args.get('since')
+        )
+        
+        # Obtener lecturas a través del controlador
+        response, status_code = service_factory.sensor_controller.consultar_lecturas_arduino(consulta_params)
+        return jsonify(response), status_code
+        
+    except Exception as e:
+        return jsonify({
+            "error": f"Parámetros inválidos: {str(e)}",
+            "code": "INVALID_PARAMETERS"
+        }), 400
+
+# =============================================================================
+# ENDPOINTS LEGACY (MANTENER COMPATIBILIDAD)
+# =============================================================================
 
 @sensor_bp.route('/sensor/lectura', methods=['POST'])
 @validate_json

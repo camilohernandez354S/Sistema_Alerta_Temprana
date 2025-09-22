@@ -254,3 +254,104 @@ class SensorRepository:
         except Exception as e:
             current_app.logger.error(f"Health check fallido: {e}")
             return False
+
+    # =============================================================================
+    # NUEVOS MÉTODOS PARA DATOS ESTRUCTURADOS DEL ARDUINO
+    # =============================================================================
+
+    def guardar_lectura_arduino(self, documento: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Guardar una lectura del Arduino en la colección lecturas_sensor
+        
+        Args:
+            documento: Documento con datos de la lectura
+            
+        Returns:
+            Optional[Dict]: Documento guardado con _id o None si falla
+        """
+        try:
+            # Obtener colección de lecturas Arduino
+            lecturas_collection = self.db[current_app.config.get('MONGO_COLLECTION_LECTURAS', 'lecturas_sensor')]
+            
+            # Crear índices para la nueva colección si no existen
+            self._ensure_lecturas_indexes(lecturas_collection)
+            
+            # Insertar documento
+            result = lecturas_collection.insert_one(documento)
+            
+            if result.inserted_id:
+                # Obtener documento insertado
+                documento_guardado = lecturas_collection.find_one({"_id": result.inserted_id})
+                current_app.logger.info(f"Lectura Arduino guardada con ID: {result.inserted_id}")
+                return documento_guardado
+            else:
+                current_app.logger.error("Error insertando lectura Arduino")
+                return None
+                
+        except Exception as e:
+            current_app.logger.error(f"Error guardando lectura Arduino: {e}")
+            return None
+
+    def consultar_lecturas_arduino(self, limit: int = 100, since: Optional[str] = None) -> List[Dict[str, Any]]:
+        """
+        Consultar lecturas del Arduino con filtros opcionales
+        
+        Args:
+            limit: Límite de resultados
+            since: Timestamp de inicio en formato ISO 8601
+            
+        Returns:
+            List[Dict]: Lista de lecturas ordenadas por timestamp desc
+        """
+        try:
+            # Obtener colección de lecturas Arduino
+            lecturas_collection = self.db[current_app.config.get('MONGO_COLLECTION_LECTURAS', 'lecturas_sensor')]
+            
+            # Construir filtro de consulta
+            filtro = {}
+            if since:
+                try:
+                    # Convertir timestamp ISO 8601 a datetime
+                    since_datetime = datetime.fromisoformat(since.replace('Z', '+00:00'))
+                    filtro["timestamp"] = {"$gte": since_datetime.isoformat() + 'Z'}
+                except ValueError:
+                    current_app.logger.warning(f"Timestamp 'since' inválido: {since}")
+            
+            # Consultar con ordenamiento descendente por timestamp
+            cursor = lecturas_collection.find(filtro).sort("timestamp", -1).limit(limit)
+            
+            # Convertir a lista y limpiar ObjectId
+            lecturas = []
+            for doc in cursor:
+                doc['_id'] = str(doc['_id'])  # Convertir ObjectId a string
+                lecturas.append(doc)
+            
+            current_app.logger.info(f"Consultadas {len(lecturas)} lecturas Arduino")
+            return lecturas
+            
+        except Exception as e:
+            current_app.logger.error(f"Error consultando lecturas Arduino: {e}")
+            return []
+
+    def _ensure_lecturas_indexes(self, collection: Collection):
+        """
+        Crear índices necesarios para la colección de lecturas Arduino
+        
+        Args:
+            collection: Colección de MongoDB
+        """
+        try:
+            # Índice en timestamp para consultas temporales
+            collection.create_index("timestamp")
+            # Índice en estado para estadísticas
+            collection.create_index("estado")
+            # Índice en intervalo_ms para análisis de frecuencia
+            collection.create_index("intervalo_ms")
+            # Índice compuesto para consultas frecuentes
+            collection.create_index([("timestamp", -1), ("estado", 1)])
+            # Índice compuesto para análisis de tendencias
+            collection.create_index([("timestamp", -1), ("intervalo_ms", 1)])
+            
+            current_app.logger.info("Índices de colección lecturas_sensor verificados/creados")
+        except Exception as e:
+            current_app.logger.warning(f"Error creando índices de lecturas: {e}")

@@ -8,7 +8,8 @@ from http import HTTPStatus
 
 from app.models.sensor_model import (
     SensorReading, SensorData, SensorDocumentGuardado, 
-    SensorDocumentObtenido, SensorDocumentRangoTiempo, EstadoSensorStats
+    SensorDocumentObtenido, SensorDocumentRangoTiempo, EstadoSensorStats,
+    LecturaArduinoRequest, LecturaArduinoDocument
 )
 from app.models.blockchain_model import Blockchain
 from app.repositories.sensor_repository import SensorRepository
@@ -338,3 +339,68 @@ class SensorService:
             return "sequía"
         else:
             return "normal"
+
+    # =============================================================================
+    # NUEVOS MÉTODOS PARA DATOS ESTRUCTURADOS DEL ARDUINO
+    # =============================================================================
+
+    def guardar_lectura_arduino(self, lectura_data: LecturaArduinoRequest) -> Optional[Dict[str, Any]]:
+        """
+        Guardar una lectura estructurada del Arduino en MongoDB
+        
+        Args:
+            lectura_data: Datos validados de la lectura del Arduino
+            
+        Returns:
+            Optional[Dict]: Documento guardado o None si falla
+        """
+        try:
+            current_app.logger.info(f"Guardando lectura Arduino en colección lecturas_sensor")
+            
+            # Preparar documento para MongoDB
+            documento = {
+                "nivel_cm": lectura_data.nivel_cm,
+                "estado": lectura_data.estado,
+                "intervalo_ms": lectura_data.intervalo_ms,
+                "velocidad_cm_por_s": lectura_data.velocidad_cm_por_s,
+                "timestamp": lectura_data.timestamp,
+                "created_at": datetime.utcnow().isoformat() + 'Z'
+            }
+            
+            # Guardar usando el repositorio
+            documento_guardado = self.repository.guardar_lectura_arduino(documento)
+            
+            if documento_guardado:
+                current_app.logger.info(f"Lectura Arduino guardada con ID: {documento_guardado['_id']}")
+                return documento_guardado
+            else:
+                current_app.logger.error("Error guardando lectura Arduino")
+                return None
+                
+        except Exception as e:
+            current_app.logger.error(f"Error en guardar_lectura_arduino: {e}")
+            return None
+
+    def consultar_lecturas_arduino(self, limit: int = 100, since: Optional[str] = None) -> List[Dict[str, Any]]:
+        """
+        Consultar lecturas del Arduino con filtros opcionales
+        
+        Args:
+            limit: Límite de resultados (default: 100)
+            since: Timestamp de inicio en formato ISO 8601
+            
+        Returns:
+            List[Dict]: Lista de lecturas ordenadas por timestamp desc
+        """
+        try:
+            current_app.logger.info(f"Consultando lecturas Arduino: limit={limit}, since={since}")
+            
+            # Consultar usando el repositorio
+            lecturas = self.repository.consultar_lecturas_arduino(limit=limit, since=since)
+            
+            current_app.logger.info(f"Encontradas {len(lecturas)} lecturas Arduino")
+            return lecturas
+            
+        except Exception as e:
+            current_app.logger.error(f"Error consultando lecturas Arduino: {e}")
+            return []

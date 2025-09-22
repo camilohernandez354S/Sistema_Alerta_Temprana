@@ -3168,3 +3168,769 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-21 19:23:23,116 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
 2025-09-21 19:23:23,119 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
 2025-09-21 19:23:23,122 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:23:52,685 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:23:52,688 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:23:52,690 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:23:53,147 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:23:53,151 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:23:53,155 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:24:22,678 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:24:22,680 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:24:22,682 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:24:23,139 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:24:23,141 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:24:23,143 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:24:47,375 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:24:47,377 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:24:47,380 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:25:18,690 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:25:18,693 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:25:18,697 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:25:48,712 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:25:48,717 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:25:48,723 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:26:18,703 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:26:18,705 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:26:18,709 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:26:48,866 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:26:48,876 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:26:48,883 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:27:18,900 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:27:18,903 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:27:18,909 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:27:48,736 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:27:48,739 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:27:48,743 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:28:23,253 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:28:40,602 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:28:44,693 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:28:44,709 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:28:44,709 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:28:44,859 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:28:44,861 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:28:44,861 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:28:44,862 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:28:44,863 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:28:46,692 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:28:46,804 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:28:46,881 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:28:46,974 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:28:46,976 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:28:46,978 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:28:51,191 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:28:51,196 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:28:51,767 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:28:51,772 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:28:51,773 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:28:51,774 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:28:52,326 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:28:52,327 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:28:53,303 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:28:53,305 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:28:53,306 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:28:53,308 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:29:41,705 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:29:41,707 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:29:48,229 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:29:56,147 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:30:00,253 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:30:00,258 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:30:00,260 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:30:00,405 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:30:00,406 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:30:00,407 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:30:00,408 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:30:00,411 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:30:02,568 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:30:02,569 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:30:02,570 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:30:02,571 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:30:02,572 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:30:02,573 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:30:44,339 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:30:44,538 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:30:45,081 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:30:45,083 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:30:45,083 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:30:45,084 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:30:45,412 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:30:45,415 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:30:45,741 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:30:45,805 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:30:45,853 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:30:45,910 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:30:54,164 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:31:02,899 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:31:07,003 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:31:07,008 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:31:07,009 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:31:07,113 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:31:07,114 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:31:07,114 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:31:07,115 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:31:07,116 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:31:08,002 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:31:08,003 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:31:08,003 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:31:08,004 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:31:08,005 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:31:08,006 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:31:41,380 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:31:41,386 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:31:41,917 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:31:41,918 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:31:41,919 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:31:41,919 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:31:42,251 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:31:42,252 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:31:42,729 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:31:42,731 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:31:42,732 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:31:42,732 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:31:48,186 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:31:48,188 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:31:59,182 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:31:59,183 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:32:30,689 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:32:30,690 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:33:00,663 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:33:00,664 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:33:23,339 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:33:24,810 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:37:31,245 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:37:35,341 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:37:35,346 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:37:35,347 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:37:35,511 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:37:35,512 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:37:35,514 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:37:35,516 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:37:35,517 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:37:36,728 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:37:36,728 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:37:36,729 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:37:36,730 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:37:36,730 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:37:36,731 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:37:41,552 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:37:45,646 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:37:45,649 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:37:45,649 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:37:45,723 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:37:45,723 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:37:45,724 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:37:45,724 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:37:45,725 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:37:46,564 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:37:46,565 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:37:46,565 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:37:46,566 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:37:46,567 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:37:46,567 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:37:51,022 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:37:51,616 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:37:51,624 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:37:51,626 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:37:51,629 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:37:51,942 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:37:51,943 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:37:52,584 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:37:53,086 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:37:53,086 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:37:53,087 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:37:53,087 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:38:16,518 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:38:16,519 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:38:47,714 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 3 outliers usando IQR (fence: 46.0 - 244.0)
+2025-09-21 19:38:47,715 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:38:49,889 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09a996101cd33acf815c4
+2025-09-21 19:38:49,890 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.52cm
+2025-09-21 19:38:49,891 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:38:53,105 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09a9c6101cd33acf815c5
+2025-09-21 19:38:53,106 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.05cm
+2025-09-21 19:38:53,106 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:38:56,328 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aa06101cd33acf815c6
+2025-09-21 19:38:56,329 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.92cm
+2025-09-21 19:38:56,329 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:38:59,604 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aa36101cd33acf815c7
+2025-09-21 19:38:59,604 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.92cm
+2025-09-21 19:38:59,605 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:02,822 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aa66101cd33acf815c8
+2025-09-21 19:39:02,823 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 166.16cm
+2025-09-21 19:39:02,824 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:06,086 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aa96101cd33acf815c9
+2025-09-21 19:39:06,086 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.58cm
+2025-09-21 19:39:06,087 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:09,306 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aad6101cd33acf815ca
+2025-09-21 19:39:09,307 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 165.94cm
+2025-09-21 19:39:09,308 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:12,522 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09ab06101cd33acf815cb
+2025-09-21 19:39:12,523 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 167.71cm
+2025-09-21 19:39:12,524 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:15,758 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09ab36101cd33acf815cc
+2025-09-21 19:39:15,759 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.03cm
+2025-09-21 19:39:15,760 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:17,722 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 20 outliers usando IQR (fence: 162.7 - 166.7)
+2025-09-21 19:39:17,724 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:39:18,949 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09ab66101cd33acf815cd
+2025-09-21 19:39:18,951 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.95cm
+2025-09-21 19:39:18,951 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:22,161 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09aba6101cd33acf815ce
+2025-09-21 19:39:22,163 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.58cm
+2025-09-21 19:39:22,163 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:25,380 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09abd6101cd33acf815cf
+2025-09-21 19:39:25,381 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 168.23cm
+2025-09-21 19:39:25,382 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:28,630 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09ac06101cd33acf815d0
+2025-09-21 19:39:28,632 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.47cm
+2025-09-21 19:39:28,632 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:31,940 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d09ac36101cd33acf815d1
+2025-09-21 19:39:31,943 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 169.58cm
+2025-09-21 19:39:31,943 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 19:39:47,285 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:39:47,287 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:40:17,275 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:40:17,276 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:40:47,689 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:40:47,690 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:41:17,712 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:41:17,714 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:41:49,005 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:41:49,009 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:42:42,036 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:42:42,038 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:43:41,752 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:43:41,753 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:44:41,729 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:44:41,736 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:45:42,044 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:45:42,046 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:46:42,348 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:46:42,354 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:47:42,255 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:47:42,258 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:48:42,673 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:48:42,676 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:49:12,953 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:49:26,203 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:49:30,307 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:49:30,311 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:49:30,312 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:49:30,429 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:49:30,430 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:49:30,431 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:49:30,433 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:49:30,434 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:49:32,328 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:49:32,329 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:49:32,330 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:49:32,331 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:49:32,335 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:49:32,338 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:49:36,261 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:49:36,530 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:49:36,537 - app - WARNING - _ensure_indexes:48 - Error creando índices: Cannot use MongoClient after close
+2025-09-21 19:49:36,546 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:49:36,574 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:49:36,605 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:49:36,659 - app - WARNING - proceso_lecturas:101 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='=== Sistema de Alerta Te...or de Nivel de Agua ===', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 19:49:36,724 - app - INFO - proceso_lecturas:104 - Procesadas 0 de 1 lecturas
+2025-09-21 19:49:44,870 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:49:48,951 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:49:48,959 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:49:48,960 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:49:49,139 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:49:49,140 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:49:49,142 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:49:49,143 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:49:49,145 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:49:50,815 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:49:50,816 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:49:50,817 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:49:50,817 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:49:50,818 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:49:50,819 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:49:54,494 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:49:54,936 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:49:54,937 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:49:54,938 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:49:55,884 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:49:55,886 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:49:55,887 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:49:55,889 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:49:56,676 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:49:56,678 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:49:56,686 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:49:56,689 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:49:56,693 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:49:56,695 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:49:56,697 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:49:56,707 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:49:56,712 - app - WARNING - proceso_lecturas:101 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 19:49:56,714 - app - WARNING - proceso_lecturas:101 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Intervalo de muestreo: 5000 ms', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 19:49:56,719 - app - INFO - proceso_lecturas:104 - Procesadas 0 de 1 lecturas
+2025-09-21 19:49:56,737 - app - INFO - proceso_lecturas:104 - Procesadas 0 de 1 lecturas
+2025-09-21 19:49:56,966 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:49:56,971 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:49:56,974 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:49:56,976 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:49:57,531 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:49:57,539 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:49:59,239 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:50:10,819 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:50:14,916 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:50:14,921 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:50:14,922 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:50:15,012 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:50:15,013 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:50:15,014 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:50:15,014 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:50:15,015 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:50:16,471 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:50:16,473 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:50:16,475 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:50:16,478 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:50:16,482 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:50:16,486 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:50:27,987 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:50:35,091 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:50:39,210 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:50:39,213 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:50:39,214 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:50:39,302 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:50:39,302 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:50:39,303 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:50:39,304 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:50:39,304 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:50:40,225 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:50:40,226 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:50:40,227 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:50:40,227 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:50:40,228 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:50:40,229 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:50:44,686 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:50:44,869 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:50:45,286 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:50:45,287 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:50:45,288 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:50:45,289 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 19:50:47,070 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:50:47,071 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:50:47,072 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:50:47,073 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 19:50:47,522 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:50:47,523 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:51:02,749 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:51:13,984 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:51:18,078 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:51:18,084 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:51:18,086 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:51:18,219 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:51:18,220 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:51:18,221 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:51:18,222 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:51:18,223 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:51:20,558 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:51:20,560 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:51:20,561 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:51:20,569 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:51:20,570 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:51:20,571 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:51:37,347 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:51:48,008 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:51:52,108 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:51:52,114 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:51:52,115 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:51:52,327 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:51:52,328 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:51:52,329 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:51:52,330 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:51:52,332 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:51:53,915 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:51:53,916 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:51:53,918 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:51:53,921 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:51:53,922 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:51:53,924 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:51:57,176 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:51:57,264 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:51:57,826 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:51:57,828 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:51:57,830 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 19:51:57,831 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 19:51:58,159 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:51:58,246 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:51:58,488 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:51:58,491 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:51:58,493 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 19:51:58,495 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 19:52:01,263 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:52:13,498 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:52:17,587 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:52:17,593 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:52:17,594 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:52:17,707 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:52:17,708 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:52:17,709 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:52:17,710 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:52:17,711 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:52:19,761 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:52:19,840 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:52:19,844 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:52:19,845 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:52:19,847 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:52:19,847 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:52:44,323 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:52:44,326 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:52:44,907 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:52:44,922 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:52:44,933 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 19:52:44,935 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 19:52:45,252 - app - INFO - _eliminar_outliers_iqr:247 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 19:52:45,255 - app - ERROR - _preprocesar_datos_avanzado:212 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 19:52:46,305 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:52:46,343 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 19:52:46,463 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 19:52:46,510 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:18:22,750 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:18:49,176 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:18:53,289 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:18:53,296 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:18:53,297 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:18:53,450 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:18:53,453 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:18:53,454 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:18:53,456 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:18:53,458 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:18:58,813 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:18:59,005 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:18:59,172 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:18:59,256 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:18:59,335 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:18:59,370 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:19:03,057 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:19:03,116 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:19:03,545 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:19:03,552 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:19:03,553 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:19:03,554 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:19:04,223 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:19:04,224 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:19:04,224 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:19:04,225 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:19:04,517 - app - INFO - _eliminar_outliers_iqr:248 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 20:19:04,519 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:19:06,642 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:19:19,613 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:19:24,494 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:24:47,183 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:24:51,289 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:24:51,312 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:24:51,313 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:24:51,506 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:24:51,507 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:24:51,509 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:24:51,512 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:24:51,513 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:24:53,134 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:24:53,135 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:24:53,137 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:24:53,138 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:24:53,140 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:24:53,142 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:24:59,000 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:25:03,108 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:25:03,114 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:25:03,115 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:25:03,262 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:25:03,263 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:25:03,265 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:25:03,266 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:25:03,267 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:25:04,800 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:25:04,801 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:25:04,801 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:25:04,802 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:25:04,806 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:25:04,808 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:25:07,384 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:25:07,386 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:25:07,829 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:25:07,846 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:25:07,848 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:25:07,850 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:25:08,548 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:25:08,549 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:25:08,551 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:25:08,552 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:25:08,848 - app - INFO - _eliminar_outliers_iqr:248 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 20:25:08,851 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:25:22,524 - app - INFO - _eliminar_outliers_iqr:248 - Removidos 21 outliers usando IQR (fence: 161.5 - 168.5)
+2025-09-21 20:25:22,531 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:25:41,327 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:25:43,321 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:26:00,482 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:26:04,582 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:26:04,590 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:26:04,591 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:26:04,752 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:26:04,753 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:26:04,754 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:26:04,755 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:26:04,755 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:26:06,621 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:26:06,623 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:26:06,624 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:26:06,625 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:26:06,626 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:26:06,630 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:26:14,102 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:26:18,209 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:26:18,213 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:26:18,214 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:26:18,320 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:26:18,321 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:26:18,321 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:26:18,322 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:26:18,323 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:26:19,889 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:26:19,890 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:26:19,891 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:26:19,891 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:26:19,892 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:26:19,893 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:26:22,296 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:26:22,742 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:26:22,744 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:26:22,745 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:26:22,748 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:26:22,908 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5be1b9ebe2eca557202
+2025-09-21 20:26:22,910 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 31.856498131590385cm
+2025-09-21 20:26:22,911 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,058 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5be1b9ebe2eca557203
+2025-09-21 20:26:23,059 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 33.82085426208195cm
+2025-09-21 20:26:23,060 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,203 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557204
+2025-09-21 20:26:23,204 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 39.16326545347309cm
+2025-09-21 20:26:23,205 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,352 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557205
+2025-09-21 20:26:23,354 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 23.6020796281717cm
+2025-09-21 20:26:23,355 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,520 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557206
+2025-09-21 20:26:23,521 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 20.727704064875894cm
+2025-09-21 20:26:23,522 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,666 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557207
+2025-09-21 20:26:23,668 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 27.97873688485246cm
+2025-09-21 20:26:23,669 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,814 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557208
+2025-09-21 20:26:23,815 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 21.99117602489079cm
+2025-09-21 20:26:23,817 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:23,964 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca557209
+2025-09-21 20:26:23,966 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 21.378601309106067cm
+2025-09-21 20:26:23,968 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,112 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5bf1b9ebe2eca55720a
+2025-09-21 20:26:24,115 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 36.28143633590124cm
+2025-09-21 20:26:24,116 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,214 - app - INFO - _eliminar_outliers_iqr:248 - Removidos 11 outliers usando IQR (fence: 38.6 - 249.6)
+2025-09-21 20:26:24,216 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:26:24,260 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca55720b
+2025-09-21 20:26:24,262 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 26.373464874795175cm
+2025-09-21 20:26:24,267 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,409 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca55720c
+2025-09-21 20:26:24,411 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 44.5587726339624cm
+2025-09-21 20:26:24,411 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,559 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca55720d
+2025-09-21 20:26:24,561 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 39.58150782579137cm
+2025-09-21 20:26:24,561 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,715 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca55720e
+2025-09-21 20:26:24,717 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 21.206008669197743cm
+2025-09-21 20:26:24,718 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:24,860 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca55720f
+2025-09-21 20:26:24,861 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 37.3960611789019cm
+2025-09-21 20:26:24,862 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,008 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c01b9ebe2eca557210
+2025-09-21 20:26:25,009 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 43.65889793356966cm
+2025-09-21 20:26:25,009 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,154 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557211
+2025-09-21 20:26:25,155 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 29.922920638451444cm
+2025-09-21 20:26:25,156 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,298 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557212
+2025-09-21 20:26:25,300 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 26.221072447647828cm
+2025-09-21 20:26:25,301 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,449 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557213
+2025-09-21 20:26:25,452 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 33.43211738487199cm
+2025-09-21 20:26:25,454 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,606 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557214
+2025-09-21 20:26:25,608 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 32.01634094365087cm
+2025-09-21 20:26:25,612 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,761 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557215
+2025-09-21 20:26:25,766 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 27.395549061859818cm
+2025-09-21 20:26:25,767 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:25,914 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557216
+2025-09-21 20:26:25,916 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 26.398678403960766cm
+2025-09-21 20:26:25,916 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:26,060 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c11b9ebe2eca557217
+2025-09-21 20:26:26,095 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 37.20589492083537cm
+2025-09-21 20:26:26,145 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:26,348 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c21b9ebe2eca557218
+2025-09-21 20:26:26,390 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 22.907810774996484cm
+2025-09-21 20:26:26,392 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:26,536 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0a5c21b9ebe2eca557219
+2025-09-21 20:26:26,538 - app - INFO - proceso_leer_sensor:71 - Lectura procesada exitosamente: 27.1453450475985cm
+2025-09-21 20:26:26,539 - app - WARNING - insertar_datos_prueba:455 - Error actualizando timestamp: 'SensorDocumentGuardado' object has no attribute 'id'
+2025-09-21 20:26:26,540 - app - INFO - insertar_datos_prueba:457 - Insertados 0 registros de prueba
+2025-09-21 20:26:28,179 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:26:53,762 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:27:23,667 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:27:53,698 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:28:23,630 - app - ERROR - _preprocesar_datos_avanzado:213 - Error en preprocesamiento avanzado: PredictionLogger.log_data_preprocessing() got an unexpected keyword argument 'outliers_removidos'. Did you mean 'outliers_removed'?
+2025-09-21 20:28:51,740 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:29:00,268 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:29:04,383 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:29:04,390 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:29:04,391 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:29:04,509 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:29:04,509 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:29:04,510 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:29:04,510 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:29:04,511 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:29:06,126 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:29:06,127 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:29:06,129 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:29:06,130 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:29:06,132 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:29:06,134 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:29:13,414 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:29:24,388 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:29:28,466 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:29:28,473 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:29:28,475 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:29:28,623 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:29:28,626 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:29:28,627 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:29:28,628 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:29:28,630 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:29:30,007 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:29:30,008 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:29:30,009 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:29:30,009 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:29:30,010 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:29:30,011 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:29:37,093 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:29:41,171 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:31:44,596 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:31:48,678 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:31:48,684 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:31:48,685 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:31:48,814 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:31:48,815 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:31:48,816 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:31:48,816 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:31:48,817 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:31:49,896 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:31:49,897 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:31:49,898 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:31:49,899 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:31:49,899 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:31:49,900 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:31:55,679 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:31:59,785 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:31:59,791 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:31:59,792 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:31:59,944 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:31:59,945 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:31:59,945 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:31:59,946 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:31:59,947 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:32:01,123 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:32:01,124 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:32:01,124 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:32:01,125 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:32:01,126 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:32:01,127 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:32:03,848 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:32:03,909 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:32:03,918 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:32:03,958 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 20:32:04,274 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:32:04,279 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:32:04,280 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:32:04,281 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:32:04,696 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:32:04,697 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:32:04,698 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:32:04,699 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:32:05,099 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:32:05,100 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:32:05,101 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 20:32:05,101 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:32:05,103 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 20:32:05,104 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:32:05,105 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 20:32:05,109 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 20:32:05,385 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:32:05,387 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:32:05,407 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:32:05,409 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:32:05,433 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:32:05,657 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:32:05,659 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:32:05,661 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:32:05,661 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:32:05,666 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:32:36,418 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:32:36,420 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:32:36,423 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:32:36,424 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:32:36,429 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:33:06,397 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:33:06,399 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:33:06,402 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:33:06,403 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:33:06,408 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:33:36,388 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:33:36,389 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:33:36,392 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:33:36,393 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:33:36,398 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:34:06,401 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:34:06,403 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:34:06,405 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:34:06,405 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:34:06,409 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:34:36,379 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:34:36,380 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:34:36,383 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:34:36,384 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:34:36,389 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:35:06,429 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:35:06,430 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:35:06,432 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:35:06,432 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:35:06,435 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:35:36,398 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:35:36,399 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:35:36,401 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:35:36,402 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:35:36,408 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:36:06,392 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:36:06,393 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:36:06,395 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:36:06,396 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:36:06,400 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:36:36,645 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 20:36:36,646 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 20:36:36,648 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 20:36:36,649 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 20:36:36,655 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 20:36:43,159 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:36:44,365 - app - INFO - main:64 - 🛑 Cerrando aplicación...

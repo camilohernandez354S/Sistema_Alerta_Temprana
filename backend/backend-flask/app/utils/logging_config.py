@@ -107,10 +107,30 @@ class PredictionLogger:
         )
     
     def log_data_preprocessing(self, original_count: int, cleaned_count: int, outliers_removed: int = 0):
-        """Log preprocesamiento de datos"""
+        """
+        Log detallado del preprocesamiento de datos de sensores
+        
+        Registra las estadísticas del proceso de limpieza y preprocesamiento de datos,
+        incluyendo conteos originales, datos limpios finales y outliers removidos.
+        
+        Args:
+            original_count (int): Número total de registros de datos originales
+            cleaned_count (int): Número final de registros después del preprocesamiento
+            outliers_removed (int, optional): Número de outliers detectados y removidos.
+                                            Defaults to 0.
+        
+        Example:
+            >>> logger.log_data_preprocessing(
+            ...     original_count=150,
+            ...     cleaned_count=142,
+            ...     outliers_removed=8
+            ... )
+        """
+        reduction_percentage = ((original_count - cleaned_count) / original_count * 100) if original_count > 0 else 0
         self.logger.info(
             f"PREPROCESAMIENTO - original={original_count}, "
-            f"limpios={cleaned_count}, outliers_removidos={outliers_removed}"
+            f"limpios={cleaned_count}, outliers_removidos={outliers_removed}, "
+            f"reducción={reduction_percentage:.1f}%"
         )
     
     def log_signal_analysis(self, slope: float, r_squared: float, trend: str, window_points: int):

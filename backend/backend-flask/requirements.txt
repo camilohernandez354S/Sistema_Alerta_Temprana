@@ -22,6 +22,9 @@ openpyxl==3.1.2
 # Dependencias para comunicación serial con Arduino
 pyserial==3.5
 
+# Dependencias para validación de datos estructurados
+email-validator==2.1.0
+
 # Dependencias para rate limiting y caching
 redis==5.0.1
 flask-limiter==3.8.0

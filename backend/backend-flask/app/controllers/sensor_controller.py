@@ -6,7 +6,13 @@ from http import HTTPStatus
 from typing import Tuple
 from datetime import datetime
 
-from app.models.sensor_model import EstadoSensorStats
+from app.models.sensor_model import (
+    EstadoSensorStats, 
+    LecturaArduinoRequest, 
+    LecturaArduinoResponse,
+    LecturaArduinoDocument,
+    ConsultaLecturasRequest
+)
 from app.services.sensor_service import SensorService
 
 class SensorController:
@@ -459,3 +465,105 @@ class SensorController:
         except Exception as e:
             current_app.logger.error(f"Error insertando datos de prueba: {e}")
             return {"error": "Error interno del servidor"}, HTTPStatus.INTERNAL_SERVER_ERROR
+
+    # =============================================================================
+    # NUEVOS MÉTODOS PARA DATOS ESTRUCTURADOS DEL ARDUINO
+    # =============================================================================
+
+    def procesar_lectura_arduino(self, lectura_data: LecturaArduinoRequest) -> Tuple[dict, int]:
+        """
+        Procesar una nueva lectura estructurada del Arduino
+        
+        Args:
+            lectura_data: Datos validados de la lectura del Arduino
+            
+        Returns:
+            Tuple[dict, int]: Respuesta y código de estado
+        """
+        try:
+            current_app.logger.info(f"Procesando lectura Arduino: nivel={lectura_data.nivel_cm}cm, estado={lectura_data.estado}")
+            
+            # Validar datos críticos
+            if lectura_data.nivel_cm < 0:
+                current_app.logger.warning(f"Nivel de agua negativo rechazado: {lectura_data.nivel_cm}")
+                return {
+                    "error": "Nivel de agua no puede ser negativo",
+                    "code": "INVALID_LEVEL"
+                }, HTTPStatus.BAD_REQUEST
+            
+            if lectura_data.estado not in ['Inundación', 'Normal', 'Sequía', 'Error']:
+                current_app.logger.warning(f"Estado inválido rechazado: {lectura_data.estado}")
+                return {
+                    "error": f"Estado inválido: {lectura_data.estado}",
+                    "code": "INVALID_STATE"
+                }, HTTPStatus.BAD_REQUEST
+            
+            # Guardar en MongoDB usando el servicio
+            documento_guardado = self.sensor_service.guardar_lectura_arduino(lectura_data)
+            
+            if documento_guardado:
+                # Crear respuesta estructurada
+                respuesta_data = LecturaArduinoDocument(
+                    id=str(documento_guardado['_id']),
+                    nivel_cm=documento_guardado['nivel_cm'],
+                    estado=documento_guardado['estado'],
+                    intervalo_ms=documento_guardado['intervalo_ms'],
+                    velocidad_cm_por_s=documento_guardado.get('velocidad_cm_por_s'),
+                    timestamp=documento_guardado['timestamp']
+                )
+                
+                return {
+                    "mensaje": "Lectura procesada exitosamente",
+                    "data": respuesta_data.dict(by_alias=True)
+                }, HTTPStatus.OK
+            else:
+                return {
+                    "error": "Error guardando lectura en base de datos",
+                    "code": "DATABASE_ERROR"
+                }, HTTPStatus.INTERNAL_SERVER_ERROR
+                
+        except Exception as e:
+            current_app.logger.error(f"Error procesando lectura Arduino: {e}")
+            return {
+                "error": "Error interno del servidor",
+                "code": "INTERNAL_ERROR"
+            }, HTTPStatus.INTERNAL_SERVER_ERROR
+
+    def consultar_lecturas_arduino(self, consulta_params: ConsultaLecturasRequest) -> Tuple[dict, int]:
+        """
+        Consultar lecturas del Arduino con filtros opcionales
+        
+        Args:
+            consulta_params: Parámetros de consulta validados
+            
+        Returns:
+            Tuple[dict, int]: Lista de lecturas y código de estado
+        """
+        try:
+            current_app.logger.info(f"Consultando lecturas Arduino: limit={consulta_params.limit}, since={consulta_params.since}")
+            
+            # Obtener lecturas del servicio
+            lecturas = self.sensor_service.consultar_lecturas_arduino(
+                limit=consulta_params.limit,
+                since=consulta_params.since
+            )
+            
+            # Convertir a formato de respuesta
+            lecturas_respuesta = []
+            for lectura in lecturas:
+                lecturas_respuesta.append({
+                    "nivel_cm": lectura['nivel_cm'],
+                    "estado": lectura['estado'],
+                    "intervalo_ms": lectura['intervalo_ms'],
+                    "velocidad_cm_por_s": lectura.get('velocidad_cm_por_s'),
+                    "timestamp": lectura['timestamp']
+                })
+            
+            return lecturas_respuesta, HTTPStatus.OK
+            
+        except Exception as e:
+            current_app.logger.error(f"Error consultando lecturas Arduino: {e}")
+            return {
+                "error": "Error interno del servidor",
+                "code": "INTERNAL_ERROR"
+            }, HTTPStatus.INTERNAL_SERVER_ERROR
