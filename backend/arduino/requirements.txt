@@ -1,0 +1,4 @@
+# Dependencias para comunicación con Arduino
+pyserial==3.5
+python-dotenv==1.0.0
+requests==2.32.5
