@@ -3066,3 +3066,105 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-21 19:02:12,027 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
 2025-09-21 19:02:41,984 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
 2025-09-21 19:03:11,975 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:03:41,972 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:04:11,995 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:04:41,846 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:05:11,848 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:05:42,871 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:06:12,891 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:06:42,739 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:07:41,902 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:08:41,901 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:09:39,447 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:09:49,701 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 19:09:53,800 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:09:53,806 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:09:53,806 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:09:53,929 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:09:53,930 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:09:53,931 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:09:53,933 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:09:53,933 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:09:55,385 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:09:55,387 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:09:55,388 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:09:55,389 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:09:55,390 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:09:55,390 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:09:57,583 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:09:58,018 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:09:58,027 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 19:09:58,028 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:09:58,028 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 19:09:58,738 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:10:42,526 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:10:44,529 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:10:49,045 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 19:20:27,460 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:20:31,535 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:20:31,539 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:20:31,540 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:20:31,699 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:20:31,700 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:20:31,701 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:20:31,702 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:20:31,703 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:20:36,921 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:20:36,922 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:20:36,923 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:20:36,924 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:20:36,926 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:20:36,928 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:20:40,347 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 19:20:44,418 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 19:20:44,452 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 19:20:44,455 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 19:20:44,610 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 19:20:44,612 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 19:20:44,613 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 19:20:44,614 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 19:20:44,617 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 19:20:47,198 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 19:20:47,199 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 19:20:47,199 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 19:20:47,200 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 19:20:47,200 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 19:20:47,201 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 19:20:50,850 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 19:20:51,326 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 19:20:51,336 - app - INFO - __init__:20 - PredictionService inicializado con configuración robusta
+2025-09-21 19:20:51,337 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 19:20:51,338 - app - INFO - __init__:23 - SensorController inicializado
+2025-09-21 19:20:52,130 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:20:52,171 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:20:52,304 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:21:12,051 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:21:12,056 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:21:12,065 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:21:42,046 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:21:42,049 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:21:42,054 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:21:51,356 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:21:51,361 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:21:51,368 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:21:51,678 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:21:51,686 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:21:51,717 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:22:22,001 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:22:22,004 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:22:22,008 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:22:22,611 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:22:22,614 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:22:22,618 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:22:51,994 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:22:51,997 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:22:52,000 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:22:52,600 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:22:52,603 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:22:52,606 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:23:22,657 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:23:22,659 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:23:22,663 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes
+2025-09-21 19:23:23,116 - app - INFO - _remover_outliers_iqr:199 - Removidos 3 outliers usando IQR
+2025-09-21 19:23:23,119 - app - INFO - _preprocesar_datos:168 - Datos preprocesados: 53 -> 50
+2025-09-21 19:23:23,122 - app - INFO - generar_predicciones_multi_horizonte:108 - Predicciones generadas exitosamente para 3 horizontes

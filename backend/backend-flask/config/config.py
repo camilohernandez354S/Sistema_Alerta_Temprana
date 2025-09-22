@@ -44,6 +44,13 @@ class Config:
     
     # Configuración del frontend
     FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:8080')
+    
+    # Configuración de predicciones
+    DROUGHT_MAX_CM = float(os.getenv('DROUGHT_MAX_CM', '20.0'))
+    NORMAL_MAX_CM = float(os.getenv('NORMAL_MAX_CM', '60.0'))
+    DEFAULT_HORIZONS = [30, 60, 180]  # minutos
+    REGRESSION_WINDOW_MIN = int(os.getenv('REGRESSION_WINDOW_MIN', '120'))
+    PREDICTION_MIN_DATA_POINTS = int(os.getenv('PREDICTION_MIN_DATA_POINTS', '10'))
 
 class DevelopmentConfig(Config):
     """Configuración para desarrollo"""

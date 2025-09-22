@@ -116,6 +116,24 @@ class SensorService:
         """Obtener las últimas N lecturas"""
         return self.repository.find_all(limit=limit)
     
+    def get_lecturas_desde(self, desde: datetime, limit: int = 500) -> List[SensorDocumentObtenido]:
+        """
+        Obtener lecturas desde una fecha específica
+        
+        Args:
+            desde: Fecha desde cuando obtener lecturas
+            limit: Número máximo de lecturas
+            
+        Returns:
+            List[SensorDocumentObtenido]: Lista de lecturas
+        """
+        try:
+            desde_str = desde.strftime('%Y-%m-%d %H:%M:%S')
+            return self.repository.find_by_time_range(desde_str, limit=limit)
+        except Exception as e:
+            current_app.logger.error(f"Error obteniendo lecturas desde fecha: {e}")
+            return []
+    
     def get_lecturas_rango(self, rango: str) -> List[SensorDocumentRangoTiempo]:
         """
         Obtener lecturas en un rango de tiempo

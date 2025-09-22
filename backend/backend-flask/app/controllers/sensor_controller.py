@@ -4,6 +4,7 @@ Controlador para operaciones de sensores
 from flask import request, jsonify, current_app
 from http import HTTPStatus
 from typing import Tuple
+from datetime import datetime
 
 from app.models.sensor_model import EstadoSensorStats
 from app.services.sensor_service import SensorService
@@ -96,59 +97,137 @@ class SensorController:
     
     def get_predicciones(self) -> Tuple[dict, int]:
         """
-        Generar predicciones de nivel de agua
+        Generar predicciones de nivel de agua con múltiples horizontes
         
+        Query Parameters:
+            horizons: Lista de horizontes en minutos (ej: 30,60,180)
+            
         Returns:
             Tuple[dict, int]: Respuesta y código de estado
         """
         try:
-            # Obtener datos históricos
-            datos = self.sensor_service.obtener_datos_historicos()
+            # Obtener parámetros de query
+            horizons_param = request.args.get('horizons', '30,60,180')
+            
+            try:
+                horizons = [int(h.strip()) for h in horizons_param.split(',')]
+                # Validar horizontes
+                if any(h <= 0 for h in horizons):
+                    return {
+                        "error": "Los horizontes deben ser números positivos"
+                    }, HTTPStatus.BAD_REQUEST
+                if len(horizons) > 10:
+                    return {
+                        "error": "Máximo 10 horizontes permitidos"
+                    }, HTTPStatus.BAD_REQUEST
+            except ValueError:
+                return {
+                    "error": "Formato de horizontes inválido. Use: 30,60,180"
+                }, HTTPStatus.BAD_REQUEST
+            
+            # Obtener datos históricos (últimas 24 horas o 500 registros)
+            datos = self.sensor_service.obtener_datos_historicos(dias=1)
+            if len(datos) < 500:  # Si no hay 500 en 1 día, obtener más
+                datos = self.sensor_service.get_ultimas_lecturas(limit=500)
             
             if not datos:
                 return {
-                    "error": "No hay suficientes datos históricos para hacer predicciones"
+                    "error": {
+                        "message": "No hay suficientes datos históricos para hacer predicciones",
+                        "code": "INSUFFICIENT_DATA"
+                    }
                 }, HTTPStatus.NOT_FOUND
                 
-            # Generar predicciones
-            predicciones = self.sensor_service.generar_predicciones(datos)
+            # Generar predicciones usando el nuevo servicio robusto
+            resultado = self.sensor_service.prediction_service.generar_predicciones_multi_horizonte(
+                datos, horizons
+            )
             
-            return {
-                "predicciones": predicciones,
-                "datos_utilizados": len(datos)
-            }, HTTPStatus.OK
+            # Verificar si hay error en el resultado
+            if "error" in resultado:
+                return resultado, HTTPStatus.INTERNAL_SERVER_ERROR
+            
+            return resultado, HTTPStatus.OK
             
         except Exception as e:
             current_app.logger.error(f"Error generando predicciones: {e}")
-            return {"error": "Error al generar predicciones"}, HTTPStatus.INTERNAL_SERVER_ERROR
+            return {
+                "error": {
+                    "message": f"Error interno generando predicciones: {str(e)}",
+                    "code": "PREDICTION_FAILED"
+                }
+            }, HTTPStatus.INTERNAL_SERVER_ERROR
 
     def get_todas_lecturas(self) -> Tuple[dict, int]:
         """
-        Obtener todas las lecturas del sensor
+        Obtener lecturas del sensor con parámetros de filtrado
         
+        Query Parameters:
+            limit: Número máximo de lecturas (default: 500, max: 1000)
+            since: Timestamp ISO desde cuando obtener lecturas (opcional)
+            order: Orden de resultados ('asc' o 'desc', default: 'desc')
+            
         Returns:
             Tuple[dict, int]: Respuesta y código de estado
         """
         try:
-            documentos = self.sensor_service.get_todas_lecturas()
+            # Obtener parámetros de query
+            limit = request.args.get('limit', 500, type=int)
+            since_param = request.args.get('since')
+            order = request.args.get('order', 'desc')
             
+            # Validar parámetros
+            if limit <= 0 or limit > 1000:
+                return {
+                    "error": "El parámetro 'limit' debe estar entre 1 y 1000"
+                }, HTTPStatus.BAD_REQUEST
+            
+            if order not in ['asc', 'desc']:
+                return {
+                    "error": "El parámetro 'order' debe ser 'asc' o 'desc'"
+                }, HTTPStatus.BAD_REQUEST
+            
+            # Obtener lecturas según parámetros
+            if since_param:
+                try:
+                    # Parsear timestamp ISO
+                    since_dt = datetime.fromisoformat(since_param.replace('Z', '+00:00'))
+                    documentos = self.sensor_service.get_lecturas_desde(since_dt, limit)
+                except ValueError:
+                    return {
+                        "error": "Formato de timestamp 'since' inválido. Use formato ISO 8601"
+                    }, HTTPStatus.BAD_REQUEST
+            else:
+                documentos = self.sensor_service.get_ultimas_lecturas(limit)
+            
+            # Formatear respuesta consistente
             resultado = []
             for doc in documentos:
                 resultado.append({
-                    "_id": str(doc.id),
-                    "nivel_agua": doc.nivel_agua,
+                    "id": str(doc.id),
+                    "nivel_cm": float(doc.nivel_agua),
                     "estado": doc.estado,
                     "timestamp": doc.timestamp
                 })
             
+            # Ordenar según parámetro
+            if order == 'asc':
+                resultado.sort(key=lambda x: x['timestamp'])
+            else:
+                resultado.sort(key=lambda x: x['timestamp'], reverse=True)
+            
             return {
                 "lecturas": resultado,
-                "total": len(resultado)
+                "total": len(resultado),
+                "limit": limit,
+                "order": order
             }, HTTPStatus.OK
             
         except Exception as e:
             current_app.logger.error(f"Error obteniendo lecturas: {e}")
-            return {"error": "Error interno del servidor"}, HTTPStatus.INTERNAL_SERVER_ERROR
+            return {
+                "error": "Error interno del servidor"
+            }, HTTPStatus.INTERNAL_SERVER_ERROR
 
     def get_ultima_lectura(self) -> Tuple[dict, int]:
         """
@@ -360,7 +439,6 @@ class SensorController:
                 if documento:
                     # Actualizar el timestamp para que sea histórico
                     try:
-                        # Actualizar directamente en la base de datos
                         from bson import ObjectId
                         self.sensor_service.repository.collection.update_one(
                             {"_id": ObjectId(documento.id)},

@@ -1,258 +1,496 @@
 """
-Servicio especializado en predicciones de IA
+Servicio especializado en predicciones robustas con limpieza de datos y señales
 """
 import numpy as np
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional, Tuple
+from datetime import datetime, timedelta
 from flask import current_app
 
 from app.models.sensor_model import SensorDocumentObtenido
+from app.utils.logging_config import PredictionLogger
+
 
 class PredictionService:
-    """Servicio para generar predicciones usando modelos de IA"""
+    """Servicio para generar predicciones robustas con preprocesamiento avanzado"""
     
     def __init__(self):
         """Inicializar servicio de predicciones"""
-        current_app.logger.info("PredictionService inicializado")
+        self.config = current_app.config
+        self.prediction_logger = PredictionLogger()
+        current_app.logger.info("PredictionService inicializado con configuración robusta")
     
-    def generar_predicciones(self, datos: List[SensorDocumentObtenido]) -> List[Dict[str, Any]]:
+    def generar_predicciones_multi_horizonte(
+        self, 
+        datos: List[SensorDocumentObtenido],
+        horizons: Optional[List[int]] = None
+    ) -> Dict[str, Any]:
         """
-        Generar predicciones usando un modelo de IA
+        Generar predicciones multi-horizonte con limpieza de datos
         
         Args:
             datos: Datos históricos
+            horizons: Lista de horizontes en minutos (default: config)
             
         Returns:
-            List[Dict[str, Any]]: Lista de predicciones
+            Dict con predicciones estructuradas
         """
         try:
-            if len(datos) < 5:
-                current_app.logger.warning("Datos insuficientes para predicciones")
-                return self._predicciones_por_defecto()
+            if horizons is None:
+                horizons = self.config.get('DEFAULT_HORIZONS', [30, 60, 180])
             
-            # Convertir datos a DataFrame
-            df = self._preparar_datos(datos)
+            window_minutes = self.config.get('REGRESSION_WINDOW_MIN', 120)
             
-            if df.empty:
-                return self._predicciones_por_defecto()
+            # Log inicio de predicción
+            self.prediction_logger.log_prediction_start(
+                data_points=len(datos),
+                horizons=horizons,
+                window_minutes=window_minutes
+            )
             
-            # Entrenar modelo
-            model = self._entrenar_modelo(df)
+            # 1. Preprocesamiento y limpieza
+            datos_limpios = self._preprocesar_datos(datos)
             
-            # Generar predicciones
-            predicciones = self._generar_predicciones_modelo(model, df, datos)
+            if len(datos_limpios) < self.config.get('PREDICTION_MIN_DATA_POINTS', 10):
+                self.prediction_logger.log_warning_insufficient_data(
+                    available_points=len(datos_limpios),
+                    required_points=self.config.get('PREDICTION_MIN_DATA_POINTS', 10)
+                )
+                return self._respuesta_prediccion_fallback(horizons)
             
-            current_app.logger.info(f"Predicciones generadas para {len(predicciones)} períodos")
-            return predicciones
+            # 2. Análisis de señales y tendencias
+            senales = self._analizar_senales(datos_limpios)
+            
+            # 3. Generar predicciones
+            predicciones = []
+            for horizon in horizons:
+                pred = self._generar_prediccion_horizonte(
+                    datos_limpios, senales, horizon
+                )
+                predicciones.append(pred)
+                
+                # Log resultado individual
+                self.prediction_logger.log_prediction_result(
+                    horizon=horizon,
+                    predicted_level=pred['nivel_cm'],
+                    confidence=pred['confianza'],
+                    state=pred['estado']
+                )
+            
+            # 4. Información actual
+            nivel_actual = datos_limpios[-1]['nivel_cm']
+            tendencia_actual = senales['tendencia']
+            pendiente_actual = senales['pendiente_cm_por_h']
+            
+            resultado = {
+                "meta": {
+                    "generated_at": datetime.now().isoformat(),
+                    "window_used_minutes": senales['window_minutes'],
+                    "horizons": horizons,
+                    "data_points_used": len(datos_limpios)
+                },
+                "current": {
+                    "nivel_cm": round(nivel_actual, 2),
+                    "estado": self._classify_level(nivel_actual),
+                    "tendencia": tendencia_actual,
+                    "pendiente_cm_por_h": round(pendiente_actual, 2)
+                },
+                "predicciones": predicciones
+            }
+            
+            # Log completación
+            avg_confidence = np.mean([p['confianza'] for p in predicciones])
+            self.prediction_logger.log_prediction_complete(
+                total_horizons=len(horizons),
+                avg_confidence=avg_confidence,
+                processing_time=0.0  # TODO: implementar timing
+            )
+            
+            current_app.logger.info(f"Predicciones generadas exitosamente para {len(horizons)} horizontes")
+            return resultado
             
         except Exception as e:
+            self.prediction_logger.log_error_prediction(str(e))
             current_app.logger.error(f"Error generando predicciones: {e}")
-            return self._predicciones_por_defecto()
+            return self._respuesta_error_prediccion(str(e))
     
-    def _preparar_datos(self, datos: List[SensorDocumentObtenido]) -> pd.DataFrame:
+    def _preprocesar_datos(self, datos: List[SensorDocumentObtenido]) -> List[Dict[str, Any]]:
         """
-        Preparar datos para el modelo
+        Preprocesamiento robusto de datos con validación y limpieza
         
         Args:
             datos: Datos crudos
             
         Returns:
-            pd.DataFrame: Datos preparados
+            Lista de datos limpios y validados
         """
         try:
-            df_data = []
+            # 1. Validar esquema y convertir
+            datos_validos = []
             for doc in datos:
-                df_data.append({
-                    'timestamp': pd.to_datetime(doc.timestamp),
-                    'nivel_agua': float(doc.nivel_agua)
+                try:
+                    # Validar esquema requerido
+                    nivel_cm = float(doc.nivel_agua)
+                    timestamp = datetime.fromisoformat(doc.timestamp.replace('Z', '+00:00'))
+                    
+                    datos_validos.append({
+                        'id': str(doc.id),
+                        'nivel_cm': nivel_cm,
+                        'timestamp': timestamp
+                    })
+                except (ValueError, TypeError, AttributeError) as e:
+                    current_app.logger.warning(f"Registro inválido omitido: {e}")
+                    continue
+            
+            if not datos_validos:
+                return []
+            
+            # 2. Ordenar por timestamp
+            datos_validos.sort(key=lambda x: x['timestamp'])
+            
+            # 3. Quitar outliers con IQR
+            niveles = [d['nivel_cm'] for d in datos_validos]
+            datos_sin_outliers = self._remover_outliers_iqr(datos_validos, niveles)
+            
+            # 4. Rellenar huecos con interpolación
+            datos_completos = self._interpolar_huecos(datos_sin_outliers)
+            
+            # 5. Suavizar con media móvil
+            datos_suavizados = self._aplicar_media_movil(datos_completos, window=5)
+            
+            # Log preprocesamiento
+            outliers_removed = len(datos) - len(datos_sin_outliers)
+            self.prediction_logger.log_data_preprocessing(
+                original_count=len(datos),
+                cleaned_count=len(datos_suavizados),
+                outliers_removed=outliers_removed
+            )
+            
+            current_app.logger.info(f"Datos preprocesados: {len(datos)} -> {len(datos_suavizados)}")
+            return datos_suavizados
+            
+        except Exception as e:
+            current_app.logger.error(f"Error en preprocesamiento: {e}")
+            return []
+    
+    def _remover_outliers_iqr(self, datos: List[Dict], niveles: List[float]) -> List[Dict]:
+        """Remover outliers usando método IQR"""
+        try:
+            if len(niveles) < 4:
+                return datos
+            
+            q1 = np.percentile(niveles, 25)
+            q3 = np.percentile(niveles, 75)
+            iqr = q3 - q1
+            
+            # Fence simple
+            lower_fence = q1 - 1.5 * iqr
+            upper_fence = q3 + 1.5 * iqr
+            
+            datos_limpios = []
+            outliers_removidos = 0
+            
+            for dato in datos:
+                if lower_fence <= dato['nivel_cm'] <= upper_fence:
+                    datos_limpios.append(dato)
+                else:
+                    outliers_removidos += 1
+            
+            if outliers_removidos > 0:
+                current_app.logger.info(f"Removidos {outliers_removidos} outliers usando IQR")
+            
+            return datos_limpios
+            
+        except Exception as e:
+            current_app.logger.warning(f"Error removiendo outliers: {e}")
+            return datos
+    
+    def _interpolar_huecos(self, datos: List[Dict]) -> List[Dict]:
+        """Rellenar pequeños huecos con interpolación lineal"""
+        try:
+            if len(datos) < 2:
+                return datos
+            
+            datos_completos = []
+            for i, dato in enumerate(datos):
+                datos_completos.append(dato)
+                
+                # Verificar si hay hueco significativo con el siguiente punto
+                if i < len(datos) - 1:
+                    next_dato = datos[i + 1]
+                    diff_minutes = (next_dato['timestamp'] - dato['timestamp']).total_seconds() / 60
+                    
+                    # Si hay hueco mayor a 30 minutos pero menor a 2 horas, interpolar
+                    if 30 < diff_minutes < 120:
+                        num_puntos = int(diff_minutes / 15)  # Un punto cada 15 minutos
+                        for j in range(1, num_puntos):
+                            timestamp_interp = dato['timestamp'] + timedelta(minutes=j * 15)
+                            nivel_interp = np.interp(
+                                j / num_puntos,
+                                [0, 1],
+                                [dato['nivel_cm'], next_dato['nivel_cm']]
+                            )
+                            datos_completos.append({
+                                'id': f"interp_{i}_{j}",
+                                'nivel_cm': nivel_interp,
+                                'timestamp': timestamp_interp
+                            })
+            
+            return datos_completos
+            
+        except Exception as e:
+            current_app.logger.warning(f"Error en interpolación: {e}")
+            return datos
+    
+    def _aplicar_media_movil(self, datos: List[Dict], window: int = 5) -> List[Dict]:
+        """Aplicar media móvil para suavizar ruido"""
+        try:
+            if len(datos) < window:
+                return datos
+            
+            datos_suavizados = []
+            for i in range(len(datos)):
+                # Ventana simétrica centrada
+                start_idx = max(0, i - window // 2)
+                end_idx = min(len(datos), i + window // 2 + 1)
+                
+                window_data = datos[start_idx:end_idx]
+                nivel_promedio = np.mean([d['nivel_cm'] for d in window_data])
+                
+                datos_suavizados.append({
+                    'id': datos[i]['id'],
+                    'nivel_cm': nivel_promedio,
+                    'timestamp': datos[i]['timestamp']
                 })
             
-            df = pd.DataFrame(df_data)
-            df = df.sort_values('timestamp')
-            df = df.dropna()
+            return datos_suavizados
             
-            return df
         except Exception as e:
-            current_app.logger.error(f"Error preparando datos: {e}")
-            return pd.DataFrame()
+            current_app.logger.warning(f"Error aplicando media móvil: {e}")
+            return datos
     
-    def _entrenar_modelo(self, df: pd.DataFrame) -> LinearRegression:
+    def _analizar_senales(self, datos: List[Dict]) -> Dict[str, Any]:
         """
-        Entrenar modelo de regresión lineal
+        Analizar señales y tendencias
         
         Args:
-            df: DataFrame con datos
+            datos: Datos preprocesados
             
         Returns:
-            LinearRegression: Modelo entrenado
+            Dict con análisis de señales
         """
-        # Preparar features (timestamp como número)
-        X = df['timestamp'].astype(np.int64) // 10**9  # Segundos desde epoch
-        X = X.values.reshape(-1, 1)
-        y = df['nivel_agua'].values
-        
-        # Entrenar modelo
-        model = LinearRegression()
-        model.fit(X, y)
-        
-        return model
-    
-    def _generar_predicciones_modelo(
-        self, 
-        model: LinearRegression, 
-        df: pd.DataFrame, 
-        datos_originales: List[SensorDocumentObtenido]
-    ) -> List[Dict[str, Any]]:
-        """
-        Generar predicciones usando el modelo entrenado
-        
-        Args:
-            model: Modelo entrenado
-            df: DataFrame con datos históricos
-            datos_originales: Datos originales para comparación
+        try:
+            window_minutes = self.config.get('REGRESSION_WINDOW_MIN', 120)
             
-        Returns:
-            List[Dict[str, Any]]: Lista de predicciones
-        """
-        # Calcular estadísticas
-        media = df['nivel_agua'].mean()
-        desviacion = df['nivel_agua'].std()
-        ultimo_nivel = datos_originales[-1].nivel_agua
-        
-        # Timestamps futuros
-        timestamp_24h = pd.Timestamp.now() + pd.Timedelta(days=1)
-        timestamp_7d = pd.Timestamp.now() + pd.Timedelta(days=7)
-        
-        # Predicciones
-        nivel_24h = model.predict([[timestamp_24h.timestamp()]])[0]
-        nivel_7d = model.predict([[timestamp_7d.timestamp()]])[0]
-        
-        # Calcular probabilidades
-        prob_24h = self._calcular_probabilidades(nivel_24h, media, desviacion)
-        prob_7d = self._calcular_probabilidades(nivel_7d, media, desviacion)
-        
-        return [
-            {
-                "periodo": "24h",
-                "porcentaje": prob_24h['inundacion'],
-                "fecha": timestamp_24h.isoformat(),
-                "tendencia": self._determinar_tendencia(nivel_24h, ultimo_nivel),
-                "nivel_predicho": round(nivel_24h, 2),
-                "probabilidad_inundacion": prob_24h['inundacion'],
-                "probabilidad_sequia": prob_24h['sequia'],
-                "probabilidad_normal": prob_24h['normal'],
-                "confianza": self._calcular_confianza(len(datos_originales))
-            },
-            {
-                "periodo": "7d",
-                "porcentaje": prob_7d['inundacion'],
-                "fecha": timestamp_7d.isoformat(),
-                "tendencia": self._determinar_tendencia(nivel_7d, ultimo_nivel),
-                "nivel_predicho": round(nivel_7d, 2),
-                "probabilidad_inundacion": prob_7d['inundacion'],
-                "probabilidad_sequia": prob_7d['sequia'],
-                "probabilidad_normal": prob_7d['normal'],
-                "confianza": self._calcular_confianza(len(datos_originales))
+            # Usar ventana más reciente para análisis de tendencia
+            cutoff_time = datos[-1]['timestamp'] - timedelta(minutes=window_minutes)
+            datos_ventana = [d for d in datos if d['timestamp'] >= cutoff_time]
+            
+            if len(datos_ventana) < 3:
+                # Si no hay suficientes datos en la ventana, usar todos
+                datos_ventana = datos
+                window_minutes = (datos[-1]['timestamp'] - datos[0]['timestamp']).total_seconds() / 60
+            
+            # Calcular pendiente con polyfit
+            timestamps_numeric = [(d['timestamp'] - datos_ventana[0]['timestamp']).total_seconds() / 3600 
+                                for d in datos_ventana]  # Convertir a horas
+            niveles = [d['nivel_cm'] for d in datos_ventana]
+            
+            if len(timestamps_numeric) >= 2:
+                # Regresión lineal simple
+                slope, intercept = np.polyfit(timestamps_numeric, niveles, 1)
+                pendiente_cm_por_h = slope
+                
+                # Calcular R² para confianza
+                y_pred = [slope * t + intercept for t in timestamps_numeric]
+                ss_res = sum((niveles[i] - y_pred[i]) ** 2 for i in range(len(niveles)))
+                ss_tot = sum((n - np.mean(niveles)) ** 2 for n in niveles)
+                r_squared = 1 - (ss_res / ss_tot) if ss_tot > 0 else 0
+            else:
+                pendiente_cm_por_h = 0
+                r_squared = 0
+            
+            # Determinar tendencia
+            if abs(pendiente_cm_por_h) < 0.5:
+                tendencia = "estable"
+            elif pendiente_cm_por_h > 0:
+                tendencia = "sube"
+            else:
+                tendencia = "baja"
+            
+            resultado = {
+                'pendiente_cm_por_h': pendiente_cm_por_h,
+                'tendencia': tendencia,
+                'r_squared': r_squared,
+                'window_minutes': window_minutes,
+                'data_points_window': len(datos_ventana)
             }
-        ]
+            
+            # Log análisis de señales
+            self.prediction_logger.log_signal_analysis(
+                slope=pendiente_cm_por_h,
+                r_squared=r_squared,
+                trend=tendencia,
+                window_points=len(datos_ventana)
+            )
+            
+            return resultado
+            
+        except Exception as e:
+            current_app.logger.warning(f"Error analizando señales: {e}")
+            return {
+                'pendiente_cm_por_h': 0,
+                'tendencia': 'estable',
+                'r_squared': 0,
+                'window_minutes': 0,
+                'data_points_window': 0
+            }
     
-    def _calcular_probabilidades(self, nivel: float, media: float, desviacion: float) -> Dict[str, float]:
+    def _generar_prediccion_horizonte(
+        self, 
+        datos: List[Dict], 
+        senales: Dict[str, Any], 
+        horizon_minutes: int
+    ) -> Dict[str, Any]:
         """
-        Calcular probabilidades para cada estado
+        Generar predicción para un horizonte específico
         
         Args:
-            nivel: Nivel predicho
-            media: Media histórica
-            desviacion: Desviación estándar
+            datos: Datos preprocesados
+            senales: Análisis de señales
+            horizon_minutes: Horizonte en minutos
             
         Returns:
-            Dict[str, float]: Probabilidades por estado
+            Predicción para el horizonte
         """
-        # Constantes de umbral
-        NIVEL_SEQUIA = 10.0
-        NIVEL_INUNDACION = 3.5
+        try:
+            nivel_actual = datos[-1]['nivel_cm']
+            pendiente = senales['pendiente_cm_por_h']
+            r_squared = senales['r_squared']
+            
+            # Predicción con factor de amortiguación
+            factor_amortiguacion = 0.6
+            horizon_hours = horizon_minutes / 60
+            
+            # Predicción lineal amortiguada
+            nivel_predicho = nivel_actual + (pendiente * horizon_hours * factor_amortiguacion)
+            
+            # Clamp a mínimo 0
+            nivel_predicho = max(0, nivel_predicho)
+            
+            # Calcular confianza
+            confianza_base = min(1.0, r_squared)
+            confianza_densidad = min(1.0, senales['data_points_window'] / 20)  # Máximo con 20 puntos
+            confianza = (confianza_base + confianza_densidad) / 2
+            
+            return {
+                "horizon_min": horizon_minutes,
+                "nivel_cm": round(nivel_predicho, 2),
+                "estado": self._classify_level(nivel_predicho),
+                "confianza": round(confianza, 2)
+            }
+            
+        except Exception as e:
+            current_app.logger.error(f"Error generando predicción para horizonte {horizon_minutes}: {e}")
+            return {
+                "horizon_min": horizon_minutes,
+                "nivel_cm": 0.0,
+                "estado": "Normal",
+                "confianza": 0.0
+            }
+    
+    def _classify_level(self, nivel_cm: float) -> str:
+        """
+        Clasificar nivel según umbrales configurables
         
-        # Inicializar probabilidades
-        prob_sequia = 0.0
-        prob_inundacion = 0.0
-        prob_normal = 0.0
+        Args:
+            nivel_cm: Nivel en centímetros
+            
+        Returns:
+            Estado clasificado
+        """
+        drought_max = self.config.get('DROUGHT_MAX_CM', 20.0)
+        normal_max = self.config.get('NORMAL_MAX_CM', 60.0)
         
-        # Calcular probabilidades basadas en umbrales y distribución
-        if nivel >= NIVEL_SEQUIA:
-            prob_sequia = 90.0
-        elif nivel > NIVEL_SEQUIA - desviacion:
-            prob_sequia = ((nivel - (NIVEL_SEQUIA - desviacion)) / desviacion) * 70.0
-        
-        if nivel <= NIVEL_INUNDACION:
-            prob_inundacion = 90.0
-        elif nivel < NIVEL_INUNDACION + desviacion:
-            prob_inundacion = ((NIVEL_INUNDACION + desviacion - nivel) / desviacion) * 70.0
-        
-        # Probabilidad normal es lo que queda
-        if NIVEL_INUNDACION < nivel < NIVEL_SEQUIA:
-            prob_normal = 80.0
-        
-        # Normalizar para que sumen 100%
-        total = prob_sequia + prob_inundacion + prob_normal
-        if total == 0:
-            prob_normal = 100.0
-            total = 100.0
-        
+        if nivel_cm <= drought_max:
+            return "Sequía"
+        elif nivel_cm >= normal_max:
+            return "Inundación"
+        else:
+            return "Normal"
+    
+    def _respuesta_prediccion_fallback(self, horizons: List[int]) -> Dict[str, Any]:
+        """Respuesta de fallback cuando no hay suficientes datos"""
         return {
-            'sequia': round((prob_sequia / total) * 100, 2),
-            'inundacion': round((prob_inundacion / total) * 100, 2),
-            'normal': round((prob_normal / total) * 100, 2)
+            "meta": {
+                "generated_at": datetime.now().isoformat(),
+                "window_used_minutes": 0,
+                "horizons": horizons,
+                "data_points_used": 0,
+                "warning": "Datos insuficientes para predicción robusta"
+            },
+            "current": {
+                "nivel_cm": 0.0,
+                "estado": "Normal",
+                "tendencia": "estable",
+                "pendiente_cm_por_h": 0.0
+            },
+            "predicciones": [
+                {
+                    "horizon_min": h,
+                    "nivel_cm": 0.0,
+                    "estado": "Normal",
+                    "confianza": 0.1
+                }
+                for h in horizons
+            ]
         }
     
-    def _determinar_tendencia(self, nivel_futuro: float, nivel_actual: float) -> str:
-        """
-        Determinar tendencia entre dos niveles
-        
-        Args:
-            nivel_futuro: Nivel predicho
-            nivel_actual: Nivel actual
-            
-        Returns:
-            str: Tendencia ('subiendo', 'bajando', 'estable')
-        """
-        diferencia = abs(nivel_futuro - nivel_actual)
-        
-        if diferencia < 0.1:  # Margen de error pequeño
-            return "estable"
-        elif nivel_futuro > nivel_actual:
-            return "subiendo"
-        else:
-            return "bajando"
+    def _respuesta_error_prediccion(self, error_msg: str) -> Dict[str, Any]:
+        """Respuesta de error estructurada"""
+        return {
+            "error": {
+                "message": f"Error generando predicciones: {error_msg}",
+                "code": "PREDICTION_FAILED"
+            }
+        }
     
-    def _calcular_confianza(self, num_datos: int) -> float:
+    # Métodos de compatibilidad con la implementación anterior
+    def generar_predicciones(self, datos: List[SensorDocumentObtenido]) -> List[Dict[str, Any]]:
         """
-        Calcular nivel de confianza basado en cantidad de datos
-        
-        Args:
-            num_datos: Número de puntos de datos
+        Método de compatibilidad con implementación anterior
+        Genera predicciones en formato legacy
+        """
+        try:
+            resultado = self.generar_predicciones_multi_horizonte(datos)
             
-        Returns:
-            float: Nivel de confianza (0.0 - 1.0)
-        """
-        if num_datos < 10:
-            return 0.3
-        elif num_datos < 50:
-            return 0.6
-        elif num_datos < 100:
-            return 0.8
-        else:
-            return 0.9
+            if "error" in resultado:
+                return self._predicciones_por_defecto()
+            
+            # Convertir a formato legacy
+            predicciones_legacy = []
+            for pred in resultado["predicciones"]:
+                predicciones_legacy.append({
+                    "periodo": f"{pred['horizon_min']}m",
+                    "porcentaje": 50.0,  # Valor por defecto
+                    "fecha": (datetime.now() + timedelta(minutes=pred['horizon_min'])).isoformat(),
+                    "tendencia": resultado["current"]["tendencia"],
+                    "nivel_predicho": pred['nivel_cm'],
+                    "probabilidad_inundacion": 33.33,
+                    "probabilidad_sequia": 33.33,
+                    "probabilidad_normal": 33.34,
+                    "confianza": pred['confianza']
+                })
+            
+            return predicciones_legacy
+            
+        except Exception as e:
+            current_app.logger.error(f"Error en método de compatibilidad: {e}")
+            return self._predicciones_por_defecto()
     
     def _predicciones_por_defecto(self) -> List[Dict[str, Any]]:
-        """
-        Predicciones por defecto cuando no hay suficientes datos
-        
-        Returns:
-            List[Dict[str, Any]]: Predicciones por defecto
-        """
-        timestamp_24h = pd.Timestamp.now() + pd.Timedelta(days=1)
-        timestamp_7d = pd.Timestamp.now() + pd.Timedelta(days=7)
+        """Predicciones por defecto cuando no hay suficientes datos"""
+        timestamp_24h = datetime.now() + timedelta(hours=24)
+        timestamp_7d = datetime.now() + timedelta(days=7)
         
         return [
             {

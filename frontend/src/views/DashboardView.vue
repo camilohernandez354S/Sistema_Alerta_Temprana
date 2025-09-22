@@ -33,7 +33,6 @@
       ]">
         <div class="flex">
           <div class="flex-shrink-0">
-            <!-- Icono de información para datos de demo, error para errores reales -->
             <svg v-if="error.includes('demostración')" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
             </svg>
@@ -64,68 +63,129 @@
       </div>
 
       <!-- Dashboard principal -->
-      <div v-else class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Columna izquierda: Métricas -->
-        <div class="lg:col-span-1 space-y-6">
-          <!-- Tarjeta: Nivel Actual -->
+      <div v-else class="space-y-8">
+        <!-- Estado actual y predicciones -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <!-- Estado actual - Card grande -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div class="text-center">
+                <h3 class="text-sm font-medium text-gray-600 mb-4">Estado Actual</h3>
+                
+                <!-- Nivel actual en texto grande -->
+                <div class="mb-4">
+                  <div class="text-4xl font-bold text-gray-900">
+                    {{ currentState.nivel_cm || 'N/A' }}
+                  </div>
+                  <div class="text-sm text-gray-500">cm</div>
+                </div>
+                
+                <!-- Estado textual -->
+                <div class="mb-3">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
+                        :class="getStateColorClass(currentState.estado)">
+                    {{ currentState.estado || 'Sin datos' }}
+                  </span>
+                </div>
+                
+                <!-- Tendencia -->
+                <div class="flex items-center justify-center space-x-2">
+                  <svg class="w-4 h-4" :class="getTrendIconColor(currentState.tendencia)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getTrendIcon(currentState.tendencia)"></path>
+                  </svg>
+                  <span class="text-sm text-gray-600">{{ getTrendText(currentState.tendencia) }}</span>
+                </div>
+                
+                <!-- Pendiente si está disponible -->
+                <div v-if="currentState.pendiente_cm_por_h !== undefined" class="mt-2 text-xs text-gray-500">
+                  {{ currentState.pendiente_cm_por_h > 0 ? '+' : '' }}{{ currentState.pendiente_cm_por_h?.toFixed(1) }} cm/h
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Predicciones futuras - Tarjetas pequeñas -->
+          <div class="lg:col-span-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              <div v-for="prediction in predictions" :key="prediction.horizon_min" 
+                   class="bg-gray-50 rounded-xl shadow-sm border border-gray-200 p-4">
+                <div class="text-center">
+                  <!-- Horizonte temporal -->
+                  <div class="text-sm font-medium text-gray-600 mb-2">
+                    {{ formatHorizon(prediction.horizon_min) }}
+                  </div>
+                  
+                  <!-- Nivel predicho -->
+                  <div class="text-2xl font-semibold text-gray-800 mb-2">
+                    {{ prediction.nivel_cm?.toFixed(1) || 'N/A' }} cm
+                  </div>
+                  
+                  <!-- Estado y confianza -->
+                  <div class="space-y-1">
+                    <div>
+                      <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium" 
+                            :class="getStateColorClass(prediction.estado)">
+                        {{ prediction.estado || 'Sin datos' }}
+                      </span>
+                    </div>
+                    <div class="text-xs text-gray-500">
+                      Confianza: {{ Math.round((prediction.confianza || 0) * 100) }}%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico principal con datos históricos y predicciones -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-medium text-gray-900">Niveles de Agua - Histórico y Predicciones</h3>
+            <div class="flex items-center space-x-4 text-sm text-gray-500">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
+                <span>Histórico</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>Predicciones</span>
+              </div>
+            </div>
+          </div>
+          <div class="h-96">
+            <Line
+              v-if="combinedChartData.labels.length > 0"
+              :data="combinedChartData"
+              :options="chartOptions"
+            />
+            <div v-else class="flex items-center justify-center h-full text-gray-500">
+              No hay datos disponibles
+            </div>
+          </div>
+        </div>
+
+        <!-- Métricas adicionales -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Última actualización -->
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
                 <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                   <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
               </div>
               <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Nivel Actual</h3>
-                <p class="text-2xl font-semibold text-gray-900">
-                  {{ currentLevel }} <span class="text-sm text-gray-500">cm</span>
-                </p>
-                <p class="text-xs text-gray-500 mt-1">{{ lastUpdateTime }}</p>
+                <h3 class="text-sm font-medium text-gray-600">Última Actualización</h3>
+                <p class="text-lg font-semibold text-gray-900">{{ lastUpdateTime }}</p>
+                <p class="text-xs text-gray-500 mt-1">Datos del sensor</p>
               </div>
             </div>
           </div>
 
-          <!-- Tarjeta: Tendencia -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <div class="w-10 h-10 rounded-lg flex items-center justify-center" :class="trendColor">
-                  <svg class="w-6 h-6" :class="trendIconColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="trendIcon"></path>
-                  </svg>
-                </div>
-              </div>
-              <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Tendencia</h3>
-                <p class="text-2xl font-semibold text-gray-900">{{ trendValue }}</p>
-                <p class="text-xs mt-1" :class="trendTextColor">{{ trendDescription }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta: Predicción -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <div class="flex items-center">
-              <div class="flex-shrink-0">
-                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                  </svg>
-                </div>
-              </div>
-              <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Predicción Próxima</h3>
-                <p class="text-2xl font-semibold text-gray-900">
-                  {{ nextPrediction }} <span class="text-sm text-gray-500">cm</span>
-                </p>
-                <p class="text-xs text-gray-500 mt-1">{{ nextPredictionTime }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Tarjeta: Estado del Sistema -->
+          <!-- Estado del sistema -->
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <div class="flex items-center">
               <div class="flex-shrink-0">
@@ -142,52 +202,21 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Columna derecha: Gráficos -->
-        <div class="lg:col-span-2 space-y-6">
-          <!-- Gráfico: Niveles Históricos -->
+          <!-- Datos de predicción -->
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-medium text-gray-900">Niveles de Agua Históricos</h3>
-              <div class="flex items-center space-x-2 text-sm text-gray-500">
-                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                <span>Último 24h</span>
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                  </svg>
+                </div>
               </div>
-            </div>
-            <div class="h-80">
-              <Line
-                v-if="waterLevelsData.labels.length > 0"
-                :data="waterLevelsData"
-                :options="chartOptions"
-              />
-              <div v-else class="flex items-center justify-center h-full text-gray-500">
-                No hay datos históricos disponibles
-              </div>
-            </div>
-          </div>
-
-          <!-- Gráfico: Predicciones -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <div class="flex items-center justify-between mb-4">
-              <h3 class="text-lg font-medium text-gray-900">Predicciones de Niveles Futuros</h3>
-              <div class="flex items-center space-x-2 text-sm text-gray-500">
-                <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
-                <span>Próximas 12h</span>
-              </div>
-            </div>
-            <div class="h-80">
-              <Line
-                v-if="predictionsData.labels.length > 0"
-                :data="predictionsData"
-                :options="chartOptions"
-              />
-              <div v-else class="flex flex-col items-center justify-center h-full text-gray-500">
-                <svg class="w-12 h-12 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                </svg>
-                <p class="text-sm">Predicciones no disponibles</p>
-                <p class="text-xs text-gray-400 mt-1">El servicio de predicción está en desarrollo</p>
+              <div class="ml-4 flex-1">
+                <h3 class="text-sm font-medium text-gray-600">Predicciones</h3>
+                <p class="text-lg font-semibold text-gray-900">{{ predictions.length }}</p>
+                <p class="text-xs text-gray-500 mt-1">Horizontes disponibles</p>
               </div>
             </div>
           </div>
@@ -233,6 +262,7 @@ const insertandoDatos = ref(false)
 // Datos de la API
 const waterLevels = ref([])
 const predictions = ref([])
+const currentState = ref({})
 
 // Intervalo para actualización automática
 let refreshInterval = null
@@ -247,7 +277,9 @@ const fechaActual = computed(() => {
   })
 })
 
-// Función para formatear fecha
+/**
+ * Función para formatear fecha
+ */
 const formatDate = (dateString) => {
   const date = new Date(dateString)
   return date.toLocaleDateString('es-ES', {
@@ -258,6 +290,9 @@ const formatDate = (dateString) => {
   })
 }
 
+/**
+ * Función para formatear tiempo
+ */
 const formatTime = (dateString) => {
   const date = new Date(dateString)
   return date.toLocaleTimeString('es-ES', {
@@ -266,122 +301,213 @@ const formatTime = (dateString) => {
   })
 }
 
-// Datos hardcodeados como fallback
-const fallbackWaterLevels = [
-  { level: 25.5, timestamp: new Date(Date.now() - 60000 * 60).toISOString() }, // hace 1 hora
-  { level: 27.2, timestamp: new Date(Date.now() - 60000 * 50).toISOString() }, // hace 50 min
-  { level: 28.8, timestamp: new Date(Date.now() - 60000 * 40).toISOString() }, // hace 40 min
-  { level: 30.1, timestamp: new Date(Date.now() - 60000 * 30).toISOString() }, // hace 30 min
-  { level: 32.4, timestamp: new Date(Date.now() - 60000 * 20).toISOString() }, // hace 20 min
-  { level: 31.7, timestamp: new Date(Date.now() - 60000 * 10).toISOString() }, // hace 10 min
-  { level: 33.2, timestamp: new Date().toISOString() } // ahora
-]
-
-const fallbackPredictions = [
-  { predicted_level: 35.1, timestamp: new Date(Date.now() + 60000 * 30).toISOString() }, // en 30 min
-  { predicted_level: 36.8, timestamp: new Date(Date.now() + 60000 * 60).toISOString() }, // en 1 hora
-  { predicted_level: 38.2, timestamp: new Date(Date.now() + 60000 * 90).toISOString() }, // en 1.5 horas
-  { predicted_level: 39.5, timestamp: new Date(Date.now() + 60000 * 120).toISOString() } // en 2 horas
-]
-
-// Servicio para consumir la API
-const apiService = {
-  async fetchWaterLevels() {
-    try {
-      const response = await fetch('http://localhost:5000/api/sensor/todas-lecturas')
-      
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`)
-      }
-
-      const contentType = response.headers.get("content-type")
-      if (!contentType || !contentType.includes("application/json")) {
-        const text = await response.text()
-        throw new Error("Respuesta no es JSON válido. Respuesta recibida: " + text.slice(0, 100))
-      }
-
-      const data = await response.json()
-      
-      // Transformar los datos del backend al formato esperado por el frontend
-      // El backend devuelve: { lecturas: [{ nivel_agua, estado, timestamp }] }
-      // El frontend espera: { level, timestamp }
-      if (Array.isArray(data)) {
-        return data.map(item => ({
-          level: item.nivel_agua,
-          timestamp: item.timestamp
-        }))
-      } else if (data.lecturas && Array.isArray(data.lecturas)) {
-        return data.lecturas.map(item => ({
-          level: item.nivel_agua,
-          timestamp: item.timestamp
-        }))
-      } else if (data.data && Array.isArray(data.data)) {
-        return data.data.map(item => ({
-          level: item.nivel_agua,
-          timestamp: item.timestamp
-        }))
-      }
-      
-      return []
-    } catch (error) {
-      console.error("Error al obtener niveles de agua:", error)
-      
-      // Si es un error de red o API no disponible, usar datos de fallback
-      if (error.message.includes('fetch') || error.message.includes('HTTP') || error.message.includes('Failed to fetch')) {
-        console.warn("API no disponible, usando datos de demostración")
-        return fallbackWaterLevels
-      }
-      
-      throw error
-    }
-  },
-
-  async fetchPredictions() {
-    try {
-      const response = await fetch('http://localhost:5000/api/sensor/predicciones')
-      
-      if (!response.ok) {
-        throw new Error(`Error HTTP: ${response.status}`)
-      }
-
-      const contentType = response.headers.get("content-type")
-      if (!contentType || !contentType.includes("application/json")) {
-        const text = await response.text()
-        throw new Error("Respuesta no es JSON válido. Respuesta recibida: " + text.slice(0, 100))
-      }
-
-      const data = await response.json()
-      
-      // Transformar los datos del backend al formato esperado por el frontend
-      // Asumiendo que el backend devuelve un formato similar
-      if (Array.isArray(data)) {
-        return data.map(item => ({
-          predicted_level: item.nivel_predicho || item.predicted_level || item.nivel_agua,
-          timestamp: item.timestamp
-        }))
-      } else if (data.data && Array.isArray(data.data)) {
-        return data.data.map(item => ({
-          predicted_level: item.nivel_predicho || item.predicted_level || item.nivel_agua,
-          timestamp: item.timestamp
-        }))
-      }
-      
-      return []
-    } catch (error) {
-      console.error("Error al obtener predicciones:", error)
-      
-      // Si es un error de red o API no disponible, usar datos de fallback
-      if (error.message.includes('fetch') || error.message.includes('HTTP') || error.message.includes('Failed to fetch')) {
-        console.warn("API de predicciones no disponible, usando datos de demostración")
-        return fallbackPredictions
-      }
-      
-      throw error
-    }
+/**
+ * Función para formatear horizonte temporal
+ */
+const formatHorizon = (minutes) => {
+  if (minutes < 60) {
+    return `${minutes} min`
+  } else if (minutes < 1440) { // menos de 24 horas
+    const hours = Math.floor(minutes / 60)
+    return `${hours}h`
+  } else {
+    const days = Math.floor(minutes / 1440)
+    return `${days}d`
   }
 }
 
-// Función para insertar datos de prueba
+/**
+ * Obtener clase CSS para el color del estado
+ */
+const getStateColorClass = (estado) => {
+  switch (estado) {
+    case 'Sequía':
+      return 'bg-orange-100 text-orange-800'
+    case 'Inundación':
+      return 'bg-red-100 text-red-800'
+    case 'Normal':
+    default:
+      return 'bg-green-100 text-green-800'
+  }
+}
+
+/**
+ * Obtener color del icono de tendencia
+ */
+const getTrendIconColor = (tendencia) => {
+  switch (tendencia) {
+    case 'sube':
+      return 'text-green-600'
+    case 'baja':
+      return 'text-red-600'
+    case 'estable':
+    default:
+      return 'text-gray-600'
+  }
+}
+
+/**
+ * Obtener texto de tendencia
+ */
+const getTrendText = (tendencia) => {
+  switch (tendencia) {
+    case 'sube':
+      return 'Subiendo'
+    case 'baja':
+      return 'Bajando'
+    case 'estable':
+    default:
+      return 'Estable'
+  }
+}
+
+/**
+ * Obtener icono SVG de tendencia
+ */
+const getTrendIcon = (tendencia) => {
+  switch (tendencia) {
+    case 'sube':
+      return 'M7 14l3-3 3 3'
+    case 'baja':
+      return 'M17 10l-3 3-3-3'
+    case 'estable':
+    default:
+      return 'M5 12h14'
+  }
+}
+
+// Datos hardcodeados como fallback
+const fallbackWaterLevels = [
+  { level: 25.5, timestamp: new Date(Date.now() - 60000 * 60).toISOString() },
+  { level: 27.2, timestamp: new Date(Date.now() - 60000 * 50).toISOString() },
+  { level: 28.8, timestamp: new Date(Date.now() - 60000 * 40).toISOString() },
+  { level: 30.1, timestamp: new Date(Date.now() - 60000 * 30).toISOString() },
+  { level: 32.4, timestamp: new Date(Date.now() - 60000 * 20).toISOString() },
+  { level: 31.7, timestamp: new Date(Date.now() - 60000 * 10).toISOString() },
+  { level: 33.2, timestamp: new Date().toISOString() }
+]
+
+// Datos de fallback para predicciones según el formato del nuevo endpoint
+const fallbackPredictions = {
+  current: { 
+    nivel_cm: 42, 
+    estado: "Normal", 
+    tendencia: "estable", 
+    pendiente_cm_por_h: 0.0 
+  },
+  predicciones: [
+    { horizon_min: 30, nivel_cm: 43, estado: "Normal", confianza: 0.7 },
+    { horizon_min: 60, nivel_cm: 44, estado: "Normal", confianza: 0.6 },
+    { horizon_min: 180, nivel_cm: 47, estado: "Normal", confianza: 0.5 }
+  ]
+}
+
+/**
+ * Función para obtener niveles de agua desde la API
+ * Maneja la transformación de datos del backend al formato esperado por el frontend
+ */
+const fetchWaterLevels = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/sensor/todas-lecturas')
+    
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+
+    const contentType = response.headers.get("content-type")
+    if (!contentType || !contentType.includes("application/json")) {
+      const text = await response.text()
+      throw new Error("Respuesta no es JSON válido. Respuesta recibida: " + text.slice(0, 100))
+    }
+
+    const data = await response.json()
+    
+    // Transformar los datos del backend al formato esperado por el frontend
+    // El backend devuelve: { lecturas: [{ nivel_agua, estado, timestamp }] }
+    // El frontend espera: { level, timestamp }
+    if (Array.isArray(data)) {
+      return data.map(item => ({
+        level: item.nivel_agua,
+        timestamp: item.timestamp
+      }))
+    } else if (data.lecturas && Array.isArray(data.lecturas)) {
+      return data.lecturas.map(item => ({
+        level: item.nivel_agua || item.nivel_cm,
+        timestamp: item.timestamp
+      }))
+    } else if (data.data && Array.isArray(data.data)) {
+      return data.data.map(item => ({
+        level: item.nivel_agua || item.nivel_cm,
+        timestamp: item.timestamp
+      }))
+    }
+    
+    return []
+  } catch (error) {
+    console.error("Error al obtener niveles de agua:", error)
+    
+    // Si es un error de red o API no disponible, usar datos de fallback
+    if (error.message.includes('fetch') || error.message.includes('HTTP') || error.message.includes('Failed to fetch')) {
+      console.warn("API no disponible, usando datos de demostración")
+      return fallbackWaterLevels
+    }
+    
+    throw error
+  }
+}
+
+/**
+ * Función para obtener predicciones desde el nuevo endpoint Flask
+ * Consume el endpoint /api/sensor/predicciones y maneja el formato de respuesta
+ * Si la API falla, usa datos de fallback hardcodeados
+ */
+const fetchPredictions = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/sensor/predicciones')
+    
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+
+    const contentType = response.headers.get("content-type")
+    if (!contentType || !contentType.includes("application/json")) {
+      const text = await response.text()
+      throw new Error("Respuesta no es JSON válido. Respuesta recibida: " + text.slice(0, 100))
+    }
+
+    const data = await response.json()
+    
+    // Verificar si hay error en la respuesta
+    if (data.error) {
+      throw new Error(data.error.message || 'Error en predicciones')
+    }
+    
+    // El endpoint devuelve: { meta, current, predicciones }
+    // Devolver en el formato esperado
+    return {
+      meta: data.meta || {},
+      current: data.current || {},
+      predicciones: data.predicciones || []
+    }
+    
+  } catch (error) {
+    console.error("Error al obtener predicciones:", error)
+    
+    // Si es un error de red o API no disponible, usar datos de fallback
+    if (error.message.includes('fetch') || error.message.includes('HTTP') || error.message.includes('Failed to fetch')) {
+      console.warn("API de predicciones no disponible, usando datos de demostración")
+      return fallbackPredictions
+    }
+    
+    // Para otros errores, también usar fallback
+    console.warn("Error en predicciones, usando datos de fallback:", error.message)
+    return fallbackPredictions
+  }
+}
+
+/**
+ * Función para insertar datos de prueba
+ */
 const insertarDatosPrueba = async () => {
   try {
     insertandoDatos.value = true
@@ -419,67 +545,40 @@ const insertarDatosPrueba = async () => {
   }
 }
 
-// Función principal para cargar datos
+/**
+ * Función principal para cargar datos
+ * Ejecuta fetchWaterLevels() y fetchPredictions() en paralelo usando Promise.all
+ * Guarda las predicciones en el estado reactivo predictions
+ */
 const loadData = async () => {
   try {
     isLoading.value = true
     error.value = null
     connectionStatus.value = false
 
-    // Cargar datos de niveles de agua
-    let waterLevelsData = []
-    let predictionsData = []
-    let usingFallbackData = false
+    // Cargar datos en paralelo usando Promise.all
+    const [waterLevelsData, predictionsData] = await Promise.all([
+      fetchWaterLevels(),
+      fetchPredictions()
+    ])
 
-    try {
-      waterLevelsData = await apiService.fetchWaterLevels()
-      
-      // Verificar si se están usando datos de fallback
-      if (waterLevelsData === fallbackWaterLevels) {
-        usingFallbackData = true
-        connectionStatus.value = false
-      } else {
-        connectionStatus.value = true
-      }
-      
-    } catch (waterErr) {
-      console.error('Error cargando niveles de agua:', waterErr)
-      
-      // Mostrar error más amigable según el tipo de error
-      if (waterErr.message.includes('JSON válido')) {
-        error.value = 'El servidor está devolviendo datos incorrectos. Verifica que el backend esté configurado correctamente.'
-      } else if (waterErr.message.includes('HTTP')) {
-        error.value = `Error del servidor (${waterErr.message}). Verifica que el backend esté ejecutándose en http://localhost:5000`
-      } else if (waterErr.message.includes('fetch')) {
-        error.value = 'No se puede conectar con el servidor. Asegúrate de que el backend Flask esté ejecutándose.'
-      } else {
-        error.value = `Error inesperado: ${waterErr.message}`
-      }
-      
-      // Usar datos de fallback en lugar de fallar completamente
-      waterLevelsData = fallbackWaterLevels
-      usingFallbackData = true
+    // Verificar si se están usando datos de fallback
+    const usingFallbackWater = waterLevelsData === fallbackWaterLevels
+    const usingFallbackPredictions = predictionsData === fallbackPredictions
+    
+    if (usingFallbackWater || usingFallbackPredictions) {
       connectionStatus.value = false
+    } else {
+      connectionStatus.value = true
     }
 
-    // Cargar predicciones (opcional - no crítico si falla)
-    try {
-      predictionsData = await apiService.fetchPredictions()
-    } catch (predErr) {
-      console.warn('Predicciones no disponibles:', predErr)
-      // Si las predicciones fallan, usar datos de fallback si ya estamos en modo demo
-      if (usingFallbackData) {
-        predictionsData = fallbackPredictions
-      } else {
-        predictionsData = []
-      }
-    }
-
+    // Guardar datos en estados reactivos
     waterLevels.value = waterLevelsData || []
-    predictions.value = predictionsData || []
+    predictions.value = predictionsData.predicciones || []
+    currentState.value = predictionsData.current || {}
 
     // Si se están usando datos de demostración, mostrar mensaje informativo
-    if (usingFallbackData && !error.value) {
+    if ((usingFallbackWater || usingFallbackPredictions) && !error.value) {
       error.value = 'Mostrando datos de demostración. Conecta el backend para ver datos reales.'
     }
 
@@ -491,102 +590,18 @@ const loadData = async () => {
     
     // Como último recurso, usar datos de fallback
     waterLevels.value = fallbackWaterLevels
-    predictions.value = fallbackPredictions
+    predictions.value = fallbackPredictions.predicciones
+    currentState.value = fallbackPredictions.current
   } finally {
     isLoading.value = false
   }
 }
 
-// Computed para métricas de las tarjetas
-const currentLevel = computed(() => {
-  if (waterLevels.value.length === 0) return 'N/A'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  return latest ? latest.level.toFixed(1) : 'N/A'
-})
-
+// Computed para última actualización
 const lastUpdateTime = computed(() => {
   if (waterLevels.value.length === 0) return 'Sin datos'
   const latest = waterLevels.value[waterLevels.value.length - 1]
   return latest ? formatTime(latest.timestamp) : 'Sin datos'
-})
-
-// Cálculo de tendencia
-const trendValue = computed(() => {
-  if (waterLevels.value.length < 2) return 'N/A'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  return diff > 0 ? `+${diff.toFixed(1)} cm` : `${diff.toFixed(1)} cm`
-})
-
-const trendDescription = computed(() => {
-  if (waterLevels.value.length < 2) return 'Datos insuficientes'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  
-  if (diff > 2) return 'Subida significativa'
-  if (diff > 0.5) return 'Subida moderada'
-  if (diff < -2) return 'Bajada significativa'
-  if (diff < -0.5) return 'Bajada moderada'
-  return 'Estable'
-})
-
-const trendColor = computed(() => {
-  if (waterLevels.value.length < 2) return 'bg-gray-100'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  
-  if (diff > 0.5) return 'bg-green-100'
-  if (diff < -0.5) return 'bg-red-100'
-  return 'bg-gray-100'
-})
-
-const trendIconColor = computed(() => {
-  if (waterLevels.value.length < 2) return 'text-gray-600'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  
-  if (diff > 0.5) return 'text-green-600'
-  if (diff < -0.5) return 'text-red-600'
-  return 'text-gray-600'
-})
-
-const trendTextColor = computed(() => {
-  if (waterLevels.value.length < 2) return 'text-gray-500'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  
-  if (diff > 0.5) return 'text-green-600'
-  if (diff < -0.5) return 'text-red-600'
-  return 'text-gray-500'
-})
-
-const trendIcon = computed(() => {
-  if (waterLevels.value.length < 2) return 'M5 12h14'
-  const latest = waterLevels.value[waterLevels.value.length - 1]
-  const previous = waterLevels.value[waterLevels.value.length - 2]
-  const diff = latest.level - previous.level
-  
-  if (diff > 0.5) return 'M7 14l3-3 3 3'
-  if (diff < -0.5) return 'M17 10l-3 3-3-3'
-  return 'M5 12h14'
-})
-
-// Predicción próxima
-const nextPrediction = computed(() => {
-  if (predictions.value.length === 0) return 'N/A'
-  const next = predictions.value[0]
-  return next ? next.predicted_level.toFixed(1) : 'N/A'
-})
-
-const nextPredictionTime = computed(() => {
-  if (predictions.value.length === 0) return 'Sin predicciones'
-  const next = predictions.value[0]
-  return next ? formatTime(next.timestamp) : 'Sin predicciones'
 })
 
 // Estado del sistema
@@ -594,7 +609,7 @@ const systemStatus = computed(() => {
   if (!connectionStatus.value) return 'Desconectado'
   if (waterLevels.value.length === 0) return 'Sin datos'
   
-  const current = parseFloat(currentLevel.value)
+  const current = currentState.value.nivel_cm || parseFloat(waterLevels.value[waterLevels.value.length - 1]?.level)
   if (isNaN(current)) return 'Sin datos'
   
   if (current < 20) return 'Nivel Bajo'
@@ -606,7 +621,7 @@ const systemStatusDescription = computed(() => {
   if (!connectionStatus.value) return 'Sistema fuera de línea'
   if (waterLevels.value.length === 0) return 'Esperando datos del sensor'
   
-  const current = parseFloat(currentLevel.value)
+  const current = currentState.value.nivel_cm || parseFloat(waterLevels.value[waterLevels.value.length - 1]?.level)
   if (isNaN(current)) return 'Datos no válidos'
   
   if (current < 20) return 'Monitoreo de sequía activo'
@@ -642,48 +657,68 @@ const statusIcon = computed(() => {
   return 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'
 })
 
-// Datos para gráficos
-const waterLevelsData = computed(() => ({
-  labels: waterLevels.value.map(item => formatDate(item.timestamp)),
-  datasets: [
-    {
-      label: 'Nivel de Agua (cm)',
-      data: waterLevels.value.map(item => item.level),
-      borderColor: 'rgb(37, 99, 235)', // blue-600
-      backgroundColor: 'rgba(37, 99, 235, 0.1)',
-      borderWidth: 2,
-      fill: true,
-      tension: 0.4,
-      pointBackgroundColor: 'rgb(37, 99, 235)',
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 2,
-      pointRadius: 4,
-      pointHoverRadius: 6
-    }
-  ]
-}))
+/**
+ * Datos combinados para el gráfico principal
+ * Incluye datos históricos y predicciones futuras con estilos distintos
+ * Las predicciones se muestran con línea discontinua y color más claro
+ */
+const combinedChartData = computed(() => {
+  const historicalLabels = waterLevels.value.map(item => formatDate(item.timestamp))
+  const historicalData = waterLevels.value.map(item => item.level)
+  
+  // Calcular timestamps futuros para las predicciones
+  const now = new Date()
+  const predictionLabels = predictions.value.map(pred => {
+    const futureTime = new Date(now.getTime() + pred.horizon_min * 60000)
+    return formatDate(futureTime.toISOString())
+  })
+  const predictionData = predictions.value.map(pred => pred.nivel_cm)
+  
+  // Combinar labels y datos
+  const allLabels = [...historicalLabels, ...predictionLabels]
+  const allHistoricalData = [...historicalData, ...new Array(predictions.value.length).fill(null)]
+  const allPredictionData = [...new Array(waterLevels.value.length).fill(null), ...predictionData]
+  
+  return {
+    labels: allLabels,
+    datasets: [
+      {
+        label: 'Datos Históricos',
+        data: allHistoricalData,
+        borderColor: 'rgb(37, 99, 235)', // blue-600
+        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.4,
+        pointBackgroundColor: 'rgb(37, 99, 235)',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      },
+      {
+        label: 'Predicciones',
+        data: allPredictionData,
+        borderColor: 'rgb(96, 165, 250)', // blue-400 - color más claro
+        backgroundColor: 'rgba(96, 165, 250, 0.1)',
+        borderWidth: 2,
+        borderDash: [5, 5], // línea discontinua
+        fill: false,
+        tension: 0.4,
+        pointBackgroundColor: 'rgb(96, 165, 250)',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      }
+    ]
+  }
+})
 
-const predictionsData = computed(() => ({
-  labels: predictions.value.map(item => formatDate(item.timestamp)),
-  datasets: [
-    {
-      label: 'Predicción (cm)',
-      data: predictions.value.map(item => item.predicted_level),
-      borderColor: 'rgb(147, 51, 234)', // purple-600
-      backgroundColor: 'rgba(147, 51, 234, 0.1)',
-      borderWidth: 2,
-      borderDash: [5, 5],
-      fill: true,
-      tension: 0.4,
-      pointBackgroundColor: 'rgb(147, 51, 234)',
-      pointBorderColor: '#ffffff',
-      pointBorderWidth: 2,
-      pointRadius: 4,
-      pointHoverRadius: 6
-    }
-  ]
-}))
-
+/**
+ * Configuración del gráfico
+ * Mantiene el estilo profesional con tonos de azul y gris
+ */
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
