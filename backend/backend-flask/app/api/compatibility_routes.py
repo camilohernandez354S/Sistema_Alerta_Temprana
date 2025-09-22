@@ -4,24 +4,23 @@ Rutas de compatibilidad para mantener la interfaz exacta del sistema anterior
 from flask import Blueprint, request, jsonify, current_app
 from datetime import datetime, timedelta
 import jwt
+from pymongo import MongoClient
 
 # Crear blueprint para compatibilidad (sin prefijo para mantener rutas exactas)
 compatibility_bp = Blueprint('compatibility', __name__)
+
+# Configuración de MongoDB
+def get_mongo_collection():
+    """Obtener colección de MongoDB"""
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['sistema_alerta']
+    return db['mediciones']
 
 @compatibility_bp.route('/api/login', methods=['POST'])
 def login_compatibility():
     """
     Endpoint de compatibilidad EXACTA con /api/login del sistema anterior
     Mantiene exactamente la misma ruta, comportamiento y respuesta
-    
-    Body:
-        username: string
-        password: string
-    
-    Returns:
-        200: {"mensaje": "Bienvenido admin", "token": "jwt_token", "rol": "admin"}
-        401: {"error": "Credenciales incorrectas"}
-        400: {"error": "Faltan datos"}
     """
     try:
         # Validación exactamente igual que antes
@@ -75,17 +74,61 @@ def login_compatibility():
         current_app.logger.error(f"Error en login compatibilidad: {e}")
         return jsonify({'error': 'Error interno del servidor'}), 500
 
+@compatibility_bp.route('/api/mediciones', methods=['POST'])
+def recibir_medicion_compatibilidad():
+    """
+    Endpoint de compatibilidad para recibir mediciones
+    Mantiene la misma interfaz que el main.py anterior
+    """
+    try:
+        data = request.get_json()
+        if not data or 'distancia' not in data:
+            return jsonify({'error': 'Falta el campo distancia'}), 400
+
+        # Guardar en MongoDB con timestamp
+        medicion = {
+            'distancia': data['distancia'],
+            'fecha': datetime.utcnow()
+        }
+        
+        coleccion = get_mongo_collection()
+        coleccion.insert_one(medicion)
+
+        current_app.logger.info(f"Medición guardada: {data['distancia']} cm")
+        return jsonify({'mensaje': 'Medición guardada', 'distancia': data['distancia']}), 201
+        
+    except Exception as e:
+        current_app.logger.error(f"Error guardando medición: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
+@compatibility_bp.route('/api/mediciones', methods=['GET'])
+def obtener_mediciones_compatibilidad():
+    """
+    Endpoint de compatibilidad para obtener mediciones
+    Mantiene la misma interfaz que el main.py anterior
+    """
+    try:
+        coleccion = get_mongo_collection()
+        
+        # Obtener todas las mediciones, ordenadas por fecha descendente
+        mediciones = list(coleccion.find().sort('fecha', -1))
+        
+        # Convertir ObjectId y fecha a string para JSON
+        for m in mediciones:
+            m['_id'] = str(m['_id'])
+            m['fecha'] = m['fecha'].isoformat() + 'Z'
+            
+        current_app.logger.info(f"Obtenidas {len(mediciones)} mediciones")
+        return jsonify(mediciones), 200
+        
+    except Exception as e:
+        current_app.logger.error(f"Error obteniendo mediciones: {e}")
+        return jsonify({'error': 'Error obteniendo mediciones'}), 500
+
 @compatibility_bp.route('/api/verify-token', methods=['GET'])
 def verify_token_compatibility():
     """
     Endpoint para verificar tokens del sistema anterior
-    
-    Headers:
-        Authorization: Bearer <token>
-    
-    Returns:
-        200: {"valid": true, "user": {...}}
-        401: {"valid": false, "error": "Token inválido"}
     """
     try:
         # Obtener token del header
@@ -130,3 +173,14 @@ def verify_token_compatibility():
             'valid': False,
             'error': 'Error interno del servidor'
         }), 500
+
+@compatibility_bp.route('/api/health', methods=['GET'])
+def health_check():
+    """
+    Health check endpoint
+    """
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.utcnow().isoformat() + 'Z',
+        'service': 'Sistema de Alerta Temprana'
+    }), 200
