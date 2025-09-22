@@ -174,6 +174,45 @@ def verify_token_compatibility():
             'error': 'Error interno del servidor'
         }), 500
 
+@compatibility_bp.route('/api/saludo-usuario', methods=['GET'])
+def saludo_usuario():
+    """
+    Endpoint para saludo personalizado del usuario
+    """
+    try:
+        # Obtener token del header
+        auth_header = request.headers.get('Authorization')
+        if not auth_header or not auth_header.startswith('Bearer '):
+            return jsonify({'error': 'Token requerido'}), 401
+        
+        token = auth_header.split(' ')[1]
+        
+        # Verificar token
+        SECRET_KEY = 'supersecreto'
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            username = payload.get('sub')
+            rol = payload.get('rol')
+            
+            # Generar saludo personalizado
+            if rol == 'usuario':
+                mensaje = f"¡Bienvenido {username}! Monitorea el nivel de agua en tiempo real."
+            elif rol == 'admin':
+                mensaje = f"¡Hola Administrador {username}! Panel de control disponible."
+            else:
+                mensaje = f"¡Hola {username}!"
+            
+            return jsonify({'mensaje': mensaje}), 200
+            
+        except jwt.ExpiredSignatureError:
+            return jsonify({'error': 'Token expirado'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'error': 'Token inválido'}), 401
+            
+    except Exception as e:
+        current_app.logger.error(f"Error en saludo usuario: {e}")
+        return jsonify({'error': 'Error interno'}), 500
+
 @compatibility_bp.route('/api/health', methods=['GET'])
 def health_check():
     """

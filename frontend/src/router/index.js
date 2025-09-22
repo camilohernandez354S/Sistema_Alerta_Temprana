@@ -8,7 +8,7 @@ import { getToken, getRol } from '../services/authService'
 const routes = [
   { path: '/login', name: 'Login', component: Login },
   { path: '/admin', name: 'Admin', component: DashboardAdmin, meta: { requiresAuth: true, rol: 'admin' } },
-  { path: '/usuario', name: 'Usuario', component: DashboardUsuario, meta: { requiresAuth: true, rol: 'usuario' } },
+  { path: '/usuario', name: 'Usuario', component: DashboardView, meta: { requiresAuth: true, rol: 'usuario' } },
   { path: '/', redirect: '/login' }
 ]
 
