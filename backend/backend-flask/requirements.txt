@@ -39,3 +39,4 @@ python-socketio==5.10.0
 
 # Dependencias para email
 flask-mail==0.9.1
+gunicorn==22.0.0
