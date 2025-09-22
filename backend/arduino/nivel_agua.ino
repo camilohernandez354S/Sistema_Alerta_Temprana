@@ -48,6 +48,12 @@ const float VELOCIDAD_SONIDO = 0.034;             // cm/microsegundo
 unsigned long ultimoTiempo = 0;  // Último tiempo de muestreo
 bool sistemaInicializado = false; // Flag de inicialización
 
+// Variables para control remoto
+bool buzzerControlRemoto = false;  // Control remoto del buzzer activado
+bool buzzerForzadoOff = false;     // Buzzer forzado a apagado por comando remoto
+int frecuenciaRemota = 1000;       // Frecuencia configurada remotamente
+String comandoBuffer = "";         // Buffer para comandos seriales
+
 // =============================================================================
 // CONFIGURACIÓN INICIAL
 // =============================================================================
@@ -97,6 +103,9 @@ void loop() {
     return;
   }
   
+  // Procesar comandos seriales entrantes
+  procesarComandosSeriales();
+  
   // Verificar si es momento de tomar una nueva muestra
   if (millis() - ultimoTiempo >= INTERVALO_MUESTREO) {
     // Actualizar el tiempo de la última muestra
@@ -111,8 +120,13 @@ void loop() {
     // Enviar datos por comunicación serial
     enviarLectura(nivelAgua, estado);
     
-    // Actualizar indicadores visuales y sonoros
-    actualizarIndicadores(estado);
+    // Actualizar indicadores visuales y sonoros (solo si no hay control remoto)
+    if (!buzzerControlRemoto) {
+      actualizarIndicadores(estado);
+    } else {
+      // Solo actualizar LEDs, buzzer controlado remotamente
+      actualizarLEDs(estado);
+    }
   }
 }
 
@@ -195,23 +209,33 @@ void enviarLectura(float nivel, String estado) {
  * @param estado - Estado del agua ("Inundación", "Normal", "Sequía", "Error")
  */
 void actualizarIndicadores(String estado) {
-  // Apagar todos los LEDs y el buzzer primero
+  // Actualizar LEDs
+  actualizarLEDs(estado);
+  
+  // Actualizar buzzer solo si no está forzado a apagado
+  if (!buzzerForzadoOff) {
+    actualizarBuzzer(estado);
+  } else {
+    noTone(BUZZER_PIN);
+  }
+}
+
+/**
+ * Actualiza solo los LEDs según el estado
+ * @param estado - Estado del agua
+ */
+void actualizarLEDs(String estado) {
+  // Apagar todos los LEDs primero
   digitalWrite(LED_ROJO, LOW);
   digitalWrite(LED_AMARILLO, LOW);
   digitalWrite(LED_VERDE, LOW);
-  noTone(BUZZER_PIN);
   
-  // Activar indicadores según el estado
+  // Activar LED según el estado
   if (estado == "Inundación") {
-    // Inundación: LED rojo y tono agudo
     digitalWrite(LED_ROJO, HIGH);
-    tone(BUZZER_PIN, 1500);
   } else if (estado == "Sequía") {
-    // Sequía: LED verde y tono grave
     digitalWrite(LED_VERDE, HIGH);
-    tone(BUZZER_PIN, 400);
   } else if (estado == "Normal") {
-    // Normal: LED amarillo, sin sonido
     digitalWrite(LED_AMARILLO, HIGH);
   } else {
     // Error: parpadeo rápido de LED rojo
@@ -222,4 +246,121 @@ void actualizarIndicadores(String estado) {
       delay(100);
     }
   }
+}
+
+/**
+ * Actualiza el buzzer según el estado
+ * @param estado - Estado del agua
+ */
+void actualizarBuzzer(String estado) {
+  noTone(BUZZER_PIN);
+  
+  if (estado == "Inundación") {
+    tone(BUZZER_PIN, buzzerControlRemoto ? frecuenciaRemota : 1500);
+  } else if (estado == "Sequía") {
+    tone(BUZZER_PIN, buzzerControlRemoto ? frecuenciaRemota : 400);
+  }
+}
+
+/**
+ * Procesa comandos seriales entrantes para control remoto
+ */
+void procesarComandosSeriales() {
+  while (Serial.available()) {
+    char c = Serial.read();
+    
+    if (c == '\n') {
+      // Procesar comando completo
+      procesarComando(comandoBuffer);
+      comandoBuffer = "";
+    } else {
+      comandoBuffer += c;
+    }
+  }
+}
+
+/**
+ * Procesa un comando específico
+ * @param comando - Comando JSON recibido
+ */
+void procesarComando(String comando) {
+  comando.trim();
+  
+  if (comando.length() == 0) return;
+  
+  // Parsing básico de JSON (simplificado)
+  if (comando.indexOf("BUZZER_ON") >= 0) {
+    buzzerControlRemoto = true;
+    buzzerForzadoOff = false;
+    
+    // Extraer frecuencia si está presente
+    int freqIndex = comando.indexOf("frequency");
+    if (freqIndex >= 0) {
+      int startIndex = comando.indexOf(":", freqIndex) + 1;
+      int endIndex = comando.indexOf(",", startIndex);
+      if (endIndex == -1) endIndex = comando.indexOf("}", startIndex);
+      
+      if (startIndex > 0 && endIndex > startIndex) {
+        String freqStr = comando.substring(startIndex, endIndex);
+        freqStr.trim();
+        frecuenciaRemota = freqStr.toInt();
+        if (frecuenciaRemota < 100) frecuenciaRemota = 1000; // Valor por defecto
+      }
+    }
+    
+    tone(BUZZER_PIN, frecuenciaRemota);
+    enviarRespuesta("success", "Buzzer activado remotamente");
+    
+  } else if (comando.indexOf("BUZZER_OFF") >= 0) {
+    buzzerControlRemoto = false;
+    buzzerForzadoOff = true;
+    noTone(BUZZER_PIN);
+    enviarRespuesta("success", "Buzzer desactivado remotamente");
+    
+  } else if (comando.indexOf("STATUS") >= 0) {
+    enviarEstadoDispositivo();
+    
+  } else if (comando.indexOf("RESET") >= 0) {
+    buzzerControlRemoto = false;
+    buzzerForzadoOff = false;
+    frecuenciaRemota = 1000;
+    noTone(BUZZER_PIN);
+    enviarRespuesta("success", "Sistema reiniciado");
+    
+  } else {
+    enviarRespuesta("error", "Comando no reconocido: " + comando);
+  }
+}
+
+/**
+ * Envía una respuesta JSON por serial
+ * @param status - Estado de la respuesta
+ * @param message - Mensaje de la respuesta
+ */
+void enviarRespuesta(String status, String message) {
+  Serial.print("{\"status\":\"");
+  Serial.print(status);
+  Serial.print("\",\"message\":\"");
+  Serial.print(message);
+  Serial.print("\",\"timestamp\":");
+  Serial.print(millis());
+  Serial.println("}");
+}
+
+/**
+ * Envía el estado actual del dispositivo
+ */
+void enviarEstadoDispositivo() {
+  Serial.print("{\"status\":\"success\",\"device_status\":\"online\",");
+  Serial.print("\"buzzer_control_remoto\":");
+  Serial.print(buzzerControlRemoto ? "true" : "false");
+  Serial.print(",\"buzzer_forzado_off\":");
+  Serial.print(buzzerForzadoOff ? "true" : "false");
+  Serial.print(",\"frecuencia_remota\":");
+  Serial.print(frecuenciaRemota);
+  Serial.print(",\"uptime\":");
+  Serial.print(millis());
+  Serial.print(",\"timestamp\":");
+  Serial.print(millis());
+  Serial.println("}");
 }

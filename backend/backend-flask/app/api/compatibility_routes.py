@@ -5,6 +5,7 @@ from flask import Blueprint, request, jsonify, current_app
 from datetime import datetime, timedelta
 import jwt
 from pymongo import MongoClient
+from app.services.alerts_service import alerts_service
 
 # Crear blueprint para compatibilidad (sin prefijo para mantener rutas exactas)
 compatibility_bp = Blueprint('compatibility', __name__)
@@ -102,10 +103,27 @@ def recibir_medicion_compatibilidad():
         }
         
         coleccion = get_mongo_collection()
-        coleccion.insert_one(medicion)
+        resultado_medicion = coleccion.insert_one(medicion)
+        
+        # Procesar alerta automáticamente
+        try:
+            resultado_alerta = alerts_service.procesar_nueva_medicion(
+                distancia=data['distancia'],
+                user_id='arduino_sensor'
+            )
+            current_app.logger.info(f"Procesamiento de alerta: {resultado_alerta}")
+        except Exception as e:
+            current_app.logger.warning(f"Error procesando alerta: {e}")
 
         current_app.logger.info(f"Medición guardada: {data['distancia']} cm")
-        return jsonify({'mensaje': 'Medición guardada', 'distancia': data['distancia']}), 201
+        return jsonify({
+            'mensaje': 'Medición guardada', 
+            'distancia': data['distancia'],
+            'data': {
+                'medicion_id': str(resultado_medicion.inserted_id),
+                'timestamp': medicion['fecha'].isoformat() + 'Z'
+            }
+        }), 201
         
     except Exception as e:
         current_app.logger.error(f"Error guardando medición: {e}")

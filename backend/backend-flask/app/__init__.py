@@ -78,10 +78,15 @@ def create_app(config_name=None):
 def register_blueprints(app):
     """Registrar todos los blueprints de la aplicación"""
     from app.api.compatibility_routes import compatibility_bp
+    from app.api.alerts_routes import alerts_bp
     
     # Registrar blueprint de compatibilidad (SIN prefijo para mantener rutas exactas)
     app.register_blueprint(compatibility_bp)
     
+    # Registrar blueprint de alertas (CON prefijo /api/v1)
+    app.register_blueprint(alerts_bp)
+    
     # Log de blueprints registrados
     app.logger.info("Blueprints registrados correctamente")
     app.logger.info("Blueprint de compatibilidad registrado - /api/login disponible")
+    app.logger.info("Blueprint de alertas registrado - /api/v1/alertas disponible")
