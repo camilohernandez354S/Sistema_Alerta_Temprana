@@ -17,6 +17,7 @@ BAUD_RATE = int(os.getenv("BAUD_RATE", "9600"))
 arduino_client = ArduinoClient()
 
 # Función para verificar si el puerto está disponible
+
 def verificar_puerto_disponible(port):
     if not port:
         return False

@@ -264,7 +264,7 @@ def saludo_usuario():
             if rol == 'usuario':
                 mensaje = f"¡Bienvenido {username}! Monitorea el nivel de agua en tiempo real."
             elif rol == 'admin':
-                mensaje = f"¡Hola Administrador {username}! Panel de control disponible."
+                mensaje = f"¡Hola Administrador {username}! Panel de control y gestión del sistema."
             else:
                 mensaje = f"¡Hola {username}!"
             
