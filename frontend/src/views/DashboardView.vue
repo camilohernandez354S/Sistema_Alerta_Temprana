@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" 
+       :class="alertClass">
     <!-- Encabezado mejorado -->
     <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-200/50 px-6 py-6">
       <div class="max-w-7xl mx-auto">
@@ -25,6 +26,17 @@
             </div>
           </div>
           <div class="flex items-center space-x-4">
+            <!-- Indicador de alerta -->
+            <div v-if="isFloodAlert || isDroughtAlert" class="flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border-2 border-white/50">
+              <div class="flex items-center space-x-2">
+                <div class="w-4 h-4 rounded-full alert-indicator animate-pulse"></div>
+                <span class="text-sm font-bold" :class="isFloodAlert ? 'text-red-700' : 'text-orange-700'">
+                  {{ isFloodAlert ? '⚠️ INUNDACIÓN' : '⚠️ SEQUÍA' }}
+                </span>
+              </div>
+            </div>
+            
+            <!-- Indicador de conexión -->
             <div class="flex items-center space-x-3 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50">
               <div class="flex items-center space-x-2">
                 <div class="w-3 h-3 rounded-full animate-pulse" :class="connectionStatus ? 'bg-emerald-500' : 'bg-red-500'"></div>
@@ -340,6 +352,11 @@ const waterLevels = ref([])
 const predictions = ref([])
 const currentState = ref({})
 
+// Variables para alertas visuales
+const isFloodAlert = ref(false)
+const isDroughtAlert = ref(false)
+const alertClass = ref('')
+
 // Intervalo para actualización automática
 let refreshInterval = null
 
@@ -419,6 +436,45 @@ const getStateDotColor = (estado) => {
     case 'Normal':
     default:
       return 'bg-green-500'
+  }
+}
+
+/**
+ * Función para verificar si hay alerta de inundación
+ */
+const checkFloodAlert = (estado) => {
+  return estado === 'Inundación'
+}
+
+/**
+ * Función para verificar si hay alerta de sequía
+ */
+const checkDroughtAlert = (estado) => {
+  return estado === 'Sequía'
+}
+
+/**
+ * Función para actualizar las alertas visuales
+ */
+const updateAlertStatus = () => {
+  const estado = currentState.value.estado
+  
+  if (estado) {
+    isFloodAlert.value = checkFloodAlert(estado)
+    isDroughtAlert.value = checkDroughtAlert(estado)
+    
+    // Actualizar clase de alerta
+    if (isFloodAlert.value) {
+      alertClass.value = 'flood-alert'
+    } else if (isDroughtAlert.value) {
+      alertClass.value = 'drought-alert'
+    } else {
+      alertClass.value = ''
+    }
+  } else {
+    isFloodAlert.value = false
+    isDroughtAlert.value = false
+    alertClass.value = ''
   }
 }
 
@@ -722,6 +778,9 @@ const loadData = async () => {
     predictions.value = predictionsData.predicciones || []
     currentState.value = predictionsData.current || {}
 
+    // Actualizar alertas visuales
+    updateAlertStatus()
+
     console.log("💾 Estados actualizados:", {
       waterLevels: waterLevels.value.length,
       predictions: predictions.value.length,
@@ -743,6 +802,9 @@ const loadData = async () => {
     waterLevels.value = fallbackWaterLevels
     predictions.value = fallbackPredictions.predicciones
     currentState.value = fallbackPredictions.current
+    
+    // Actualizar alertas visuales con datos de fallback
+    updateAlertStatus()
   } finally {
     isLoading.value = false
   }
@@ -1008,3 +1070,94 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<style scoped>
+/* Animaciones de alerta para inundación (rojo) */
+.flood-alert {
+  animation: floodBlink 1s infinite;
+}
+
+@keyframes floodBlink {
+  0%, 50% {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 25%, #fca5a5 50%, #f87171 75%, #ef4444 100%);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+  }
+  25%, 75% {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 25%, #fecaca 50%, #fca5a5 75%, #f87171 100%);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+  }
+}
+
+/* Animaciones de alerta para sequía (amarillo) */
+.drought-alert {
+  animation: droughtBlink 1.5s infinite;
+}
+
+@keyframes droughtBlink {
+  0%, 50% {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 25%, #fcd34d 50%, #f59e0b 75%, #d97706 100%);
+    box-shadow: 0 0 20px rgba(217, 119, 6, 0.3);
+  }
+  25%, 75% {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 25%, #fde68a 50%, #fcd34d 75%, #f59e0b 100%);
+    box-shadow: 0 0 30px rgba(217, 119, 6, 0.5);
+  }
+}
+
+/* Efecto de parpadeo más sutil para elementos internos durante alertas */
+.flood-alert header,
+.flood-alert main {
+  animation: floodContentBlink 2s infinite;
+}
+
+.drought-alert header,
+.drought-alert main {
+  animation: droughtContentBlink 2.5s infinite;
+}
+
+@keyframes floodContentBlink {
+  0%, 90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes droughtContentBlink {
+  0%, 90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Indicador visual adicional en el header durante alertas */
+.flood-alert .alert-indicator {
+  background: linear-gradient(45deg, #ef4444, #dc2626);
+  animation: alertPulse 1s infinite;
+}
+
+.drought-alert .alert-indicator {
+  background: linear-gradient(45deg, #f59e0b, #d97706);
+  animation: alertPulse 1.5s infinite;
+}
+
+@keyframes alertPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+</style>
