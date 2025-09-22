@@ -577,8 +577,29 @@ const insertarDatosPrueba = async () => {
 }
 
 /**
+ * Función para verificar el estado de conexión del Arduino
+ */
+const fetchConnectionStatus = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/sensor/estado-conexion')
+    
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+    
+    const data = await response.json()
+    console.log("🔌 Estado de conexión Arduino:", data)
+    return data
+    
+  } catch (error) {
+    console.error("Error al verificar conexión Arduino:", error)
+    return { conectado: false, razon: 'Error de comunicación' }
+  }
+}
+
+/**
  * Función principal para cargar datos
- * Ejecuta fetchWaterLevels() y fetchPredictions() en paralelo usando Promise.all
+ * Ejecuta fetchWaterLevels(), fetchPredictions() y fetchConnectionStatus() en paralelo usando Promise.all
  * Guarda las predicciones en el estado reactivo predictions
  */
 const loadData = async () => {
@@ -589,9 +610,10 @@ const loadData = async () => {
     connectionStatus.value = false
 
     // Cargar datos en paralelo usando Promise.all
-    const [waterLevelsData, predictionsData] = await Promise.all([
+    const [waterLevelsData, predictionsData, connectionData] = await Promise.all([
       fetchWaterLevels(),
-      fetchPredictions()
+      fetchPredictions(),
+      fetchConnectionStatus()
     ])
 
     console.log("📊 Datos cargados:", {
@@ -599,16 +621,13 @@ const loadData = async () => {
       predictionsData: predictionsData
     })
 
-    // Verificar si se están usando datos de fallback
-    const usingFallbackWater = waterLevelsData === fallbackWaterLevels
-    const usingFallbackPredictions = predictionsData === fallbackPredictions
-    
-    if (usingFallbackWater || usingFallbackPredictions) {
-      connectionStatus.value = false
-      console.log("⚠️ Usando datos de fallback")
-    } else {
+    // Verificar estado de conexión real del Arduino
+    if (connectionData && connectionData.conectado) {
       connectionStatus.value = true
-      console.log("✅ Datos reales de la API")
+      console.log("✅ Arduino conectado - datos recientes")
+    } else {
+      connectionStatus.value = false
+      console.log("❌ Arduino desconectado:", connectionData?.razon || "Sin datos de conexión")
     }
 
     // Guardar datos en estados reactivos
@@ -622,16 +641,16 @@ const loadData = async () => {
       currentState: currentState.value
     })
 
-    // Si se están usando datos de demostración, mostrar mensaje informativo
-    if ((usingFallbackWater || usingFallbackPredictions) && !error.value) {
-      error.value = 'Mostrando datos de demostración. Conecta el backend para ver datos reales.'
+    // Si el Arduino no está conectado, mostrar mensaje informativo
+    if (!connectionStatus.value && !error.value) {
+      error.value = 'El sensor no está enviando datos. Verifica que el Arduino esté conectado.'
     }
 
   } catch (err) {
     // Este catch solo se ejecutará para errores inesperados
-    error.value = `Error crítico: ${err.message}`
+    error.value = 'No se pueden cargar los datos del sensor. Por favor, verifica la conexión.'
     connectionStatus.value = false
-    console.error('❌ Error crítico cargando datos:', err)
+    console.error('❌ Error cargando datos:', err)
     
     // Como último recurso, usar datos de fallback
     waterLevels.value = fallbackWaterLevels

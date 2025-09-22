@@ -345,6 +345,52 @@ def insertar_datos_prueba():
         current_app.logger.error(f"Error insertando datos de prueba: {e}")
         return jsonify({'error': 'Error insertando datos de prueba'}), 500
 
+@compatibility_bp.route('/api/sensor/estado-conexion', methods=['GET'])
+def estado_conexion_arduino():
+    """
+    Endpoint para verificar si el Arduino está conectado y enviando datos recientes
+    """
+    try:
+        coleccion = get_mongo_collection()
+        
+        # Buscar la medición más reciente
+        ultima_medicion = coleccion.find().sort('fecha', -1).limit(1)
+        ultima_medicion = list(ultima_medicion)
+        
+        if not ultima_medicion:
+            return jsonify({
+                'conectado': False,
+                'razon': 'No hay mediciones en la base de datos',
+                'ultima_medicion': None
+            }), 200
+        
+        # Verificar si la última medición es reciente (menos de 30 segundos)
+        ultima_fecha = ultima_medicion[0]['fecha']
+        ahora = datetime.utcnow()
+        diferencia = (ahora - ultima_fecha).total_seconds()
+        
+        # Arduino envía datos cada 5 segundos, si han pasado más de 30 segundos, está desconectado
+        conectado = diferencia < 30
+        
+        return jsonify({
+            'conectado': conectado,
+            'ultima_medicion': {
+                'distancia': ultima_medicion[0].get('distancia'),
+                'estado': ultima_medicion[0].get('estado'),
+                'fecha': ultima_medicion[0]['fecha'].isoformat() + 'Z'
+            },
+            'segundos_desde_ultima': round(diferencia, 1),
+            'razon': 'Datos recientes' if conectado else f'Última medición hace {round(diferencia, 1)} segundos'
+        }), 200
+        
+    except Exception as e:
+        current_app.logger.error(f"Error verificando conexión Arduino: {e}")
+        return jsonify({
+            'conectado': False,
+            'razon': 'Error verificando conexión',
+            'error': str(e)
+        }), 200
+
 @compatibility_bp.route('/api/health', methods=['GET'])
 def health_check():
     """
