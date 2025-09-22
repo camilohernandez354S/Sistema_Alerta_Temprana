@@ -2927,3 +2927,85 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-21 18:33:04,324 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d08b30aee658c049c65919
 2025-09-21 18:33:04,325 - app - INFO - proceso_leer_sensor:70 - Lectura procesada exitosamente: 4.22cm
 2025-09-21 18:33:04,326 - app - INFO - proceso_lecturas:104 - Procesadas 1 de 1 lecturas
+2025-09-21 21:36:14,862 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 21:36:19,016 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:36:19,079 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:36:19,080 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:36:19,080 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:36:19,082 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:36:20,327 - app - INFO - register_blueprints:132 - Blueprints registrados correctamente
+2025-09-21 21:36:20,327 - app - INFO - register_blueprints:133 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 21:36:20,328 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:36:24,387 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 21:36:28,482 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:36:28,531 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:36:28,532 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:36:28,532 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:36:28,534 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:36:29,004 - app - INFO - register_blueprints:132 - Blueprints registrados correctamente
+2025-09-21 21:36:29,005 - app - INFO - register_blueprints:133 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 21:36:29,005 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 22:14:20,408 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 22:14:24,854 - app - INFO - create_app:84 - Rate limiter inicializado
+2025-09-21 22:14:24,934 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 22:14:24,934 - app - INFO - create_app:91 - WebSocket service inicializado
+2025-09-21 22:14:24,935 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 22:14:24,970 - app - INFO - create_app:98 - Email service inicializado
+2025-09-21 22:14:26,185 - app - INFO - register_blueprints:141 - Blueprints registrados correctamente
+2025-09-21 22:14:26,185 - app - INFO - register_blueprints:142 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 22:14:26,186 - app - INFO - create_app:109 - Aplicación iniciada en modo: development
+2025-09-21 22:14:42,502 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 22:14:46,577 - app - INFO - create_app:89 - Rate limiter inicializado
+2025-09-21 22:14:46,646 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 22:14:46,646 - app - INFO - create_app:96 - WebSocket service inicializado
+2025-09-21 22:14:46,647 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 22:14:46,650 - app - INFO - create_app:103 - Email service inicializado
+2025-09-21 22:14:47,369 - app - INFO - register_blueprints:146 - Blueprints registrados correctamente
+2025-09-21 22:14:47,370 - app - INFO - register_blueprints:147 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 22:14:47,371 - app - INFO - create_app:114 - Aplicación iniciada en modo: development
+2025-09-21 22:15:41,206 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 22:15:45,492 - app - INFO - create_app:89 - Rate limiter inicializado
+2025-09-21 22:15:45,576 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 22:15:45,577 - app - INFO - create_app:96 - WebSocket service inicializado
+2025-09-21 22:15:45,577 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 22:15:45,581 - app - INFO - create_app:103 - Email service inicializado
+2025-09-21 22:15:46,276 - app - INFO - register_blueprints:146 - Blueprints registrados correctamente
+2025-09-21 22:15:46,276 - app - INFO - register_blueprints:147 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 22:15:46,277 - app - INFO - create_app:114 - Aplicación iniciada en modo: development
+2025-09-21 22:15:50,453 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 22:15:54,533 - app - INFO - create_app:89 - Rate limiter inicializado
+2025-09-21 22:15:54,622 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 22:15:54,623 - app - INFO - create_app:96 - WebSocket service inicializado
+2025-09-21 22:15:54,623 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 22:15:54,628 - app - INFO - create_app:103 - Email service inicializado
+2025-09-21 22:15:55,400 - app - INFO - register_blueprints:146 - Blueprints registrados correctamente
+2025-09-21 22:15:55,401 - app - INFO - register_blueprints:147 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 22:15:55,401 - app - INFO - create_app:114 - Aplicación iniciada en modo: development
+2025-09-21 22:16:29,094 - app - INFO - login_compatibility:67 - Login exitoso (compatibilidad) para: usuario
+2025-09-21 22:16:29,167 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 22:16:31,802 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 22:16:31,806 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 22:16:31,807 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 22:16:31,808 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 22:16:35,930 - app - INFO - login_compatibility:67 - Login exitoso (compatibilidad) para: admin
+2025-09-21 22:16:36,291 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 22:16:41,511 - app - WARNING - login_compatibility:71 - Login fallido (compatibilidad) para: admin
+2025-09-21 22:16:48,608 - app - WARNING - login_compatibility:71 - Login fallido (compatibilidad) para: usuario
+2025-09-21 22:16:49,560 - app - WARNING - login_compatibility:71 - Login fallido (compatibilidad) para: usuario
+2025-09-21 22:16:52,361 - app - INFO - login_compatibility:67 - Login exitoso (compatibilidad) para: usuario
+2025-09-21 22:16:52,717 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 22:19:41,708 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 22:19:46,079 - app - INFO - create_app:89 - Rate limiter inicializado
+2025-09-21 22:19:46,209 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 22:19:46,210 - app - INFO - create_app:96 - WebSocket service inicializado
+2025-09-21 22:19:46,210 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 22:19:46,216 - app - INFO - create_app:103 - Email service inicializado
+2025-09-21 22:19:47,271 - app - INFO - register_blueprints:146 - Blueprints registrados correctamente
+2025-09-21 22:19:47,272 - app - INFO - register_blueprints:147 - Blueprint de compatibilidad registrado - /api/login disponible
+2025-09-21 22:19:47,273 - app - INFO - create_app:114 - Aplicación iniciada en modo: development
+2025-09-21 22:20:08,642 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 22:20:10,791 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 22:20:10,792 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 22:20:10,793 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 22:20:10,793 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 22:20:12,413 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

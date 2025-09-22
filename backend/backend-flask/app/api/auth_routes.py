@@ -359,6 +359,127 @@ def logout():
             'message': 'Error interno del servidor'
         }), HTTPStatus.INTERNAL_SERVER_ERROR
 
+# Endpoints de compatibilidad con el sistema anterior
+
+# Ruta exactamente igual que el sistema anterior
+@auth_bp.route('/login-old', methods=['POST'])
+def login_old():
+    """
+    Endpoint de compatibilidad EXACTA con /api/login del sistema anterior
+    Mantiene la misma ruta y comportamiento
+    """
+    try:
+        data = request.get_json()
+        username = data.get('username') if data else None
+        password = data.get('password') if data else None
+        
+        if not username or not password:
+            return jsonify({'error': 'Faltan datos'}), 400
+        
+        # Mismos usuarios que en auth_service.py anterior
+        USUARIOS = {
+            'admin': {
+                'password': 'admin123',
+                'rol': 'admin'
+            },
+            'usuario': {
+                'password': 'usuario123',
+                'rol': 'usuario'
+            }
+        }
+        
+        user = USUARIOS.get(username)
+        if user and user['password'] == password:
+            # Generar JWT exactamente igual que antes
+            from datetime import datetime, timedelta
+            import jwt
+            
+            SECRET_KEY = 'supersecreto'
+            payload = {
+                'sub': username,
+                'rol': user['rol'],
+                'exp': datetime.utcnow() + timedelta(hours=2)
+            }
+            token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+            
+            return jsonify({
+                'mensaje': f'Bienvenido {user["rol"]}',
+                'token': token,
+                'rol': user['rol']
+            }), 200
+        else:
+            return jsonify({'error': 'Credenciales incorrectas'}), 401
+            
+    except Exception as e:
+        current_app.logger.error(f"Error en login compatibilidad: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
+@auth_bp.route('/login-simple', methods=['POST'])
+def login_simple():
+    """
+    Endpoint de compatibilidad con el sistema de login anterior
+    Mantiene exactamente la misma interfaz y comportamiento
+    
+    Body:
+        username: string
+        password: string
+    
+    Returns:
+        200: {"mensaje": "Bienvenido admin", "token": "jwt_token", "rol": "admin"}
+        401: {"error": "Credenciales incorrectas"}
+        400: {"error": "Faltan datos"}
+    """
+    try:
+        # Validar datos exactamente como en el sistema anterior
+        data = request.get_json()
+        username = data.get('username') if data else None
+        password = data.get('password') if data else None
+        
+        if not username or not password:
+            return jsonify({'error': 'Faltan datos'}), 400
+        
+        # Usuarios del sistema anterior (compatibilidad total)
+        USUARIOS_COMPATIBILIDAD = {
+            'admin': {
+                'password': 'admin123',
+                'rol': 'admin'
+            },
+            'usuario': {
+                'password': 'usuario123',
+                'rol': 'usuario'
+            }
+        }
+        
+        # Validar usuario exactamente como antes
+        user = USUARIOS_COMPATIBILIDAD.get(username)
+        if user and user['password'] == password:
+            # Generar JWT usando la misma lógica que antes
+            from datetime import datetime, timedelta
+            import jwt
+            
+            SECRET_KEY = 'supersecreto'  # Mismo secret que antes
+            
+            payload = {
+                'sub': username,
+                'rol': user['rol'],
+                'exp': datetime.utcnow() + timedelta(hours=2)
+            }
+            token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+            
+            # Respuesta exactamente igual que antes
+            return jsonify({
+                'mensaje': f'Bienvenido {user["rol"]}',
+                'token': token,
+                'rol': user['rol']
+            }), 200
+        else:
+            # Error exactamente igual que antes
+            return jsonify({'error': 'Credenciales incorrectas'}), 401
+            
+    except Exception as e:
+        current_app.logger.error(f"Error en login simple: {e}")
+        return jsonify({'error': 'Error interno del servidor'}), 500
+
 @auth_bp.route('/test-cors', methods=['GET', 'OPTIONS'])
 def test_cors():
     """

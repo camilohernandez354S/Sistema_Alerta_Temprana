@@ -33,7 +33,16 @@ def create_app(config_name=None):
         config.validate_config()
     
     # Configurar CORS de manera simple y robusta
-    cors_origins = ['http://localhost:8080', 'http://127.0.0.1:8080']
+    cors_origins = [
+        'http://localhost:3000',    # React dev server
+        'http://127.0.0.1:3000',
+        'http://localhost:8080',    # Vue/otros
+        'http://127.0.0.1:8080',
+        'http://localhost:5173',    # Vite
+        'http://127.0.0.1:5173',
+        'http://localhost:4200',    # Angular
+        'http://127.0.0.1:4200'
+    ]
     
     # Configurar CORS con Flask-CORS
     CORS(app, 
@@ -49,7 +58,12 @@ def create_app(config_name=None):
     @app.after_request
     def after_request(response):
         origin = request.headers.get('Origin')
-        allowed_origins = ['http://localhost:8080', 'http://127.0.0.1:8080']
+        allowed_origins = [
+            'http://localhost:3000', 'http://127.0.0.1:3000',
+            'http://localhost:8080', 'http://127.0.0.1:8080',
+            'http://localhost:5173', 'http://127.0.0.1:5173',
+            'http://localhost:4200', 'http://127.0.0.1:4200'
+        ]
         
         if origin and origin in allowed_origins:
             response.headers['Access-Control-Allow-Origin'] = origin
@@ -108,6 +122,7 @@ def register_blueprints(app):
     from app.api.device_routes import device_bp
     from app.api.password_reset_routes import password_reset_bp
     from app.api.export_routes import export_bp
+    from app.api.compatibility_routes import compatibility_bp
     
     # Registrar blueprint de sensor con prefijo
     app.register_blueprint(sensor_bp, url_prefix='/api')
@@ -124,5 +139,9 @@ def register_blueprints(app):
     # Registrar blueprint de exportación
     app.register_blueprint(export_bp, url_prefix='/api/export')
     
+    # Registrar blueprint de compatibilidad (SIN prefijo para mantener rutas exactas)
+    app.register_blueprint(compatibility_bp)
+    
     # Log de blueprints registrados
     app.logger.info("Blueprints registrados correctamente")
+    app.logger.info("Blueprint de compatibilidad registrado - /api/login disponible")
