@@ -10,7 +10,7 @@ env_path = Path(__file__).resolve().parent / "../backend-flask/.env"
 load_dotenv(dotenv_path=env_path)
 
 # Cargar configuración
-PORT = os.getenv("SERIAL_PORT", "COM11")  # Puerto por defecto COM7
+PORT = os.getenv("SERIAL_PORT", "COM10")  # Puerto por defecto COM7
 BAUD_RATE = int(os.getenv("BAUD_RATE", "9600"))
 
 # Inicializar cliente HTTP
@@ -60,8 +60,12 @@ try:
                     
                     if "error" in response:
                         print(f"❌ Error del servidor: {response['error']}")
-                    else:
+                    elif "info" in response:
+                        print(f"ℹ️  {response['info']}")
+                    elif "data" in response:
                         print(f"✅ Datos procesados: {response['data']}")
+                    else:
+                        print(f"✅ Medición guardada: {response.get('mensaje', 'OK')}")
                 except Exception as db_error:
                     print(f"❌ Error al enviar datos a la base de datos: {str(db_error)}")
                     time.sleep(5)  # Esperar antes de intentar nuevamente

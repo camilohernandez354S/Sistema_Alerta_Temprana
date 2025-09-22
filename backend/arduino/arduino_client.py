@@ -23,8 +23,26 @@ class ArduinoClient:
             dict: Respuesta del servidor
         """
         try:
+            # Filtrar mensajes de inicialización del Arduino
+            if any(keyword in raw_data for keyword in ['===', 'Sistema inicializado', 'Intervalo', 'Umbral', '========']):
+                return {'info': f'Mensaje de inicialización: {raw_data}'}
+            
             # Parsear el dato crudo
-            if "nivel_agua:" in raw_data:
+            if "TIMESTAMP:" in raw_data and "NIVEL:" in raw_data:
+                # Formato nuevo: "TIMESTAMP:5016,NIVEL:240.65,ESTADO:Sequía"
+                parts = raw_data.split(",")
+                nivel_part = None
+                for part in parts:
+                    if "NIVEL:" in part:
+                        nivel_part = part
+                        break
+                
+                if nivel_part:
+                    distancia = float(nivel_part.split(":")[1])
+                else:
+                    raise ValueError("No se encontró NIVEL en los datos")
+                    
+            elif "nivel_agua:" in raw_data:
                 # Formato: "nivel_agua: 25.5 cm"
                 parts = raw_data.split(":")
                 if len(parts) >= 2:

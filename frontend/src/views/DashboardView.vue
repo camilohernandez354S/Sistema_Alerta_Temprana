@@ -412,7 +412,7 @@ const fallbackPredictions = {
  */
 const fetchWaterLevels = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/sensor/todas-lecturas')
+    const response = await fetch('http://localhost:5000/api/mediciones')
     
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`)
@@ -427,22 +427,22 @@ const fetchWaterLevels = async () => {
     const data = await response.json()
     
     // Transformar los datos del backend al formato esperado por el frontend
-    // El backend devuelve: { lecturas: [{ nivel_agua, estado, timestamp }] }
+    // El backend devuelve un array de: { _id, distancia, fecha }
     // El frontend espera: { level, timestamp }
     if (Array.isArray(data)) {
       return data.map(item => ({
-        level: item.nivel_agua,
-        timestamp: item.timestamp
+        level: item.distancia || item.nivel_agua,
+        timestamp: item.fecha || item.timestamp
       }))
     } else if (data.lecturas && Array.isArray(data.lecturas)) {
       return data.lecturas.map(item => ({
-        level: item.nivel_agua || item.nivel_cm,
-        timestamp: item.timestamp
+        level: item.distancia || item.nivel_agua || item.nivel_cm,
+        timestamp: item.fecha || item.timestamp
       }))
     } else if (data.data && Array.isArray(data.data)) {
       return data.data.map(item => ({
-        level: item.nivel_agua || item.nivel_cm,
-        timestamp: item.timestamp
+        level: item.distancia || item.nivel_agua || item.nivel_cm,
+        timestamp: item.fecha || item.timestamp
       }))
     }
     
