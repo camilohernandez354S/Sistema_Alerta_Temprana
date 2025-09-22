@@ -31,37 +31,37 @@ def main():
     host = os.getenv('FLASK_HOST', '0.0.0.0')
     debug = app.config.get('DEBUG', False)
     
-    app.logger.info(f"🚀 Iniciando aplicación en {host}:{port}")
-    app.logger.info(f"🔧 Modo: {config_name}")
-    app.logger.info(f"🐛 Debug: {'activado' if debug else 'desactivado'}")
+    app.logger.info(f"Iniciando aplicación en {host}:{port}")
+    app.logger.info(f"Modo: {config_name}")
+    app.logger.info(f"Debug: {'activado' if debug else 'desactivado'}")
     
     # Ejecutar aplicación con SocketIO
     try:
         if websocket_service.socketio:
-            app.logger.info("🌐 Iniciando con WebSocket habilitado")
+            app.logger.info("Iniciando con WebSocket habilitado")
             websocket_service.socketio.run(
                 app,
                 host=host,
                 port=port,
                 debug=debug,
-                use_reloader=debug,  # Solo usar reloader en desarrollo
-                allow_unsafe_werkzeug=True  # Para desarrollo
+                use_reloader=debug,
+                allow_unsafe_werkzeug=True
             )
         else:
-            app.logger.info("📡 Iniciando sin WebSocket")
+            app.logger.info("Iniciando sin WebSocket")
             app.run(
                 host=host,
                 port=port,
                 debug=debug,
-                use_reloader=debug,  # Solo usar reloader en desarrollo
+                use_reloader=debug,
                 threaded=True
             )
     except KeyboardInterrupt:
-        app.logger.info("👋 Aplicación detenida por el usuario")
+        app.logger.info("Aplicación detenida por el usuario")
     except Exception as e:
-        app.logger.error(f"💥 Error ejecutando la aplicación: {e}")
+        app.logger.error(f"Error ejecutando la aplicación: {e}")
     finally:
-        app.logger.info("🛑 Cerrando aplicación...")
+        app.logger.info("Cerrando aplicación...")
 
 if __name__ == '__main__':
     main()
