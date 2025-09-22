@@ -1,19 +1,41 @@
 <template>
-  <div class="min-h-screen bg-gray-50">
-    <!-- Encabezado -->
-    <header class="bg-white shadow-sm border-b border-gray-200 px-6 py-4">
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <!-- Encabezado mejorado -->
+    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-200/50 px-6 py-6">
       <div class="max-w-7xl mx-auto">
         <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-2xl font-semibold text-gray-800">
-              Sistema de Alerta Temprana
-            </h1>
-            <p class="text-sm text-gray-600 mt-1">{{ fechaActual }}</p>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+              </div>
+              <div>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                  Sistema de Alerta Temprana
+                </h1>
+                <p class="text-sm text-gray-600 mt-1 flex items-center space-x-2">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span>{{ fechaActual }}</span>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="flex items-center space-x-2">
-            <div class="w-3 h-3 rounded-full" :class="connectionStatus ? 'bg-green-500' : 'bg-red-500'"></div>
-            <span class="text-sm text-gray-600">{{ connectionStatus ? 'Conectado' : 'Desconectado' }}</span>
-            <button @click="handleLogout" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 ml-6">Cerrar sesión</button>
+          <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50">
+              <div class="flex items-center space-x-2">
+                <div class="w-3 h-3 rounded-full animate-pulse" :class="connectionStatus ? 'bg-emerald-500' : 'bg-red-500'"></div>
+                <span class="text-sm font-medium" :class="connectionStatus ? 'text-emerald-700' : 'text-red-700'">
+                  {{ connectionStatus ? 'Sensor Activo' : 'Sensor Inactivo' }}
+                </span>
+              </div>
+            </div>
+            <button @click="handleLogout" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2.5 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium">
+              Cerrar sesión
+            </button>
           </div>
         </div>
       </div>
@@ -21,10 +43,16 @@
 
     <!-- Contenido principal -->
     <main class="max-w-7xl mx-auto px-6 py-8">
-      <!-- Estado de carga global -->
-      <div v-if="isLoading" class="flex justify-center items-center h-64">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-        <span class="ml-3 text-gray-600">Cargando datos...</span>
+      <!-- Estado de carga global mejorado -->
+      <div v-if="isLoading" class="flex flex-col justify-center items-center h-64 space-y-4">
+        <div class="relative">
+          <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-200"></div>
+          <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
+        </div>
+        <div class="text-center">
+          <p class="text-lg font-medium text-gray-700">Cargando datos del sensor...</p>
+          <p class="text-sm text-gray-500 mt-1">Conectando con el sistema de monitoreo</p>
+        </div>
       </div>
 
       <!-- Estado de error/información global -->
@@ -67,70 +95,102 @@
       <div v-else class="space-y-8">
         <!-- Estado actual y predicciones -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <!-- Estado actual - Card grande -->
+          <!-- Estado actual - Card grande mejorada -->
           <div class="lg:col-span-1">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
               <div class="text-center">
-                <h3 class="text-sm font-medium text-gray-600 mb-4">Estado Actual</h3>
+                <div class="flex items-center justify-center mb-6">
+                  <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v18a1 1 0 01-1 1H6a1 1 0 01-1-1V2a1 1 0 011-1h8z"></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-6">Estado Actual</h3>
                 
                 <!-- Nivel actual en texto grande -->
-                <div class="mb-4">
-                  <div class="text-4xl font-bold text-gray-900">
+                <div class="mb-6">
+                  <div class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
                     {{ currentState.nivel_cm || 'N/A' }}
                   </div>
-                  <div class="text-sm text-gray-500">cm</div>
+                  <div class="text-sm text-gray-500 font-medium">centímetros</div>
                 </div>
                 
                 <!-- Estado textual -->
-                <div class="mb-3">
-                  <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium" 
+                <div class="mb-4">
+                  <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold shadow-sm" 
                         :class="getStateColorClass(currentState.estado)">
+                    <div class="w-2 h-2 rounded-full mr-2" :class="getStateDotColor(currentState.estado)"></div>
                     {{ currentState.estado || 'Sin datos' }}
                   </span>
                 </div>
                 
                 <!-- Tendencia -->
-                <div class="flex items-center justify-center space-x-2">
-                  <svg class="w-4 h-4" :class="getTrendIconColor(currentState.tendencia)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getTrendIcon(currentState.tendencia)"></path>
-                  </svg>
-                  <span class="text-sm text-gray-600">{{ getTrendText(currentState.tendencia) }}</span>
+                <div class="flex items-center justify-center space-x-2 mb-3">
+                  <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                    <svg class="w-4 h-4" :class="getTrendIconColor(currentState.tendencia)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getTrendIcon(currentState.tendencia)"></path>
+                    </svg>
+                  </div>
+                  <span class="text-sm font-medium text-gray-700">{{ getTrendText(currentState.tendencia) }}</span>
                 </div>
                 
                 <!-- Pendiente si está disponible -->
-                <div v-if="currentState.pendiente_cm_por_h !== undefined" class="mt-2 text-xs text-gray-500">
+                <div v-if="currentState.pendiente_cm_por_h !== undefined" class="text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2">
                   {{ currentState.pendiente_cm_por_h > 0 ? '+' : '' }}{{ currentState.pendiente_cm_por_h?.toFixed(1) }} cm/h
                 </div>
               </div>
             </div>
           </div>
           
-          <!-- Predicciones futuras - Tarjetas pequeñas -->
+          <!-- Predicciones futuras - Tarjetas pequeñas mejoradas -->
           <div class="lg:col-span-3">
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Predicciones Futuras</h3>
+              <p class="text-sm text-gray-600">Análisis predictivo basado en tendencias históricas</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
               <div v-for="prediction in predictions" :key="prediction.horizon_min" 
-                   class="bg-gray-50 rounded-xl shadow-sm border border-gray-200 p-4">
+                   class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300 group">
                 <div class="text-center">
+                  <!-- Icono de tiempo -->
+                  <div class="flex justify-center mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200">
+                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  
                   <!-- Horizonte temporal -->
-                  <div class="text-sm font-medium text-gray-600 mb-2">
+                  <div class="text-sm font-semibold text-gray-700 mb-3">
                     {{ formatHorizon(prediction.horizon_min) }}
                   </div>
                   
                   <!-- Nivel predicho -->
-                  <div class="text-2xl font-semibold text-gray-800 mb-2">
-                    {{ prediction.nivel_cm?.toFixed(1) || 'N/A' }} cm
+                  <div class="text-3xl font-bold text-gray-800 mb-3">
+                    {{ prediction.nivel_cm?.toFixed(1) || 'N/A' }}
                   </div>
+                  <div class="text-xs text-gray-500 mb-4">cm</div>
                   
                   <!-- Estado y confianza -->
-                  <div class="space-y-1">
+                  <div class="space-y-3">
                     <div>
-                      <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium" 
+                      <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold shadow-sm" 
                             :class="getStateColorClass(prediction.estado)">
+                        <div class="w-2 h-2 rounded-full mr-2" :class="getStateDotColor(prediction.estado)"></div>
                         {{ prediction.estado || 'Sin datos' }}
                       </span>
                     </div>
-                    <div class="text-xs text-gray-500">
-                      Confianza: {{ Math.round((prediction.confianza || 0) * 100) }}%
+                    <div class="bg-gray-50 rounded-lg px-3 py-2">
+                      <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-600 font-medium">Confianza</span>
+                        <span class="text-xs font-bold text-gray-800">{{ Math.round((prediction.confianza || 0) * 100) }}%</span>
+                      </div>
+                      <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full transition-all duration-500" 
+                             :style="{ width: (prediction.confianza || 0) * 100 + '%' }"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -139,85 +199,92 @@
           </div>
         </div>
 
-        <!-- Gráfico principal con datos históricos y predicciones -->
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-lg font-medium text-gray-900">Niveles de Agua - Histórico y Predicciones</h3>
-            <div class="flex items-center space-x-4 text-sm text-gray-500">
-              <div class="flex items-center space-x-2">
-                <div class="w-2 h-2 bg-blue-600 rounded-full"></div>
-                <span>Histórico</span>
+        <!-- Gráfico principal con datos históricos y predicciones mejorado -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
+          <div class="flex items-center justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">Análisis Temporal</h3>
+              <p class="text-sm text-gray-600">Evolución del nivel de agua y predicciones futuras</p>
+            </div>
+            <div class="flex items-center space-x-6 text-sm">
+              <div class="flex items-center space-x-3 bg-blue-50 rounded-full px-4 py-2">
+                <div class="w-3 h-3 bg-blue-600 rounded-full shadow-sm"></div>
+                <span class="font-medium text-blue-800">Datos Históricos</span>
               </div>
-              <div class="flex items-center space-x-2">
-                <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                <span>Predicciones</span>
+              <div class="flex items-center space-x-3 bg-purple-50 rounded-full px-4 py-2">
+                <div class="w-3 h-3 bg-purple-500 rounded-full shadow-sm"></div>
+                <span class="font-medium text-purple-800">Predicciones</span>
               </div>
             </div>
           </div>
-          <div class="h-96">
+          <div class="h-96 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-4">
             <Line
               v-if="combinedChartData.labels.length > 0"
               :data="combinedChartData"
               :options="chartOptions"
             />
-            <div v-else class="flex items-center justify-center h-full text-gray-500">
-              No hay datos disponibles
+            <div v-else class="flex flex-col items-center justify-center h-full text-gray-500">
+              <svg class="w-16 h-16 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+              <p class="text-lg font-medium">No hay datos disponibles</p>
+              <p class="text-sm">Conecta el sensor para ver el análisis temporal</p>
             </div>
           </div>
         </div>
 
-        <!-- Métricas adicionales -->
+        <!-- Métricas adicionales mejoradas -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Última actualización -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
               </div>
               <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Última Actualización</h3>
-                <p class="text-lg font-semibold text-gray-900">{{ lastUpdateTime }}</p>
-                <p class="text-xs text-gray-500 mt-1">Datos del sensor</p>
+                <h3 class="text-sm font-semibold text-gray-700 mb-1">Última Actualización</h3>
+                <p class="text-xl font-bold text-gray-900 mb-1">{{ lastUpdateTime }}</p>
+                <p class="text-xs text-gray-500">Datos del sensor</p>
               </div>
             </div>
           </div>
 
           <!-- Estado del sistema -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-10 h-10 rounded-lg flex items-center justify-center" :class="statusColor">
-                  <svg class="w-6 h-6" :class="statusIconColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg" :class="statusColor">
+                  <svg class="w-7 h-7" :class="statusIconColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="statusIcon"></path>
                   </svg>
                 </div>
               </div>
               <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Estado del Sistema</h3>
-                <p class="text-lg font-semibold text-gray-900">{{ systemStatus }}</p>
-                <p class="text-xs mt-1" :class="statusTextColor">{{ systemStatusDescription }}</p>
+                <h3 class="text-sm font-semibold text-gray-700 mb-1">Estado del Sistema</h3>
+                <p class="text-xl font-bold text-gray-900 mb-1">{{ systemStatus }}</p>
+                <p class="text-xs font-medium" :class="statusTextColor">{{ systemStatusDescription }}</p>
               </div>
             </div>
           </div>
 
           <!-- Datos de predicción -->
-          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
+                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                   </svg>
                 </div>
               </div>
               <div class="ml-4 flex-1">
-                <h3 class="text-sm font-medium text-gray-600">Predicciones</h3>
-                <p class="text-lg font-semibold text-gray-900">{{ predictions.length }}</p>
-                <p class="text-xs text-gray-500 mt-1">Horizontes disponibles</p>
+                <h3 class="text-sm font-semibold text-gray-700 mb-1">Predicciones</h3>
+                <p class="text-xl font-bold text-gray-900 mb-1">{{ predictions.length }}</p>
+                <p class="text-xs text-gray-500">Horizontes disponibles</p>
               </div>
             </div>
           </div>
@@ -337,6 +404,21 @@ const getStateColorClass = (estado) => {
     case 'Normal':
     default:
       return 'bg-green-100 text-green-800'
+  }
+}
+
+/**
+ * Obtener clase CSS para el color del punto del estado
+ */
+const getStateDotColor = (estado) => {
+  switch (estado) {
+    case 'Sequía':
+      return 'bg-orange-500'
+    case 'Inundación':
+      return 'bg-red-500'
+    case 'Normal':
+    default:
+      return 'bg-green-500'
   }
 }
 
