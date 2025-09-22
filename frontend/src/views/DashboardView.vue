@@ -221,9 +221,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Panel de Alertas -->
-        <AlertsPanel @alerta-procesada="manejarAlertaProcesada" />
       </div>
     </main>
   </div>
