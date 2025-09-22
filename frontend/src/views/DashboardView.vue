@@ -13,6 +13,7 @@
           <div class="flex items-center space-x-2">
             <div class="w-3 h-3 rounded-full" :class="connectionStatus ? 'bg-green-500' : 'bg-red-500'"></div>
             <span class="text-sm text-gray-600">{{ connectionStatus ? 'Conectado' : 'Desconectado' }}</span>
+            <button @click="handleLogout" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 ml-6">Cerrar sesión</button>
           </div>
         </div>
       </div>
@@ -241,6 +242,13 @@ import {
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 import AlertsPanel from '../components/dashboard/AlertsPanel.vue'
+import { logout } from '../services/authService'
+import { useRouter } from 'vue-router'
+const router = useRouter()
+function handleLogout() {
+  logout()
+  router.push('/login')
+}
 
 // Registrar componentes de Chart.js
 ChartJS.register(
