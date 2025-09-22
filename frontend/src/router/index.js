@@ -1,14 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../views/DashboardView.vue'
 import DashboardAdmin from '../views/DashboardAdmin.vue'
+import DashboardUsuario from '../views/DashboardUsuario.vue'
+import Login from '../views/Login.vue'
+import { getToken, getRol } from '../services/authService'
 
 const routes = [
-  { path: '/', name: 'Usuario', component: DashboardView },
+  { path: '/login', name: 'Login', component: Login },
+  { path: '/admin', name: 'Admin', component: DashboardAdmin, meta: { requiresAuth: true, rol: 'admin' } },
+  { path: '/usuario', name: 'Usuario', component: DashboardUsuario, meta: { requiresAuth: true, rol: 'usuario' } },
+  { path: '/', redirect: '/login' }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const token = getToken()
+    const rol = getRol()
+    if (!token) {
+      next('/login')
+    } else if (to.meta.rol && to.meta.rol !== rol) {
+      next('/login')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

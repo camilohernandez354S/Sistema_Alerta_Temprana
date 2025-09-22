@@ -5,35 +5,31 @@ from flask import Flask, request
 from flask_cors import CORS
 import logging
 import os
-from config.config import get_config
-from app.utils.error_handlers import register_error_handlers
-from app.utils.logging_config import configure_logging
-from app.services.websocket_service import websocket_service
-from app.utils.rate_limiter import rate_limiter
-from app.services.email_service import email_service
 
 def create_app(config_name=None):
     """
     Application Factory para crear la aplicación Flask
-    
-    Args:
-        config_name: Nombre de la configuración a usar
-        
-    Returns:
-        Flask: Instancia de la aplicación configurada
     """
     app = Flask(__name__)
     
-    # Cargar configuración
-    config = get_config(config_name)
-    app.config.from_object(config)
+    # Configuración básica
+    app.config['SECRET_KEY'] = 'supersecreto'
+    app.config['DEBUG'] = True
+    app.config['MONGO_URI'] = 'mongodb://localhost:27017/'
+    app.config['MONGO_DB'] = 'sistema_alerta'
+    app.config['MONGO_COLLECTION'] = 'mediciones'
     
-    # Validar configuración en producción
-    if config_name == 'production':
-        config.validate_config()
-    
-    # Configurar CORS de manera simple y robusta
-    cors_origins = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
+    # Configurar CORS de manera simple y robusta - Combinando ambas configuraciones
+    cors_origins = [
+        'http://localhost:3000',    # React dev server
+        'http://127.0.0.1:3000',
+        'http://localhost:8080',    # Vue/otros
+        'http://127.0.0.1:8080',
+        'http://localhost:5173',    # Vite
+        'http://127.0.0.1:5173',
+        'http://localhost:4200',    # Angular
+        'http://127.0.0.1:4200'
+    ]
     
     # Configurar CORS con Flask-CORS
     CORS(app, 
@@ -49,7 +45,12 @@ def create_app(config_name=None):
     @app.after_request
     def after_request(response):
         origin = request.headers.get('Origin')
-        allowed_origins = ['http://localhost:8080', 'http://127.0.0.1:8080', 'http://localhost:5173', 'http://127.0.0.1:5173']
+        allowed_origins = [
+            'http://localhost:3000', 'http://127.0.0.1:3000',
+            'http://localhost:8080', 'http://127.0.0.1:8080',
+            'http://localhost:5173', 'http://127.0.0.1:5173',
+            'http://localhost:4200', 'http://127.0.0.1:4200'
+        ]
         
         if origin and origin in allowed_origins:
             response.headers['Access-Control-Allow-Origin'] = origin
@@ -66,33 +67,6 @@ def create_app(config_name=None):
     # Log de configuración CORS
     app.logger.info(f"CORS configurado con orígenes: {cors_origins}")
     
-    # Configurar logging
-    configure_logging(app)
-    
-    # Inicializar rate limiter
-    try:
-        rate_limiter.init_app(app)
-        app.logger.info("Rate limiter inicializado")
-    except Exception as e:
-        app.logger.warning(f"Error inicializando rate limiter: {e}")
-    
-    # Inicializar WebSocket
-    try:
-        websocket_service.init_app(app)
-        app.logger.info("WebSocket service inicializado")
-    except Exception as e:
-        app.logger.warning(f"Error inicializando WebSocket: {e}")
-    
-    # Inicializar Email Service
-    try:
-        email_service.init_app(app)
-        app.logger.info("Email service inicializado")
-    except Exception as e:
-        app.logger.warning(f"Error inicializando Email service: {e}")
-    
-    # Registrar manejadores de errores
-    register_error_handlers(app)
-    
     # Registrar blueprints
     register_blueprints(app)
     
@@ -103,26 +77,11 @@ def create_app(config_name=None):
 
 def register_blueprints(app):
     """Registrar todos los blueprints de la aplicación"""
-    from app.api.sensor_routes import sensor_bp
-    from app.api.auth_routes import auth_bp
-    from app.api.device_routes import device_bp
-    from app.api.password_reset_routes import password_reset_bp
-    from app.api.export_routes import export_bp
+    from app.api.compatibility_routes import compatibility_bp
     
-    # Registrar blueprint de sensor con prefijo
-    app.register_blueprint(sensor_bp, url_prefix='/api')
-    
-    # Registrar blueprint de autenticación con prefijo
-    app.register_blueprint(auth_bp, url_prefix='/api/auth')
-    
-    # Registrar blueprint de dispositivos con prefijo
-    app.register_blueprint(device_bp, url_prefix='/api')
-    
-    # Registrar blueprint de recuperación de contraseñas
-    app.register_blueprint(password_reset_bp, url_prefix='/api/auth')
-    
-    # Registrar blueprint de exportación
-    app.register_blueprint(export_bp, url_prefix='/api/export')
+    # Registrar blueprint de compatibilidad (SIN prefijo para mantener rutas exactas)
+    app.register_blueprint(compatibility_bp)
     
     # Log de blueprints registrados
     app.logger.info("Blueprints registrados correctamente")
+    app.logger.info("Blueprint de compatibilidad registrado - /api/login disponible")
