@@ -91,19 +91,72 @@ class SensorService:
         documentos = []
         for lectura in lecturas:
             try:
-                # Extraer nivel de agua del formato raw_data
+                # Extraer datos del formato raw_data
                 reading = SensorReading(nivel_agua=lectura['raw_data'])
                 nivel_agua = reading.extraer_nivel_agua()
                 
-                doc = self.proceso_leer_sensor(nivel_agua)
+                # Verificar si es formato nuevo del Arduino con estado
+                estado_arduino = reading.extraer_estado_arduino()
+                
+                if estado_arduino:
+                    # Usar el estado del Arduino directamente
+                    doc = self._crear_documento_con_estado(nivel_agua, estado_arduino)
+                else:
+                    # Usar el método legacy que calcula el estado
+                    doc = self.proceso_leer_sensor(nivel_agua)
+                
                 if doc:
                     documentos.append(doc)
+                    
             except Exception as e:
                 current_app.logger.warning(f"Error procesando lectura individual: {e}")
                 continue
         
         current_app.logger.info(f"Procesadas {len(documentos)} de {len(lecturas)} lecturas")
         return documentos
+    
+    def _crear_documento_con_estado(self, nivel_agua: float, estado: str) -> Optional[SensorDocumentGuardado]:
+        """
+        Crear documento con estado predefinido del Arduino
+        
+        Args:
+            nivel_agua: Nivel de agua en cm
+            estado: Estado calculado por el Arduino
+            
+        Returns:
+            SensorDocumentGuardado: Documento guardado o None si hay error
+        """
+        try:
+            # Crear documento con estado del Arduino
+            sensor_data = SensorData(
+                nivel_agua=nivel_agua,
+                estado=estado,
+                timestamp=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            )
+            
+            # Crear documento para guardar
+            documento_para_guardar = SensorDocumentGuardado(
+                nivel_agua=sensor_data.nivel_agua,
+                estado=sensor_data.estado,
+                timestamp=sensor_data.timestamp
+            )
+            
+            # Guardar en base de datos usando insert_one
+            documento_id = self.repository.insert_one(documento_para_guardar)
+            
+            if documento_id:
+                current_app.logger.info(f"✅ Lectura Arduino guardada: {nivel_agua}cm, estado: {estado}, ID: {documento_id}")
+                return documento_para_guardar
+            else:
+                current_app.logger.error("Error: No se pudo insertar el documento")
+                return None
+            
+        except ValueError as ve:
+            current_app.logger.warning(f"Error de validación con estado Arduino: {ve}")
+            return None
+        except Exception as e:
+            current_app.logger.error(f"Error creando documento con estado Arduino: {e}")
+            return None
     
     def get_todas_lecturas(self) -> List[SensorDocumentObtenido]:
         """Obtener todas las lecturas"""

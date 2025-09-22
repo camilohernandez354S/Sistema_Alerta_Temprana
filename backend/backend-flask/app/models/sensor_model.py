@@ -200,20 +200,86 @@ class SensorReading(BaseModel):
     @validator('nivel_agua')
     def validar_data(cls, v):
         """Validar el formato de los datos crudos del Arduino"""
-        # Verificar que el formato sea "nivel_agua: [número]cm" o "Distancia: [número]cm"
-        if not re.match(r"^(nivel_agua|Distancia):\s*\d+(?:\.\d+)?\scm$", v):
-            raise ValueError("Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm'")
-        return v
+        # Verificar formato legacy: "nivel_agua: [número]cm" o "Distancia: [número]cm"
+        if re.match(r"^(nivel_agua|Distancia):\s*\d+(?:\.\d+)?\s*cm$", v):
+            return v
+        
+        # Verificar nuevo formato del Arduino: "TIMESTAMP:valor,NIVEL:valor,ESTADO:estado"
+        if re.match(r"^TIMESTAMP:\d+,NIVEL:\d+(?:\.\d+)?,ESTADO:(Normal|Sequía|Inundación)$", v):
+            return v
+            
+        raise ValueError("Formato de datos inválido. Formatos soportados: "
+                        "'nivel_agua: [número]cm', 'Distancia: [número]cm' o "
+                        "'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado'")
     
     def extraer_nivel_agua(self) -> float:
         """Extraer el valor numérico del nivel del agua de la lectura cruda"""
         try:
+            # Formato nuevo del Arduino: TIMESTAMP:15002,NIVEL:5.95,ESTADO:Inundación
+            if "TIMESTAMP:" in self.nivel_agua and "NIVEL:" in self.nivel_agua:
+                return self._parsear_formato_arduino()
+            
+            # Formato legacy: "nivel_agua: 10.5cm" o "Distancia: 10.5cm"
+            else:
+                return self._parsear_formato_legacy()
+                
+        except ValueError as e:
+            raise ValueError(f"No se pudo extraer un número válido del nivel del agua: {str(e)}")
+    
+    def _parsear_formato_arduino(self) -> float:
+        """Parsear formato nuevo del Arduino: TIMESTAMP:valor,NIVEL:valor,ESTADO:estado"""
+        try:
+            # Dividir por comas y buscar el campo NIVEL
+            partes = self.nivel_agua.split(',')
+            for parte in partes:
+                if parte.startswith('NIVEL:'):
+                    nivel_str = parte.replace('NIVEL:', '').strip()
+                    return float(nivel_str)
+            
+            raise ValueError("No se encontró el campo NIVEL en los datos")
+        except (ValueError, IndexError) as e:
+            raise ValueError(f"Error parseando formato Arduino: {str(e)}")
+    
+    def _parsear_formato_legacy(self) -> float:
+        """Parsear formato legacy: nivel_agua: 10.5cm o Distancia: 10.5cm"""
+        try:
             # Manejar tanto "nivel_agua:" como "Distancia:"
             nivel_agua_str = self.nivel_agua.replace("nivel_agua:", "").replace("Distancia:", "").replace("cm", "").strip()
-            nivel_agua = float(nivel_agua_str)
-            return nivel_agua
-        except ValueError:
-            raise ValueError("No se pudo extraer un número válido del nivel del agua")
+            return float(nivel_agua_str)
+        except ValueError as e:
+            raise ValueError(f"Error parseando formato legacy: {str(e)}")
+    
+    def extraer_estado_arduino(self) -> Optional[str]:
+        """Extraer el estado del formato nuevo del Arduino"""
+        try:
+            if "TIMESTAMP:" in self.nivel_agua and "ESTADO:" in self.nivel_agua:
+                partes = self.nivel_agua.split(',')
+                for parte in partes:
+                    if parte.startswith('ESTADO:'):
+                        estado = parte.replace('ESTADO:', '').strip()
+                        # Mapear estados del Arduino a estados del sistema
+                        estado_map = {
+                            'Normal': 'normal',
+                            'Sequía': 'sequía', 
+                            'Inundación': 'inundación'
+                        }
+                        return estado_map.get(estado, 'desconocido')
+            return None
+        except Exception:
+            return None
+    
+    def extraer_timestamp_arduino(self) -> Optional[int]:
+        """Extraer el timestamp del formato nuevo del Arduino"""
+        try:
+            if "TIMESTAMP:" in self.nivel_agua:
+                partes = self.nivel_agua.split(',')
+                for parte in partes:
+                    if parte.startswith('TIMESTAMP:'):
+                        timestamp_str = parte.replace('TIMESTAMP:', '').strip()
+                        return int(timestamp_str)
+            return None
+        except Exception:
+            return None
 
 class SensorData(BaseModel):
     """Modelo para los datos procesados del sensor"""

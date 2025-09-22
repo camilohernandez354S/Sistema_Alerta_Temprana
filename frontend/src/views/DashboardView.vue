@@ -221,6 +221,9 @@
             </div>
           </div>
         </div>
+
+        <!-- Panel de Alertas -->
+        <AlertsPanel @alerta-procesada="manejarAlertaProcesada" />
       </div>
     </main>
   </div>
@@ -240,6 +243,7 @@ import {
   Filler
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
+import AlertsPanel from '../components/dashboard/AlertsPanel.vue'
 
 // Registrar componentes de Chart.js
 ChartJS.register(
@@ -868,6 +872,20 @@ const chartOptions = {
     intersect: false,
     mode: 'index'
   }
+}
+
+// Manejo de eventos de alertas
+const manejarAlertaProcesada = (evento) => {
+  console.log('Alerta procesada:', evento)
+  
+  // Mostrar notificación visual (opcional)
+  if (evento.mensaje) {
+    // Aquí se podría mostrar una notificación toast
+    console.log('✅ ' + evento.mensaje)
+  }
+  
+  // Opcional: Recargar datos del dashboard para reflejar cambios
+  // loadData()
 }
 
 // Lifecycle hooks

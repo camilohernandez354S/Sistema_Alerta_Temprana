@@ -3934,3 +3934,1272 @@ nivel_agua
 2025-09-21 20:36:36,655 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
 2025-09-21 20:36:43,159 - app - INFO - main:64 - 🛑 Cerrando aplicación...
 2025-09-21 20:36:44,365 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 20:50:05,524 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:50:09,628 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:50:09,638 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:50:09,639 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:50:09,743 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:50:09,744 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:50:09,745 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:50:09,746 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:50:09,747 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:51:10,607 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:51:14,658 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:51:14,665 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:51:14,666 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:51:14,813 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:51:14,815 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:51:14,817 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:51:14,818 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:51:14,819 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:51:35,404 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:51:39,478 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:51:39,482 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:51:39,483 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:51:39,578 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:51:39,579 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:51:39,580 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:51:39,581 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:51:39,582 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:52:51,904 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:52:55,993 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:52:55,997 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:52:55,997 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:52:56,097 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:52:56,098 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:52:56,099 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:52:56,100 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:52:56,100 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:52:56,944 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:52:56,945 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:52:56,945 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:52:56,946 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:52:56,946 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:52:56,947 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 20:53:01,526 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 20:53:05,605 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 20:53:05,609 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 20:53:05,609 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 20:53:05,683 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 20:53:05,684 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 20:53:05,685 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 20:53:05,685 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 20:53:05,686 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 20:53:06,645 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 20:53:06,646 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 20:53:06,647 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 20:53:06,648 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 20:53:06,648 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 20:53:06,649 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:10:43,725 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:10:43,730 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:10:44,220 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:10:44,257 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:10:44,273 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:10:44,276 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:10:44,964 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:10:44,968 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:10:44,972 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:10:44,973 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:10:45,268 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:10:45,270 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:10:45,337 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:10:45,342 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:10:45,494 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:10:45,939 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:10:51,261 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:10:51,262 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:10:51,269 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:10:51,271 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:10:51,280 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:10:51,800 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:11:22,668 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:11:22,669 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:11:22,672 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:11:22,673 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:11:22,680 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:11:22,724 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:11:51,584 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:11:51,589 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:11:51,599 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:11:51,615 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:11:51,639 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:11:56,157 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:11:58,183 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:11:58,185 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:11:58,188 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:11:58,195 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:11:58,205 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:11:58,519 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:12:07,893 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:12:23,488 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:12:23,489 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:12:23,492 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:12:23,493 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:12:23,498 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:12:23,560 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:12:57,112 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:12:57,113 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:12:57,114 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:12:57,115 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:12:57,119 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:12:57,474 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:13:24,691 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:13:24,695 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:13:24,697 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:13:24,697 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:13:24,701 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:13:24,903 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:13:54,668 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:13:54,669 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:13:54,674 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:13:54,675 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:13:54,679 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:13:54,718 - app - WARNING - not_found:24 - Resource not found: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-09-21 21:13:59,949 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:14:14,008 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:14:18,156 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:14:18,165 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:14:18,166 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:14:18,319 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:14:18,321 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:14:18,322 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:14:18,323 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:14:18,325 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:14:20,621 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:14:20,622 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:14:20,623 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:14:20,625 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:14:20,626 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:14:20,627 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:14:26,813 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:14:26,816 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:14:27,266 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:14:27,267 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:14:27,268 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:14:27,269 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:14:27,556 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:14:27,559 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:14:27,564 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:14:27,565 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:14:27,574 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:14:27,973 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:14:27,974 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:14:27,976 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:14:27,977 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:14:28,221 - app - ERROR - obtener_alertas_dashboard:504 - Error obteniendo alertas: 'SensorController' object has no attribute 'obtener_todas_lecturas'
+2025-09-21 21:14:40,675 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:14:52,354 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:14:56,468 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:14:56,472 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:14:56,473 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:14:56,619 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:14:56,620 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:14:56,621 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:14:56,621 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:14:56,622 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:14:58,110 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:14:58,112 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:14:58,113 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:14:58,114 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:14:58,116 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:14:58,117 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:14:58,330 - app - ERROR - decorated_function:52 - Error en predicciones: Invalid SRV host: ac-bzbe2he-shard-00-02.axv5efh
+2025-09-21 21:14:58,351 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 232, in predicciones
+    response, status_code = service_factory.sensor_controller.get_predicciones()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-02.axv5efh
+
+2025-09-21 21:15:16,770 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:15:17,606 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:15:32,490 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:15:36,586 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:15:36,590 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:15:36,591 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:15:36,706 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:15:36,707 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:15:36,709 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:15:36,711 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:15:36,712 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:15:37,763 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:15:37,764 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:15:37,764 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:15:37,765 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:15:37,766 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:15:37,766 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:15:44,447 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:15:48,548 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:15:48,553 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:15:48,554 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:15:48,681 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:15:48,681 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:15:48,682 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:15:48,683 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:15:48,684 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:15:49,785 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:15:49,787 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:15:49,788 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:15:49,788 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:15:49,789 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:15:49,789 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:15:53,253 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:16:00,819 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:16:04,930 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:16:04,933 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:16:04,934 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:16:05,039 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:16:05,040 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:16:05,041 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:16:05,042 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:16:05,043 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:16:06,927 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:16:06,927 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:16:06,928 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:16:06,929 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:16:06,929 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:16:06,930 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:16:09,148 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:16:09,171 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:16:09,568 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:16:09,571 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:16:09,572 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:16:09,573 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:16:09,863 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:16:09,864 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:16:09,875 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:16:09,876 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:16:09,896 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:16:10,411 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:16:10,412 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:16:10,413 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:16:10,413 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:16:10,414 - app - INFO - consultar_lecturas_arduino:543 - Consultando lecturas Arduino: limit=100, since=None
+2025-09-21 21:16:10,415 - app - INFO - consultar_lecturas_arduino:396 - Consultando lecturas Arduino: limit=100, since=None
+2025-09-21 21:16:10,552 - app - INFO - consultar_lecturas_arduino:329 - Consultadas 0 lecturas Arduino
+2025-09-21 21:16:10,553 - app - INFO - consultar_lecturas_arduino:401 - Encontradas 0 lecturas Arduino
+2025-09-21 21:16:10,889 - app - ERROR - obtener_alertas_dashboard:504 - Error obteniendo alertas: 'SensorController' object has no attribute 'obtener_todas_lecturas'
+2025-09-21 21:16:28,687 - app - INFO - consultar_lecturas_arduino:543 - Consultando lecturas Arduino: limit=100, since=None
+2025-09-21 21:16:28,690 - app - INFO - consultar_lecturas_arduino:396 - Consultando lecturas Arduino: limit=100, since=None
+2025-09-21 21:16:28,825 - app - INFO - consultar_lecturas_arduino:329 - Consultadas 0 lecturas Arduino
+2025-09-21 21:16:28,826 - app - INFO - consultar_lecturas_arduino:401 - Encontradas 0 lecturas Arduino
+2025-09-21 21:16:28,967 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:16:28,969 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:16:28,971 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:16:28,972 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:16:28,977 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:16:29,001 - app - ERROR - obtener_alertas_dashboard:504 - Error obteniendo alertas: 'SensorController' object has no attribute 'obtener_todas_lecturas'
+2025-09-21 21:16:52,503 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:17:02,407 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:17:11,927 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:17:16,043 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:17:16,047 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:17:16,048 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:17:16,141 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:17:16,142 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:17:16,142 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:17:16,142 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:17:16,143 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:17:17,300 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:17:17,304 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:17:17,307 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:17:17,312 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:17:17,317 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:17:17,323 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:17:23,394 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:17:27,508 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:17:27,514 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:17:27,515 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:17:27,640 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:17:27,640 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:17:27,641 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:17:27,642 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:17:27,642 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:17:28,761 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:17:28,763 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:17:28,765 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:17:28,766 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:17:28,767 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:17:28,770 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:17:30,965 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:17:30,996 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:17:31,435 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:17:31,436 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:17:31,436 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:17:31,437 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:17:31,730 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:17:31,732 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:17:31,735 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:17:31,736 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:17:31,742 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:17:32,111 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:17:32,113 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:17:32,114 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:17:32,115 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:18:03,102 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:18:03,103 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:18:03,105 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:18:03,105 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:18:03,111 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:18:33,514 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:18:33,515 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:18:33,517 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:18:33,518 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:18:33,523 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:19:03,202 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:19:03,203 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:19:03,205 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:19:03,206 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:19:03,211 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:19:34,069 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:19:34,070 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:19:34,073 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:19:34,074 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:19:34,081 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:20:04,462 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:20:04,464 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:20:04,469 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:20:04,471 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:20:04,477 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:20:33,006 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:20:33,007 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:20:33,009 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:20:33,010 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:20:33,016 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:21:03,624 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:21:03,625 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:21:03,627 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:21:03,627 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:21:03,630 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:21:33,621 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:21:33,623 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:21:33,625 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:21:33,625 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:21:33,629 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:22:41,625 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:22:41,626 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:22:41,628 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:22:41,628 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:22:41,633 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:23:41,632 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:23:41,632 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:23:41,635 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:23:41,635 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:23:41,640 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:24:41,618 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:24:41,619 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:24:41,621 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:24:41,621 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:24:41,625 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:25:41,639 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:25:41,640 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:25:41,642 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:25:41,643 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:25:41,654 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:26:41,643 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:26:41,645 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:26:41,647 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:26:41,648 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:26:41,655 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:27:41,659 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:27:41,660 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:27:41,664 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:27:41,665 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:27:41,673 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:28:41,630 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:28:41,631 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:28:41,632 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:28:41,633 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:28:41,636 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:29:41,640 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:29:41,642 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:29:41,646 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:29:41,647 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:29:41,654 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:30:41,627 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:30:41,637 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:30:41,640 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:30:41,641 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:30:41,648 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:31:40,527 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:31:42,802 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:32:01,847 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:32:05,959 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:32:05,970 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:32:05,971 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:32:06,097 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:32:06,098 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:32:06,098 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:32:06,099 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:32:06,100 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:32:07,443 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:32:07,444 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:32:07,444 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:32:07,445 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:32:07,445 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:32:07,445 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:32:11,631 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:32:15,719 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:32:15,723 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:32:15,724 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:32:15,826 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:32:15,827 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:32:15,828 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:32:15,828 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:32:15,829 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:32:16,804 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:32:16,805 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:32:16,806 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:32:16,806 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:32:16,807 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:32:16,807 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:32:34,144 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:32:34,155 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:32:34,577 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:32:34,588 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:32:34,589 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:32:34,590 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:32:34,866 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:32:34,868 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:32:34,878 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:32:34,879 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:32:34,905 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:32:35,312 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:32:35,313 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:32:35,313 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:32:35,314 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:33:03,653 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:33:03,656 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:33:03,662 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:33:03,667 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:33:03,679 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:33:33,686 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:33:33,687 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:33:33,689 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:33:33,690 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:33:33,693 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:34:17,545 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:34:17,547 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:34:17,554 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:34:17,558 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:34:17,565 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:34:19,695 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:34:19,696 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:34:19,699 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:34:19,702 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:34:19,708 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:34:38,978 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:34:38,980 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:34:38,983 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:34:38,984 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:34:38,991 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:34:39,466 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:34:39,467 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:34:39,472 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:34:39,474 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:34:39,486 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:35:09,601 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:35:09,602 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:35:09,604 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:35:09,605 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:35:09,609 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:35:10,285 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:35:10,287 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:35:10,289 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:35:10,291 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:35:10,296 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:35:39,609 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:35:39,610 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:35:39,613 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:35:39,614 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:35:39,620 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:35:40,228 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:35:40,237 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:35:40,250 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:35:40,264 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:35:40,290 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:36:09,615 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:36:09,617 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:36:09,620 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:36:09,620 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:36:09,626 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:36:10,234 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:36:10,235 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:36:10,237 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:36:10,238 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:36:10,241 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:36:39,607 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:36:39,608 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:36:39,610 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:36:39,611 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:36:39,616 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:36:40,266 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:36:40,267 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:36:40,269 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:36:40,270 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:36:40,275 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:37:09,625 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:37:09,627 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:37:09,629 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:37:09,630 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:37:09,634 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:37:10,651 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 91 registros
+2025-09-21 21:37:10,652 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 91 registros válidos
+2025-09-21 21:37:10,655 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 91 → 85 registros finales
+2025-09-21 21:37:10,657 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 91 originales → 91 válidos → 91 sin outliers → 85 en ventana temporal
+2025-09-21 21:37:10,662 - app - INFO - generar_predicciones_multi_horizonte:132 - Predicciones generadas exitosamente - R²: 0.627, Confianza promedio: 0.740
+2025-09-21 21:41:47,935 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='=== Sistema de Alerta Te...or de Nivel de Agua ===', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:41:47,945 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:41:51,022 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Sistema inicializado correctamente', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:41:51,027 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:41:54,114 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Intervalo de muestreo: 5000 ms', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:41:54,115 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:41:57,161 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:41:57,163 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:00,201 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='Umbral Sequía: 40.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:00,202 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:03,259 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='========================...=======================', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:03,262 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:06,299 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:5003,NIVEL:20.47,ESTADO:Normal', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:06,302 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:09,393 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:10015,NIVEL:219.15,ESTADO:Sequía', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:09,394 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:12,467 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:15002,NIVEL:5.95,ESTADO:Inundación', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:12,468 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:15,528 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:20002,NIVEL:6.14,ESTADO:Inundación', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:15,530 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:18,593 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:25003,NIVEL:3.88,ESTADO:Inundación', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:18,594 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:21,663 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:30015,NIVEL:215.08,ESTADO:Sequía', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:21,664 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:24,733 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:35015,NIVEL:219.23,ESTADO:Sequía', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:24,734 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:28,813 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:40015,NIVEL:218.64,ESTADO:Sequía', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:28,814 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:42:32,849 - app - WARNING - proceso_lecturas:102 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Debe ser 'nivel_agua: [número]cm' o 'Distancia: [número]cm' [type=value_error, input_value='TIMESTAMP:45016,NIVEL:218.30,ESTADO:Sequía', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:42:32,851 - app - INFO - proceso_lecturas:105 - Procesadas 0 de 1 lecturas
+2025-09-21 21:43:28,589 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:43:32,298 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:46:40,889 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:46:44,991 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:46:44,996 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:46:44,997 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:46:45,164 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:46:45,166 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:46:45,170 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:46:45,172 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:46:45,173 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:46:46,678 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:46:46,679 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:46:46,680 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:46:46,681 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:46:46,682 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:46:46,682 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:46:51,772 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:46:55,874 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:46:55,877 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:46:55,878 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:46:55,953 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:46:55,954 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:46:55,954 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:46:55,955 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:46:55,955 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:46:57,010 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:46:57,011 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:46:57,011 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:46:57,012 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:46:57,013 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:46:57,014 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:46:58,983 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:46:59,460 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:46:59,465 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:46:59,466 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:46:59,467 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:46:59,477 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='=== Sistema de Alerta Te...or de Nivel de Agua ===', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:46:59,478 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:02,545 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Sistema inicializado correctamente', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:47:02,546 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:05,605 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Intervalo de muestreo: 5000 ms', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:47:05,606 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:08,677 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:47:08,678 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:11,746 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Sequía: 40.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:47:11,748 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:14,788 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='========================...=======================', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:47:14,793 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:17,855 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:17,856 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:20,920 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:20,921 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:23,971 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:23,972 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:27,030 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:27,031 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:30,084 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:30,085 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:33,153 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:33,154 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:36,237 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:36,238 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:39,291 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:39,292 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:42,352 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:42,353 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:47:45,416 - app - ERROR - _crear_documento_con_estado:147 - Error creando documento con estado Arduino: 'SensorRepository' object has no attribute 'save'
+2025-09-21 21:47:45,417 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:48:25,677 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:48:33,211 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:48:37,298 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:48:37,303 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:48:37,304 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:48:37,508 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:48:37,509 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:48:37,511 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:48:37,512 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:48:37,514 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:48:38,592 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:48:38,593 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:48:38,594 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:48:38,595 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:48:38,596 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:48:38,597 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:48:44,078 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:48:44,151 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:48:44,576 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:48:44,578 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:48:44,589 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:48:44,592 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:48:45,249 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:48:45,251 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:48:45,252 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:48:45,253 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:49:01,580 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:49:08,249 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:49:17,741 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:49:21,837 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:49:21,840 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:49:21,840 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:49:21,933 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:49:21,934 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:49:21,935 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:49:21,936 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:49:21,937 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:49:23,187 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:49:23,188 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:49:23,189 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:49:23,190 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:49:23,191 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:49:23,192 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:49:28,382 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:49:32,461 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:49:32,465 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:49:32,466 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:49:32,573 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:49:32,574 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:49:32,575 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:49:32,576 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:49:32,577 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:49:33,815 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:49:33,815 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:49:33,816 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:49:33,817 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:49:33,818 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:49:33,819 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:49:33,994 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+2025-09-21 21:49:34,012 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+
+2025-09-21 21:49:37,065 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+2025-09-21 21:49:37,069 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+
+2025-09-21 21:49:40,150 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+2025-09-21 21:49:40,153 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-01.axv5efh
+
+2025-09-21 21:49:43,490 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:49:43,508 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:49:43,933 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:49:43,933 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:49:43,934 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:49:43,934 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:49:44,379 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:49:44,380 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:49:44,381 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:49:44,381 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:49:44,383 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:49:44,384 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:49:44,654 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:49:44,655 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:49:44,656 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:49:44,657 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:49:45,270 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:49:46,499 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:50:19,667 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:50:23,769 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:50:23,773 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:50:23,775 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:50:23,889 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:50:23,890 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:50:23,891 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:50:23,892 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:50:23,892 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:50:25,119 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:50:25,120 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:50:25,122 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:50:25,123 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:50:25,124 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:50:25,126 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:50:29,635 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:50:33,722 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:50:33,726 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:50:33,726 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:50:33,831 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:50:33,832 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:50:33,833 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:50:33,833 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:50:33,834 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:50:34,883 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:50:34,884 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:50:34,885 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:50:34,885 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:50:34,886 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:50:34,886 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:50:34,998 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+2025-09-21 21:50:34,998 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+2025-09-21 21:50:35,008 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+
+2025-09-21 21:50:35,008 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+
+2025-09-21 21:50:38,084 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+2025-09-21 21:50:38,088 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+
+2025-09-21 21:50:41,238 - app - ERROR - decorated_function:52 - Error en procesar_lecturas: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+2025-09-21 21:50:41,244 - app - ERROR - decorated_function:53 - Traceback: Traceback (most recent call last):
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\utils\decorators.py", line 44, in decorated_function
+    return f(*args, **kwargs)
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\api\sensor_routes.py", line 164, in procesar_lecturas
+    response, status_code = service_factory.sensor_controller.proceso_lecturas()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 69, in sensor_controller
+    sensor_service=self.sensor_service
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 60, in sensor_service
+    repository=self.sensor_repository
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 49, in sensor_repository
+    client=self.mongo_client,
+           ^^^^^^^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\app\factory.py", line 32, in mongo_client
+    self._mongo_client = MongoClient(mongo_uri)
+                         ~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+        entity,
+    ...<6 lines>...
+        srv_max_hosts=srv_max_hosts,
+    )
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\uri_parser.py", line 558, in parse_uri
+    nodes = dns_resolver.get_hosts()
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 131, in get_hosts
+    _, nodes = self._get_srv_response_and_hosts(True)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\dev\Sistema_Alerta_Temprana\backend\backend-flask\venv\Lib\site-packages\pymongo\srv_resolver.py", line 125, in _get_srv_response_and_hosts
+    raise ConfigurationError(f"Invalid SRV host: {node[0]}")
+pymongo.errors.ConfigurationError: Invalid SRV host: ac-bzbe2he-shard-00-00.axv5efh
+
+2025-09-21 21:50:43,529 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:50:43,550 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:50:43,956 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:50:43,958 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:50:43,959 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:50:43,959 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:50:44,450 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0b984ec67cb481e8f663c
+2025-09-21 21:50:44,451 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 216.97cm, estado: sequía, ID: 68d0b984ec67cb481e8f663c
+2025-09-21 21:50:44,452 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:50:44,743 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:50:44,744 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:50:44,745 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:50:44,746 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:50:45,029 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:50:45,639 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:51:02,814 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:51:04,148 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 21:51:59,186 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:52:03,262 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:52:03,265 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:52:03,266 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:52:03,347 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:52:03,348 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:52:03,349 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:52:03,349 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:52:03,350 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:52:04,590 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:52:04,591 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:52:04,593 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:52:04,594 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:52:04,595 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:52:04,597 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:52:10,549 - app - INFO - configure_logging:58 - Sistema de logging configurado correctamente
+2025-09-21 21:52:14,627 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 21:52:14,634 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 21:52:14,638 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 21:52:14,801 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 21:52:14,802 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 21:52:14,803 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 21:52:14,804 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 21:52:14,805 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 21:52:16,552 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 21:52:16,553 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 21:52:16,554 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 21:52:16,555 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 21:52:16,555 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 21:52:16,557 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 21:52:24,983 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:52:24,985 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 21:52:25,440 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:52:25,444 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:52:25,444 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:52:25,445 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:52:26,153 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 21:52:26,154 - app - INFO - __init__:39 - PredictionService inicializado - scikit-learn: disponible
+2025-09-21 21:52:26,155 - app - INFO - __init__:32 - SensorService inicializado
+2025-09-21 21:52:26,157 - app - INFO - __init__:29 - SensorController inicializado
+2025-09-21 21:52:26,440 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:52:27,059 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:52:39,623 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:52:40,617 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:52:51,849 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='=== Sistema de Alerta Te...or de Nivel de Agua ===', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:52:51,849 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:52:54,886 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Sistema inicializado correctamente', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:52:54,887 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:52:57,950 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Intervalo de muestreo: 5000 ms', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:52:57,952 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:53:01,036 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:53:01,036 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:53:04,111 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Sequía: 40.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:53:04,112 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:53:07,158 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='========================...=======================', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:53:07,159 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:53:09,622 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 1 registros
+2025-09-21 21:53:10,354 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba1686c638f0c5ea6bd7
+2025-09-21 21:53:10,355 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 244.04cm, estado: sequía, ID: 68d0ba1686c638f0c5ea6bd7
+2025-09-21 21:53:10,355 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:10,617 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 2 registros
+2025-09-21 21:53:13,537 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba1986c638f0c5ea6bd8
+2025-09-21 21:53:13,538 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 5.63cm, estado: inundación, ID: 68d0ba1986c638f0c5ea6bd8
+2025-09-21 21:53:13,539 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:16,757 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba1c86c638f0c5ea6bd9
+2025-09-21 21:53:16,759 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 4.85cm, estado: inundación, ID: 68d0ba1c86c638f0c5ea6bd9
+2025-09-21 21:53:16,760 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:19,987 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba1f86c638f0c5ea6bda
+2025-09-21 21:53:19,988 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 5.19cm, estado: inundación, ID: 68d0ba1f86c638f0c5ea6bda
+2025-09-21 21:53:19,989 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:23,192 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba2386c638f0c5ea6bdb
+2025-09-21 21:53:23,193 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 4.52cm, estado: inundación, ID: 68d0ba2386c638f0c5ea6bdb
+2025-09-21 21:53:23,193 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:26,399 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba2686c638f0c5ea6bdc
+2025-09-21 21:53:26,400 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 17.1cm, estado: normal, ID: 68d0ba2686c638f0c5ea6bdc
+2025-09-21 21:53:26,401 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:29,598 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba2986c638f0c5ea6bdd
+2025-09-21 21:53:29,599 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 219.3cm, estado: sequía, ID: 68d0ba2986c638f0c5ea6bdd
+2025-09-21 21:53:29,601 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:32,789 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba2c86c638f0c5ea6bde
+2025-09-21 21:53:32,790 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 217.58cm, estado: sequía, ID: 68d0ba2c86c638f0c5ea6bde
+2025-09-21 21:53:32,791 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:36,999 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba3086c638f0c5ea6bdf
+2025-09-21 21:53:37,000 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 216.7cm, estado: sequía, ID: 68d0ba3086c638f0c5ea6bdf
+2025-09-21 21:53:37,001 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:41,626 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 10 registros
+2025-09-21 21:53:41,628 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:53:41,636 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:53:41,638 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:53:41,642 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 10 → 4 registros finales
+2025-09-21 21:53:41,643 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 10 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:53:42,080 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 10 registros
+2025-09-21 21:53:42,082 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:53:42,085 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:53:42,088 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:53:42,096 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 10 → 4 registros finales
+2025-09-21 21:53:42,099 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 10 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:53:42,192 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba3686c638f0c5ea6be0
+2025-09-21 21:53:42,194 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 218.18cm, estado: sequía, ID: 68d0ba3686c638f0c5ea6be0
+2025-09-21 21:53:42,196 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:47,435 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba3b86c638f0c5ea6be1
+2025-09-21 21:53:47,436 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 216.92cm, estado: sequía, ID: 68d0ba3b86c638f0c5ea6be1
+2025-09-21 21:53:47,437 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:52,686 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba4086c638f0c5ea6be2
+2025-09-21 21:53:52,687 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 217.28cm, estado: sequía, ID: 68d0ba4086c638f0c5ea6be2
+2025-09-21 21:53:52,688 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:53:57,901 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba4586c638f0c5ea6be3
+2025-09-21 21:53:57,902 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 218.28cm, estado: sequía, ID: 68d0ba4586c638f0c5ea6be3
+2025-09-21 21:53:57,903 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:54:02,104 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba4986c638f0c5ea6be4
+2025-09-21 21:54:02,105 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 217.48cm, estado: sequía, ID: 68d0ba4986c638f0c5ea6be4
+2025-09-21 21:54:02,106 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:54:07,345 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba4f86c638f0c5ea6be5
+2025-09-21 21:54:07,346 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 216.97cm, estado: sequía, ID: 68d0ba4f86c638f0c5ea6be5
+2025-09-21 21:54:07,346 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
+2025-09-21 21:54:13,310 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:54:13,312 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:54:13,313 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:54:13,314 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:54:13,314 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:54:13,315 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:54:13,763 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:54:13,764 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:54:13,765 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:54:13,765 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:54:13,766 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:54:13,766 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:54:39,634 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:54:39,635 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:54:39,637 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:54:39,638 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:54:39,639 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:54:39,639 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:54:40,632 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:54:40,633 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:54:40,634 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:54:40,635 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:54:40,636 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:54:40,638 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:54:55,545 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='=== Sistema de Alerta Te...or de Nivel de Agua ===', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:54:55,546 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:54:58,612 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Sistema inicializado correctamente', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:54:58,613 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:55:01,673 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Intervalo de muestreo: 5000 ms', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:55:01,674 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:55:04,731 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Inundación: 15.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:55:04,732 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:55:07,799 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='Umbral Sequía: 40.00 cm', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:55:07,800 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:55:09,636 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:55:09,637 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:55:09,638 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:55:09,639 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:55:09,640 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:55:09,641 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:55:10,615 - app - INFO - _preprocesar_datos_avanzado:160 - 🔄 Iniciando preprocesamiento avanzado de 16 registros
+2025-09-21 21:55:10,616 - app - DEBUG - _preprocesar_datos_avanzado:187 - Aplicando detección de outliers a 5 registros válidos
+2025-09-21 21:55:10,618 - app - INFO - _eliminar_outliers_iqr:254 - Removidos 1 outliers usando IQR (fence: 3.3 - 7.2)
+2025-09-21 21:55:10,619 - app - INFO - _preprocesar_datos_avanzado:191 - 📊 Outliers removidos: 1 de 5 registros (20.0%)
+2025-09-21 21:55:10,620 - app - INFO - _preprocesar_datos_avanzado:214 - ✅ Preprocesamiento completado: 16 → 4 registros finales
+2025-09-21 21:55:10,620 - app - DEBUG - _preprocesar_datos_avanzado:215 - Detalles: 16 originales → 5 válidos → 4 sin outliers → 4 en ventana temporal
+2025-09-21 21:55:10,842 - app - WARNING - proceso_lecturas:112 - Error procesando lectura individual: 1 validation error for SensorReading
+nivel_agua
+  Value error, Formato de datos inválido. Formatos soportados: 'nivel_agua: [número]cm', 'Distancia: [número]cm' o 'TIMESTAMP:valor,NIVEL:valor,ESTADO:estado' [type=value_error, input_value='========================...=======================', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-09-21 21:55:10,843 - app - INFO - proceso_lecturas:115 - Procesadas 0 de 1 lecturas
+2025-09-21 21:55:14,045 - app - DEBUG - insert_one:62 - Documento insertado con ID: 68d0ba9186c638f0c5ea6be6
+2025-09-21 21:55:14,046 - app - INFO - _crear_documento_con_estado:148 - ✅ Lectura Arduino guardada: 218.14cm, estado: sequía, ID: 68d0ba9186c638f0c5ea6be6
+2025-09-21 21:55:14,047 - app - INFO - proceso_lecturas:115 - Procesadas 1 de 1 lecturas
