@@ -2980,3 +2980,89 @@ pymongo.errors.ConfigurationError: The resolution lifetime expired after 20.001 
 2025-09-21 18:53:14,040 - app - INFO - __init__:31 - SensorService inicializado
 2025-09-21 18:53:14,041 - app - INFO - __init__:22 - SensorController inicializado
 2025-09-21 18:53:14,720 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:53:45,859 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:54:02,657 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:54:27,909 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 18:54:36,962 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:54:41,024 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:54:41,028 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:54:41,029 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:54:41,115 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:54:41,116 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:54:41,116 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:54:41,117 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:54:41,118 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:54:42,450 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:54:42,452 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:54:42,454 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:54:42,458 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:54:42,464 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:54:42,465 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:54:44,764 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:54:45,207 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:54:45,209 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:54:45,210 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:54:45,211 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:54:45,892 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:55:03,898 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:55:12,672 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 18:55:23,187 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:55:27,286 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:55:27,291 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:55:27,292 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:55:27,508 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:55:27,517 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:55:27,521 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:55:27,524 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:55:27,526 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:55:29,442 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:55:29,443 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:55:29,444 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:55:29,444 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:55:29,445 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:55:29,446 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:55:34,930 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:55:35,372 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:55:35,373 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:55:35,374 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:55:35,375 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:55:36,106 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:55:43,034 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:55:53,383 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:56:24,874 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:56:46,712 - app - INFO - main:64 - 🛑 Cerrando aplicación...
+2025-09-21 18:56:54,321 - app - INFO - configure_logging:52 - Sistema de logging configurado correctamente
+2025-09-21 18:56:58,432 - app.utils.rate_limiter - WARNING - _log:35 - ❌ No se pudo conectar a Redis: Error 10061 connecting to localhost:6379. No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+2025-09-21 18:56:58,436 - app.utils.rate_limiter - INFO - _log:35 - ✅ Rate limiter configurado en memoria
+2025-09-21 18:56:58,436 - app - INFO - create_app:75 - Rate limiter inicializado
+2025-09-21 18:56:58,528 - app.services.websocket_service - INFO - _log:40 - SocketIO inicializado
+2025-09-21 18:56:58,529 - app - INFO - create_app:82 - WebSocket service inicializado
+2025-09-21 18:56:58,529 - app - INFO - init_app:35 - EmailService inicializado
+2025-09-21 18:56:58,530 - app - INFO - init_app:59 - ✅ EmailService configurado correctamente
+2025-09-21 18:56:58,530 - app - INFO - create_app:89 - Email service inicializado
+2025-09-21 18:56:59,657 - app - INFO - register_blueprints:128 - Blueprints registrados correctamente
+2025-09-21 18:56:59,657 - app - INFO - create_app:100 - Aplicación iniciada en modo: development
+2025-09-21 18:56:59,659 - app - INFO - main:34 - 🚀 Iniciando aplicación en 0.0.0.0:5000
+2025-09-21 18:56:59,659 - app - INFO - main:35 - 🔧 Modo: development
+2025-09-21 18:56:59,660 - app - INFO - main:36 - 🐛 Debug: activado
+2025-09-21 18:56:59,661 - app - INFO - main:41 - 🌐 Iniciando con WebSocket habilitado
+2025-09-21 18:57:01,653 - app - INFO - mongo_client:37 - ✅ Conexión a MongoDB establecida
+2025-09-21 18:57:02,106 - app - INFO - _ensure_indexes:46 - Índices de MongoDB verificados/creados
+2025-09-21 18:57:02,108 - app - INFO - __init__:17 - PredictionService inicializado
+2025-09-21 18:57:02,108 - app - INFO - __init__:31 - SensorService inicializado
+2025-09-21 18:57:02,109 - app - INFO - __init__:22 - SensorController inicializado
+2025-09-21 18:57:02,490 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:57:24,872 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:57:54,855 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:58:23,613 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:58:54,874 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:59:24,763 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 18:59:31,061 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:00:02,901 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:00:11,062 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:00:42,885 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:01:12,854 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:01:43,643 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:02:12,027 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:02:41,984 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos
+2025-09-21 19:03:11,975 - app - INFO - generar_predicciones:46 - Predicciones generadas para 2 períodos

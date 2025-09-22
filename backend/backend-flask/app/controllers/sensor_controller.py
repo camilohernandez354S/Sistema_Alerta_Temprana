@@ -329,3 +329,55 @@ class SensorController:
                 "status": "error",
                 "error": "Error interno del servidor"
             }, HTTPStatus.INTERNAL_SERVER_ERROR
+
+    def insertar_datos_prueba(self) -> Tuple[dict, int]:
+        """
+        Insertar datos de prueba en la base de datos
+        Solo para desarrollo
+        
+        Returns:
+            Tuple[dict, int]: Respuesta y código de estado
+        """
+        try:
+            from datetime import datetime, timedelta
+            import random
+            
+            # Generar datos de prueba para las últimas 24 horas
+            datos_insertados = 0
+            ahora = datetime.now()
+            
+            for i in range(24):  # 24 puntos de datos (1 por hora)
+                timestamp = ahora - timedelta(hours=i)
+                
+                # Generar nivel de agua aleatorio pero realista
+                base_level = 30.0  # Nivel base
+                variation = random.uniform(-10, 15)  # Variación
+                nivel_agua = max(5.0, min(100.0, base_level + variation))  # Entre 5 y 100 cm
+                
+                # Procesar la lectura usando el servicio existente
+                documento = self.sensor_service.proceso_leer_sensor(nivel_agua)
+                
+                if documento:
+                    # Actualizar el timestamp para que sea histórico
+                    try:
+                        # Actualizar directamente en la base de datos
+                        from bson import ObjectId
+                        self.sensor_service.repository.collection.update_one(
+                            {"_id": ObjectId(documento.id)},
+                            {"$set": {"timestamp": timestamp.isoformat()}}
+                        )
+                        datos_insertados += 1
+                    except Exception as e:
+                        current_app.logger.warning(f"Error actualizando timestamp: {e}")
+            
+            current_app.logger.info(f"Insertados {datos_insertados} registros de prueba")
+            
+            return {
+                "mensaje": "Datos de prueba insertados correctamente",
+                "total": datos_insertados,
+                "periodo": "últimas 24 horas"
+            }, HTTPStatus.OK
+            
+        except Exception as e:
+            current_app.logger.error(f"Error insertando datos de prueba: {e}")
+            return {"error": "Error interno del servidor"}, HTTPStatus.INTERNAL_SERVER_ERROR

@@ -211,3 +211,24 @@ def health_check():
     """
     response, status_code = service_factory.sensor_controller.health_check()
     return jsonify(response), status_code
+
+# Endpoint para insertar datos de prueba (solo para desarrollo)
+@sensor_bp.route('/sensor/datos-prueba', methods=['POST'])
+@handle_exceptions
+def insertar_datos_prueba():
+    """
+    Insertar datos de prueba en la base de datos
+    Solo disponible en modo desarrollo
+    
+    Returns:
+    200: {"mensaje": "Datos de prueba insertados", "total": N}
+    500: {"error": "Error interno del servidor"}
+    """
+    from flask import current_app
+    
+    # Solo permitir en modo desarrollo
+    if not current_app.config.get('DEBUG', False):
+        return jsonify({"error": "Endpoint solo disponible en modo desarrollo"}), 403
+    
+    response, status_code = service_factory.sensor_controller.insertar_datos_prueba()
+    return jsonify(response), status_code

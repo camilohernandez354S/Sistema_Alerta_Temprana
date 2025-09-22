@@ -48,10 +48,17 @@
             <p class="mt-1 text-sm" :class="error.includes('demostración') ? 'text-blue-700' : 'text-red-700'">
               {{ error }}
             </p>
-            <button @click="loadData" class="mt-2 text-sm underline hover:no-underline" 
-                    :class="error.includes('demostración') ? 'text-blue-800 hover:text-blue-900' : 'text-red-800 hover:text-red-900'">
-              {{ error.includes('demostración') ? 'Intentar conectar con API' : 'Reintentar' }}
-            </button>
+            <div class="mt-3 flex space-x-3">
+              <button @click="loadData" class="text-sm underline hover:no-underline" 
+                      :class="error.includes('demostración') ? 'text-blue-800 hover:text-blue-900' : 'text-red-800 hover:text-red-900'">
+                {{ error.includes('demostración') ? 'Intentar conectar con API' : 'Reintentar' }}
+              </button>
+              <button v-if="!connectionStatus" @click="insertarDatosPrueba" 
+                      class="text-sm underline hover:no-underline text-green-800 hover:text-green-900"
+                      :disabled="insertandoDatos">
+                {{ insertandoDatos ? 'Insertando...' : 'Insertar datos de prueba' }}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -200,7 +207,8 @@ import {
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 } from 'chart.js'
 import { Line } from 'vue-chartjs'
 
@@ -212,13 +220,15 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  Filler
 )
 
 // Estados reactivos
 const isLoading = ref(true)
 const error = ref(null)
 const connectionStatus = ref(false)
+const insertandoDatos = ref(false)
 
 // Datos de la API
 const waterLevels = ref([])
@@ -293,10 +303,15 @@ const apiService = {
       const data = await response.json()
       
       // Transformar los datos del backend al formato esperado por el frontend
-      // El backend devuelve: { nivel_agua, estado, timestamp }
+      // El backend devuelve: { lecturas: [{ nivel_agua, estado, timestamp }] }
       // El frontend espera: { level, timestamp }
       if (Array.isArray(data)) {
         return data.map(item => ({
+          level: item.nivel_agua,
+          timestamp: item.timestamp
+        }))
+      } else if (data.lecturas && Array.isArray(data.lecturas)) {
+        return data.lecturas.map(item => ({
           level: item.nivel_agua,
           timestamp: item.timestamp
         }))
@@ -363,6 +378,44 @@ const apiService = {
       
       throw error
     }
+  }
+}
+
+// Función para insertar datos de prueba
+const insertarDatosPrueba = async () => {
+  try {
+    insertandoDatos.value = true
+    
+    const response = await fetch('http://localhost:5000/api/sensor/datos-prueba', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    
+    if (!response.ok) {
+      throw new Error(`Error HTTP: ${response.status}`)
+    }
+    
+    const contentType = response.headers.get("content-type")
+    if (!contentType || !contentType.includes("application/json")) {
+      const text = await response.text()
+      throw new Error("Respuesta no es JSON válido: " + text.slice(0, 100))
+    }
+    
+    const result = await response.json()
+    console.log('Datos de prueba insertados:', result)
+    
+    // Recargar datos después de insertar
+    setTimeout(() => {
+      loadData()
+    }, 1000)
+    
+  } catch (err) {
+    console.error('Error insertando datos de prueba:', err)
+    error.value = `Error insertando datos de prueba: ${err.message}`
+  } finally {
+    insertandoDatos.value = false
   }
 }
 
