@@ -2,9 +2,19 @@
   <div class="login-dark-bg">
     <div class="login-card">
       <form @submit.prevent="handleLogin" autocomplete="off">
+        <div class="system-header">
+          <h1 class="system-title">Sistema de Alerta Temprana</h1>
+          <p class="system-subtitle">Monitoreo de Nivel de Agua</p>
+        </div>
         <h2 class="login-title">Iniciar Sesión</h2>
         <div class="avatar-dark">
-          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png" alt="avatar" />
+          <div class="system-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="#00c3ff"/>
+              <path d="M12 18L13.5 20.5L16 19L13.5 21.5L12 24L10.5 21.5L8 19L10.5 20.5L12 18Z" fill="#00c3ff"/>
+              <circle cx="12" cy="12" r="3" fill="#0050ff" opacity="0.6"/>
+            </svg>
+          </div>
         </div>
         <!-- USUARIO -->
         <div class="input-group">
@@ -50,6 +60,9 @@
           <span v-else>ENTRAR</span>
         </button>
         <div v-if="error" class="login-error">{{ error }}</div>
+        <div class="system-footer">
+          <p class="system-info">🔍 Monitoreo en tiempo real • ⚡ Alertas automáticas • 📊 Dashboard inteligente</p>
+        </div>
       </form>
     </div>
   </div>
@@ -119,6 +132,33 @@ async function handleLogin() {
   0% { opacity: 0; transform: translateY(40px); }
   100% { opacity: 1; transform: translateY(0); }
 }
+.system-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #00c3ff33;
+}
+.system-title {
+  color: #00c3ff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px #00c3ff44;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+@keyframes titleGlow {
+  0% { text-shadow: 0 0 10px #00c3ff44; }
+  100% { text-shadow: 0 0 20px #00c3ff66, 0 0 30px #00c3ff33; }
+}
+.system-subtitle {
+  color: #7fd7ff;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
 .login-title {
   color: #fff;
   font-size: 2.3rem;
@@ -133,19 +173,48 @@ async function handleLogin() {
   align-items: center;
   margin-bottom: 1.5rem;
 }
-.avatar-dark img {
-  width: 70px;
-  height: 70px;
+.system-icon {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 3px solid #00c3ff;
-  box-shadow: 0 0 16px #00c3ff88;
-  background: #222;
-  animation: avatarPop 1.2s cubic-bezier(.23,1.01,.32,1);
+  box-shadow: 0 0 20px #00c3ff88;
+  background: linear-gradient(135deg, #181824 0%, #232336 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: iconPulse 1.2s cubic-bezier(.23,1.01,.32,1);
+  position: relative;
 }
-@keyframes avatarPop {
+.system-icon svg {
+  width: 40px;
+  height: 40px;
+  animation: iconRotate 3s linear infinite;
+}
+@keyframes iconPulse {
   0% { transform: scale(0.7); opacity: 0; }
   80% { transform: scale(1.1); opacity: 1; }
   100% { transform: scale(1); }
+}
+@keyframes iconRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.system-icon::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #00c3ff, #0050ff, #00c3ff);
+  animation: borderRotate 2s linear infinite;
+  z-index: -1;
+}
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 .input-group {
   position: relative;
@@ -257,5 +326,19 @@ async function handleLogin() {
   text-align: center;
   font-size: 1.1rem;
   text-shadow: 0 1px 2px #000a;
+}
+.system-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #00c3ff22;
+  text-align: center;
+}
+.system-info {
+  color: #7fd7ff;
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 </style>
