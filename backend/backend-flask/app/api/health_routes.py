@@ -20,6 +20,17 @@ def health_check():
         'service': 'Sistema de Alerta Temprana API'
     })
 
+@health_bp.route('/', methods=['GET'])
+def root_health_check():
+    """
+    Endpoint de root para health check de Render
+    """
+    return jsonify({
+        'status': 'ok',
+        'message': 'Sistema de Alerta Temprana API está funcionando',
+        'timestamp': datetime.utcnow().isoformat()
+    })
+
 @health_bp.route('/api/health/database', methods=['GET'])
 def database_health_check():
     """

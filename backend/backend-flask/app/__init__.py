@@ -70,8 +70,12 @@ def create_app(config_name=None):
     # Registrar blueprints
     register_blueprints(app)
     
-    # Inicializar conexión a base de datos
-    init_database(app)
+    # Inicializar conexión a base de datos (no bloqueante)
+    try:
+        init_database(app)
+    except Exception as e:
+        app.logger.warning(f"⚠️ No se pudo conectar a la base de datos al iniciar: {e}")
+        app.logger.info("🔄 La aplicación continuará sin conexión inicial a BD")
     
     # Log de inicio de aplicación
     app.logger.info(f"Aplicación iniciada en modo: {config_name or 'development'}")

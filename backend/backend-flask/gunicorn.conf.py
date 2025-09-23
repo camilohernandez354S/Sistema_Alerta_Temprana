@@ -14,10 +14,10 @@ worker_connections = 1000
 max_requests = 1000
 max_requests_jitter = 50
 
-# Configuración de timeouts
-timeout = int(os.getenv('GUNICORN_TIMEOUT', '120'))
+# Configuración de timeouts optimizada para Render
+timeout = int(os.getenv('GUNICORN_TIMEOUT', '60'))
 keepalive = 2
-graceful_timeout = 30
+graceful_timeout = 15
 
 # Configuración de logs
 accesslog = '-'
