@@ -1,0 +1,54 @@
+services:
+  # Backend Flask
+  - type: web
+    name: sat-backend
+    env: python
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 run:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: FLASK_DEBUG
+        value: false
+      - key: SECRET_KEY
+        value: 962dcfefd06ec551f095af1b24dd6ff96548e9e31ed6f7161dce07a41e689dfe
+      - key: MONGO_URI
+        fromDatabase:
+          name: sat-mongo
+          property: connectionString
+      - key: MONGO_DB
+        value: sat_database
+      - key: CORS_ORIGINS
+        value: https://sat-frontend.onrender.com
+      - key: ARDUINO_ENABLED
+        value: false
+      - key: LOG_LEVEL
+        value: INFO
+      - key: SESSION_COOKIE_SECURE
+        value: true
+      - key: SESSION_COOKIE_HTTPONLY
+        value: true
+      - key: SESSION_COOKIE_SAMESITE
+        value: Lax
+
+  # Frontend Vue.js
+  - type: web
+    name: sat-frontend
+    env: static
+    buildCommand: |
+      npm install
+      npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://sat-backend.onrender.com
+      - key: VITE_APP_TITLE
+        value: Sistema de Alerta Temprana
+
+databases:
+  - name: sat-mongo
+    databaseName: sat_database
+    user: sat_user
+    plan: starter
