@@ -1,6 +1,13 @@
 <template>
-  <router-view />
+  <div id="app">
+    <router-view />
+    <ToastNotifications />
+  </div>
 </template>
+
+<script setup>
+import ToastNotifications from './components/ToastNotifications.vue'
+</script>
 
 <style scoped>
 .logo {

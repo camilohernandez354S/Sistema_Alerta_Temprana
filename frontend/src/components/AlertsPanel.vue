@@ -17,11 +17,23 @@
         </button>
         <button 
           v-if="tieneAlertasActivas && esAdmin"
-          @click="desactivarBuzzerGeneral"
-          :disabled="procesandoBuzzer"
+          @click="desactivarBuzzerArduino"
+          :disabled="arduinoStore.isLoading"
           class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 disabled:opacity-50"
         >
-          🔇 Silenciar Buzzer
+          <span v-if="arduinoStore.isLoading">⏳</span>
+          <span v-else">🔇</span>
+          Silenciar Buzzer
+        </button>
+        <button 
+          v-if="esAdmin"
+          @click="obtenerEstadoDispositivo"
+          :disabled="arduinoStore.isLoading"
+          class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 disabled:opacity-50"
+        >
+          <span v-if="arduinoStore.isLoading">⏳</span>
+          <span v-else">📊</span>
+          Estado
         </button>
       </div>
     </div>
@@ -66,6 +78,9 @@
           <div class="flex items-center gap-2">
             <div :class="estadoSistema.buzzer_activo ? 'bg-red-500 animate-pulse' : 'bg-green-500'" class="w-4 h-4 rounded-full"></div>
             <h3 class="font-semibold text-gray-700">Buzzer</h3>
+            <div v-if="arduinoStore.isConnected" class="ml-auto">
+              <div class="w-2 h-2 bg-green-500 rounded-full" title="Arduino conectado"></div>
+            </div>
           </div>
           <div class="mt-2">
             <div class="text-lg font-bold" :class="estadoSistema.buzzer_activo ? 'text-red-600' : 'text-green-600'">
@@ -73,6 +88,9 @@
             </div>
             <div class="text-sm text-gray-500">
               {{ estadoSistema.buzzer_activo ? 'Alerta sonora' : 'Sin sonido' }}
+            </div>
+            <div v-if="arduinoStore.hasRecentCommand" class="text-xs text-blue-500 mt-1">
+              📡 Comando enviado hace {{ getTimeSinceLastCommand() }}
             </div>
           </div>
         </div>
@@ -188,6 +206,10 @@
 <script setup>
 import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { getToken, getRol } from '../services/authService'
+import { useArduinoStore } from '../stores/arduinoStore'
+
+// Store de Arduino
+const arduinoStore = useArduinoStore()
 
 // Estado reactivo
 const alertas = ref([])
@@ -200,7 +222,6 @@ const estadoSistema = ref({
 
 const cargando = ref(false)
 const procesandoAlerta = ref(null)
-const procesandoBuzzer = ref(false)
 const ultimaActualizacion = ref('')
 
 // Filtros
@@ -320,26 +341,36 @@ const desactivarAlerta = async (alertaId) => {
   }
 }
 
-const desactivarBuzzerGeneral = async () => {
-  procesandoBuzzer.value = true
-  try {
-    const response = await fetch(`${API_BASE_URL}/api/v1/alertas/buzzer/desactivar`, {
-      method: 'POST',
-      headers: obtenerHeaders()
-    })
-    
-    if (response.ok) {
-      await refrescarAlertas()
-    } else {
-      const error = await response.json()
-      alert(`Error: ${error.error || 'No se pudo desactivar el buzzer'}`)
-    }
-  } catch (error) {
-    console.error('Error desactivando buzzer:', error)
-    alert('Error de conexión al desactivar el buzzer')
-  } finally {
-    procesandoBuzzer.value = false
+// Nueva función para desactivar buzzer usando el store de Arduino
+const desactivarBuzzerArduino = async () => {
+  const result = await arduinoStore.turnOffBuzzer()
+  if (result.success) {
+    await refrescarAlertas()
   }
+}
+
+// Función para obtener estado del dispositivo
+const obtenerEstadoDispositivo = async () => {
+  await arduinoStore.getDeviceStatus()
+}
+
+// Función para calcular tiempo desde último comando
+const getTimeSinceLastCommand = () => {
+  if (!arduinoStore.lastCommand) return ''
+  
+  const now = new Date()
+  const commandTime = new Date(arduinoStore.lastCommand.timestamp)
+  const diff = Math.floor((now - commandTime) / 1000)
+  
+  if (diff < 60) return `${diff}s`
+  if (diff < 3600) return `${Math.floor(diff / 60)}m`
+  return `${Math.floor(diff / 3600)}h`
+}
+
+// Función legacy mantenida para compatibilidad
+const desactivarBuzzerGeneral = async () => {
+  // Redirigir a la nueva función
+  await desactivarBuzzerArduino()
 }
 
 // Funciones de utilidad

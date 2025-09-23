@@ -469,6 +469,97 @@ def estado_conexion_arduino():
             'error': str(e)
         }), 200
 
+@compatibility_bp.route('/api/mediciones/comando', methods=['POST'])
+def enviar_comando_arduino():
+    """
+    Endpoint para enviar comandos al Arduino
+    Formato: {"comando": "BUZZER_OFF", "parametros": {...}}
+    """
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'Datos JSON requeridos'}), 400
+
+        comando = data.get('comando')
+        if not comando:
+            return jsonify({'error': 'Campo "comando" es requerido'}), 400
+
+        # Validar comandos soportados
+        comandos_soportados = ['BUZZER_OFF', 'BUZZER_ON', 'RESET', 'REINICIAR', 'STATUS']
+        if comando not in comandos_soportados:
+            return jsonify({
+                'error': f'Comando no soportado: {comando}',
+                'comandos_disponibles': comandos_soportados
+            }), 400
+
+        # Importar el servicio de control de dispositivos
+        try:
+            from app.services.device_control_service import device_control_service
+            current_app.logger.info(f"Servicio de control de dispositivos cargado: {device_control_service}")
+        except ImportError as e:
+            current_app.logger.error(f"DeviceControlService no disponible: {e}")
+            return jsonify({
+                'status': 'error',
+                'message': 'Servicio de control de dispositivos no disponible'
+            }), 503
+
+        # Ejecutar comando según el tipo
+        resultado = None
+        try:
+            if comando == 'BUZZER_OFF':
+                resultado = device_control_service.deactivate_buzzer()
+            elif comando == 'BUZZER_ON':
+                parametros = data.get('parametros', {})
+                alert_type = parametros.get('alert_type', 'general')
+                frequency = parametros.get('frequency')
+                resultado = device_control_service.activate_buzzer(alert_type, frequency)
+            elif comando == 'RESET':
+                resultado = device_control_service.send_command_serial('reset')
+            elif comando == 'REINICIAR':
+                resultado = device_control_service.send_command_serial('reset')
+            elif comando == 'STATUS':
+                resultado = device_control_service.get_device_status()
+            else:
+                current_app.logger.error(f"Comando no manejado: {comando}")
+                return jsonify({
+                    'status': 'error',
+                    'message': f'Comando no manejado: {comando}'
+                }), 400
+        except Exception as cmd_error:
+            current_app.logger.error(f"Error ejecutando comando {comando}: {cmd_error}")
+            return jsonify({
+                'status': 'error',
+                'message': f'Error ejecutando comando: {str(cmd_error)}'
+            }), 500
+
+        # Verificar resultado
+        current_app.logger.info(f"Resultado del comando {comando}: {resultado}")
+        if resultado and resultado.get('status') == 'success':
+            current_app.logger.info(f"Comando {comando} ejecutado exitosamente")
+            return jsonify({
+                'status': 'success',
+                'message': f'Comando {comando} enviado correctamente',
+                'comando': comando,
+                'resultado': resultado,
+                'timestamp': datetime.utcnow().isoformat() + 'Z'
+            }), 200
+        else:
+            error_msg = resultado.get('error', 'Error desconocido') if resultado else 'Sin respuesta del dispositivo'
+            current_app.logger.warning(f"Error ejecutando comando {comando}: {error_msg}")
+            return jsonify({
+                'status': 'error',
+                'message': f'Error al ejecutar comando {comando}: {error_msg}',
+                'comando': comando
+            }), 500
+
+    except Exception as e:
+        current_app.logger.error(f"Error procesando comando Arduino: {e}")
+        return jsonify({
+            'status': 'error',
+            'message': 'Error interno del servidor',
+            'error': str(e)
+        }), 500
+
 @compatibility_bp.route('/api/health', methods=['GET'])
 def health_check():
     """

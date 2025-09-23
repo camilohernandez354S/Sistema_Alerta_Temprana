@@ -119,6 +119,9 @@ class DeviceControlService:
         except Exception as e:
             device_logger.error(f"Error enviando comando serial: {e}")
             return {'status': 'error', 'message': str(e)}
+        
+        # Fallback si no hay conexión serial
+        return self._simulate_command(command, parameters)
     
     def send_command_http(self, command: str, parameters: Dict = None) -> Dict:
         """
@@ -189,6 +192,11 @@ class DeviceControlService:
                 'buzzer_active': False,
                 'last_sensor_reading': 25.5,
                 'uptime': 3600
+            },
+            'reset': {
+                'status': 'success',
+                'message': 'Dispositivo reiniciado (simulado)',
+                'device_status': 'reset_completed'
             }
         }
         
@@ -226,11 +234,11 @@ class DeviceControlService:
         # Intentar primero por serial, luego por HTTP
         result = self.send_command_serial('activate_buzzer', parameters)
         
-        if result.get('status') != 'success' and self.device_url:
+        if result and result.get('status') != 'success' and self.device_url:
             result = self.send_command_http('activate_buzzer', parameters)
         
         device_logger.info(f"Buzzer activado - tipo: {alert_type}, frecuencia: {frequency}Hz")
-        return result
+        return result or {'status': 'error', 'message': 'No se pudo activar el buzzer'}
     
     def deactivate_buzzer(self) -> Dict:
         """
@@ -242,11 +250,11 @@ class DeviceControlService:
         # Intentar por serial primero
         result = self.send_command_serial('deactivate_buzzer')
         
-        if result.get('status') != 'success' and self.device_url:
+        if result and result.get('status') != 'success' and self.device_url:
             result = self.send_command_http('deactivate_buzzer')
         
         device_logger.info("Buzzer desactivado")
-        return result
+        return result or {'status': 'error', 'message': 'No se pudo desactivar el buzzer'}
     
     def get_device_status(self) -> Dict:
         """
@@ -257,10 +265,10 @@ class DeviceControlService:
         """
         result = self.send_command_serial('get_status')
         
-        if result.get('status') != 'success' and self.device_url:
+        if result and result.get('status') != 'success' and self.device_url:
             result = self.send_command_http('get_status')
         
-        return result
+        return result or {'status': 'error', 'message': 'No se pudo obtener el estado del dispositivo'}
     
     def test_connection(self) -> Dict:
         """
