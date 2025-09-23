@@ -1,1 +1,0 @@
-web: cd backend/backend-flask && gunicorn --config gunicorn.conf.py wsgi:application
