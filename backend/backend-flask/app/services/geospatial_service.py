@@ -14,9 +14,24 @@ class GeospatialService:
     """
     
     def __init__(self):
-        """Inicializar conexión a MongoDB"""
-        self.client = MongoClient('mongodb://localhost:27017/')
-        self.db = self.client['sistema_alerta']
+        """Inicializar conexión a MongoDB usando variables de entorno"""
+        import os
+        from flask import current_app
+        
+        # Obtener configuración de MongoDB desde variables de entorno o configuración de Flask
+        mongo_uri = os.getenv('MONGO_URI', 'mongodb://localhost:27017/')
+        db_name = os.getenv('MONGO_DB', 'sistema_alerta')
+        
+        # Intentar obtener configuración de Flask si está disponible
+        try:
+            if current_app:
+                mongo_uri = current_app.config.get('MONGO_URI', mongo_uri)
+                db_name = current_app.config.get('MONGO_DB', db_name)
+        except:
+            pass  # Si no hay contexto de Flask, usar configuración de variables de entorno
+        
+        self.client = MongoClient(mongo_uri)
+        self.db = self.client[db_name]
         self.mediciones_collection = self.db['mediciones']
         self.sensores_collection = self.db['sensores']
         

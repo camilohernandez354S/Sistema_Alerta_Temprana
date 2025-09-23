@@ -12,9 +12,15 @@ compatibility_bp = Blueprint('compatibility', __name__)
 
 # Configuración de MongoDB
 def get_mongo_collection():
-    """Obtener colección de MongoDB"""
-    client = MongoClient('mongodb://localhost:27017/')
-    db = client['sistema_alerta']
+    """Obtener colección de MongoDB usando configuración de la app"""
+    from flask import current_app
+    import os
+    
+    mongo_uri = os.getenv('MONGO_URI', current_app.config.get('MONGO_URI', 'mongodb://localhost:27017/'))
+    db_name = os.getenv('MONGO_DB', current_app.config.get('MONGO_DB', 'sistema_alerta'))
+    
+    client = MongoClient(mongo_uri)
+    db = client[db_name]
     return db['mediciones']
 
 @compatibility_bp.route('/api/login', methods=['POST'])

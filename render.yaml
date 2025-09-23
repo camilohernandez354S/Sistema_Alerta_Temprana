@@ -32,6 +32,10 @@ services:
         value: true
       - key: SESSION_COOKIE_SAMESITE
         value: Lax
+      - key: FLASK_HOST
+        value: 0.0.0.0
+      - key: FLASK_PORT
+        value: 5000
 
   # Frontend Vue.js
   - type: web
