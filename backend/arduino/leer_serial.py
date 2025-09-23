@@ -3,8 +3,15 @@ import time
 from dotenv import load_dotenv
 import os
 from pathlib import Path
-from arduino_client import ArduinoClient
 import serial.tools.list_ports
+import sys
+
+# Agregar el directorio backend-flask al path
+backend_flask_path = Path(__file__).resolve().parent / "../backend-flask"
+sys.path.append(str(backend_flask_path))
+
+# Importar el servicio desde backend-flask
+from app.services.arduino_client_service import arduino_client_service
 
 env_path = Path(__file__).resolve().parent / "../backend-flask/.env"
 load_dotenv(dotenv_path=env_path)
@@ -12,9 +19,6 @@ load_dotenv(dotenv_path=env_path)
 # Cargar configuración
 PORT = os.getenv("SERIAL_PORT", "COM11")  # Puerto por defecto COM11
 BAUD_RATE = int(os.getenv("BAUD_RATE", "9600"))
-
-# Inicializar cliente HTTP
-arduino_client = ArduinoClient()
 
 # Función para verificar si el puerto está disponible
 
@@ -55,9 +59,9 @@ try:
                 nivel_agua = arduino.readline().decode().strip()
                 print(f"🔍 Recibido: {nivel_agua}")
 
-                # Enviar datos al servidor usando el endpoint correcto para lecturas crudas
+                # Enviar datos al servidor usando el servicio integrado
                 try:
-                    response = arduino_client.send_raw_reading(nivel_agua)
+                    response = arduino_client_service.send_raw_reading(nivel_agua)
                     
                     if "error" in response:
                         print(f"❌ Error del servidor: {response['error']}")

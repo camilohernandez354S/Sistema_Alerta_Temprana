@@ -1,16 +1,26 @@
 """
-Cliente HTTP para enviar datos del Arduino al servidor Flask
+Servicio para comunicación con dispositivos Arduino
+Integrado en el backend Flask para manejo centralizado
 """
 import requests
 import json
 import os
+from pathlib import Path
+from flask import current_app
 from dotenv import load_dotenv
 
-class ArduinoClient:
+class ArduinoClientService:
     def __init__(self):
-        # Cargar configuración
-        load_dotenv()
+        # Cargar configuración desde el .env del backend-flask
+        env_path = Path(__file__).resolve().parent.parent.parent / ".env"
+        load_dotenv(dotenv_path=env_path)
+        
+        # Configurar URL base - si no está definida, usar localhost
         self.base_url = os.getenv('FLASK_SERVER_URL', 'http://localhost:5000')
+        
+        # Log de inicialización
+        if current_app:
+            current_app.logger.info(f"ArduinoClientService inicializado con URL: {self.base_url}")
         
     def send_raw_reading(self, raw_data):
         """
@@ -127,8 +137,61 @@ class ArduinoClient:
                 raise ValueError("No se pudo extraer distancia de los datos")
                 
         except ValueError as e:
-            return {'error': f'Error parseando datos: {e}'}
+            error_msg = f'Error parseando datos: {e}'
+            if current_app:
+                current_app.logger.error(error_msg)
+            return {'error': error_msg}
         except requests.exceptions.RequestException as e:
-            return {'error': f'Error de conexión: {e}'}
+            error_msg = f'Error de conexión: {e}'
+            if current_app:
+                current_app.logger.error(error_msg)
+            return {'error': error_msg}
         except Exception as e:
-            return {'error': f'Error inesperado: {e}'}
+            error_msg = f'Error inesperado: {e}'
+            if current_app:
+                current_app.logger.error(error_msg)
+            return {'error': error_msg}
+
+    def send_measurement_direct(self, distancia, estado=None, timestamp=None):
+        """
+        Enviar medición directamente sin parsing de texto
+        
+        Args:
+            distancia (float): Valor de distancia en cm
+            estado (str, optional): Estado precalculado
+            timestamp (int, optional): Timestamp del dispositivo
+            
+        Returns:
+            dict: Respuesta del servidor
+        """
+        try:
+            payload = {"distancia": distancia}
+            
+            # Si se proporciona estado y timestamp, usar formato ESP8266
+            if estado is not None and timestamp is not None:
+                payload = {
+                    "NIVEL": distancia,
+                    "ESTADO": estado,
+                    "TIMESTAMP": timestamp
+                }
+            
+            response = requests.post(
+                f'{self.base_url}/api/mediciones',
+                json=payload,
+                headers={'Content-Type': 'application/json'},
+                timeout=10
+            )
+            
+            if response.status_code == 201:
+                return response.json()
+            else:
+                return {'error': f'Error del servidor: {response.status_code}'}
+                
+        except Exception as e:
+            error_msg = f'Error enviando medición directa: {e}'
+            if current_app:
+                current_app.logger.error(error_msg)
+            return {'error': error_msg}
+
+# Instancia global del servicio
+arduino_client_service = ArduinoClientService()

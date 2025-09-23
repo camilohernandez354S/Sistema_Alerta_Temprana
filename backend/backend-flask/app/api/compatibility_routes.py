@@ -79,21 +79,69 @@ def login_compatibility():
 def recibir_medicion_compatibilidad():
     """
     Endpoint de compatibilidad para recibir mediciones
-    Mantiene la misma interfaz que el main.py anterior
+    Soporta múltiples formatos:
+    1. Formato original: {"distancia": 25.5}
+    2. Formato ESP8266: {"TIMESTAMP": 5016, "NIVEL": 240.65, "ESTADO": "Sequia"}
     """
     try:
         data = request.get_json()
-        if not data or 'distancia' not in data:
-            return jsonify({'error': 'Falta el campo distancia'}), 400
+        if not data:
+            return jsonify({'error': 'Datos JSON requeridos'}), 400
 
-        # Clasificar estado basado en la distancia (igual que el Arduino)
-        distancia = data['distancia']
-        if distancia <= 15.0:
-            estado = 'Inundación'
-        elif distancia >= 40.0:
-            estado = 'Sequía'
+        # Extraer distancia y estado según el formato recibido
+        distancia = None
+        estado = None
+        timestamp = None
+
+        # Formato ESP8266 (nuevo)
+        if 'NIVEL' in data:
+            distancia = float(data['NIVEL'])
+            # El ESP8266 ya envía el estado, pero lo validamos
+            if 'ESTADO' in data:
+                estado_esp8266 = data['ESTADO']
+                # Normalizar estado a nuestro formato
+                if estado_esp8266 == 'Inundacion':
+                    estado = 'Inundación'
+                elif estado_esp8266 == 'Sequia':
+                    estado = 'Sequía'
+                elif estado_esp8266 == 'Normal':
+                    estado = 'Normal'
+                else:
+                    # Si el estado no es reconocido, clasificamos automáticamente
+                    if distancia <= 15.0:
+                        estado = 'Inundación'
+                    elif distancia >= 40.0:
+                        estado = 'Sequía'
+                    else:
+                        estado = 'Normal'
+            else:
+                # Clasificar estado automáticamente si no viene del ESP8266
+                if distancia <= 15.0:
+                    estado = 'Inundación'
+                elif distancia >= 40.0:
+                    estado = 'Sequía'
+                else:
+                    estado = 'Normal'
+            
+            # Guardar timestamp del ESP8266 si viene
+            if 'TIMESTAMP' in data:
+                timestamp = data['TIMESTAMP']
+                
+        # Formato original (compatibilidad)
+        elif 'distancia' in data:
+            distancia = float(data['distancia'])
+            # Clasificar estado basado en la distancia (igual que el Arduino)
+            if distancia <= 15.0:
+                estado = 'Inundación'
+            elif distancia >= 40.0:
+                estado = 'Sequía'
+            else:
+                estado = 'Normal'
         else:
-            estado = 'Normal'
+            return jsonify({'error': 'Formato no soportado. Use {"distancia": valor} o {"NIVEL": valor, "ESTADO": "estado"}'}), 400
+
+        if distancia is None:
+            return jsonify({'error': 'No se pudo extraer la distancia'}), 400
         
         # Guardar en MongoDB con timestamp y estado
         medicion = {
@@ -102,29 +150,41 @@ def recibir_medicion_compatibilidad():
             'fecha': datetime.utcnow()
         }
         
+        # Agregar timestamp del dispositivo si está disponible
+        if timestamp is not None:
+            medicion['device_timestamp'] = timestamp
+            medicion['device_type'] = 'ESP8266'
+        else:
+            medicion['device_type'] = 'Serial'
+        
         coleccion = get_mongo_collection()
         resultado_medicion = coleccion.insert_one(medicion)
         
         # Procesar alerta automáticamente
         try:
             resultado_alerta = alerts_service.procesar_nueva_medicion(
-                distancia=data['distancia'],
+                distancia=distancia,
                 user_id='arduino_sensor'
             )
             current_app.logger.info(f"Procesamiento de alerta: {resultado_alerta}")
         except Exception as e:
             current_app.logger.warning(f"Error procesando alerta: {e}")
 
-        current_app.logger.info(f"Medición guardada: {data['distancia']} cm")
+        current_app.logger.info(f"Medición guardada: {distancia} cm, estado: {estado}")
         return jsonify({
             'mensaje': 'Medición guardada', 
-            'distancia': data['distancia'],
+            'distancia': distancia,
+            'estado': estado,
             'data': {
                 'medicion_id': str(resultado_medicion.inserted_id),
-                'timestamp': medicion['fecha'].isoformat() + 'Z'
+                'timestamp': medicion['fecha'].isoformat() + 'Z',
+                'device_type': medicion['device_type']
             }
         }), 201
         
+    except ValueError as ve:
+        current_app.logger.error(f"Error de formato en datos: {ve}")
+        return jsonify({'error': f'Error de formato: {str(ve)}'}), 400
     except Exception as e:
         current_app.logger.error(f"Error guardando medición: {e}")
         return jsonify({'error': 'Error interno del servidor'}), 500
