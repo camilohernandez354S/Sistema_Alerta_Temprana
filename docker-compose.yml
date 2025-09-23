@@ -1,0 +1,67 @@
+
+services:
+  # Servicio del Backend (Flask)
+  backend:
+    build: ./backend/backend-flask
+    container_name: sat_backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/backend-flask:/app
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    networks:
+      - sat-network
+
+  # Servicio del Frontend (Vue.js)
+  frontend:
+    build: ./frontend
+    container_name: sat_frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - sat-network
+
+  # Servicio del Lector Serial (Arduino)
+  arduino-reader:
+    build: ./backend/arduino
+    container_name: sat_arduino_reader
+    restart: unless-stopped
+    privileged: true
+    # --- IMPORTANTE: CORRECCIÓN PARA WINDOWS ---
+    # Comente la línea de Linux y descomente la de Windows
+    devices:
+       #- "/dev/ttyUSB0:/dev/ttyUSB0"
+       - "\\\\.\\COM11:\\\\.\\COM11" # <--- ¡ASEGÚRESE DE QUE ESTE NÚMERO COINCIDA CON EL SUYO!
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    networks:
+      - sat-network
+
+  # Servicio de Base de Datos (MongoDB)
+  mongo:
+    image: mongo:latest
+    container_name: sat_mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - sat-network
+
+networks:
+  sat-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local
