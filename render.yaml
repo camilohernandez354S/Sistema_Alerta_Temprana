@@ -6,7 +6,7 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r backend/backend-flask/requirements-prod.txt
-    startCommand: cd backend/backend-flask && gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 wsgi:application
+    startCommand: cd backend/backend-flask && gunicorn --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --access-logfile - --error-logfile - wsgi:application
     envVars:
       - key: FLASK_ENV
         value: production
