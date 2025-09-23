@@ -1,44 +1,34 @@
-# Dependencias principales del Sistema de Alerta Temprana
+# ===========================================
+# SISTEMA DE ALERTA TEMPRANA - DEPENDENCIAS
+# ===========================================
+
+# Core Flask y dependencias principales
 Flask==3.1.2
 Flask-CORS==6.0.1
 pymongo==4.15.1
 PyJWT==2.10.1
 requests==2.32.5
 
-# Dependencias para análisis de datos
-pydantic==2.11.4
-pandas==2.2.3
-numpy==2.2.5
-scikit-learn==1.6.1
-
-# Dependencias de configuración
+# Configuración y variables de entorno
 python-dotenv==1.1.0
 
-# Dependencias para testing
-pytest==8.0.0
-pytest-flask==1.3.0
-
-# Dependencias para autenticación avanzada
+# Autenticación y seguridad
 bcrypt==4.1.2
 email-validator==2.1.0
 
-# Dependencias para reportes (opcional)
-reportlab==4.0.7
-openpyxl==3.1.2
+# Servidor WSGI para producción
+gunicorn==22.0.0
 
-# Dependencias para comunicación serial con Arduino
+# Comunicación serial (para Arduino local)
 pyserial==3.5
 
-# Dependencias para rate limiting y caching
-redis==5.0.1
-flask-limiter==3.8.0
-
-# Dependencias para WebSocket
+# WebSocket para comunicación en tiempo real
 flask-socketio==5.3.6
 python-socketio==5.10.0
 
-# Dependencias para email
+# Email notifications
 flask-mail==0.9.1
 
-# Servidor WSGI para producción
-gunicorn==22.0.0
+# Rate limiting y caching
+flask-limiter==3.8.0
+redis==5.0.1
