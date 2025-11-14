@@ -108,24 +108,23 @@
     <!-- Contenido Principal -->
     <div class="flex-1 flex flex-col overflow-hidden bg-[#fcffff] lg:ml-0">
       <!-- Header Superior -->
-      <header class="bg-[#fcffff] border-b border-[#c4dafa] pl-11 sm:pl-3 md:pl-6 lg:pl-8 pr-2 sm:pr-4 md:pr-6 lg:pr-8 py-2 sm:py-4 md:py-5">
+      <header class="bg-[#fcffff] border-b border-[#c4dafa] pl-11 sm:pl-3 md:pl-6 lg:pl-8 pr-2 sm:pr-4 md:pr-6 lg:pr-8 py-2 sm:py-3 md:py-4">
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-3 md:gap-4">
           <div class="min-w-0 flex-1">
-            <h1 class="text-lg sm:text-xl md:text-2xl font-semibold text-[#005187] truncate">Panel de Administrador</h1>
+            <h1 class="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-[#005187] truncate">Panel de Administrador</h1>
             <p class="text-xs sm:text-sm text-[#4d82bc] mt-0.5 sm:mt-1 line-clamp-1">Sistema de Alerta Temprana - Monitoreo en Tiempo Real</p>
           </div>
-          <div class="flex items-center gap-2 sm:gap-3 md:gap-4 w-full sm:w-auto">
-            <div class="flex items-center space-x-2 px-2 sm:px-3 py-1.5 bg-[#c4dafa] rounded-full border border-[#84b6f4]">
-              <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+          <div class="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
+            <div class="flex items-center space-x-1.5 sm:space-x-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-[#c4dafa] rounded-full border border-[#84b6f4]">
+              <div class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500"></div>
               <span class="text-xs sm:text-sm font-medium text-[#005187] hidden sm:inline">Sistema Activo</span>
               <span class="text-xs font-medium text-[#005187] sm:hidden">Activo</span>
             </div>
-            <button @click="refreshData" class="px-3 sm:px-4 py-2 bg-[#005187] text-white rounded-lg hover:bg-[#4d82bc] transition-colors duration-150 font-medium flex items-center space-x-2 text-sm sm:text-base whitespace-nowrap">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button @click="refreshData" class="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-[#005187] text-white rounded-lg hover:bg-[#4d82bc] transition-colors duration-150 font-medium flex items-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm md:text-base whitespace-nowrap">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
               </svg>
-              <span class="hidden sm:inline">Actualizar</span>
-              <span class="sm:hidden">Actualizar</span>
+              <span>Actualizar</span>
             </button>
           </div>
         </div>
@@ -162,67 +161,67 @@
         </h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <!-- Última medición -->
-          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-150">
-            <div class="flex items-center justify-between mb-3 sm:mb-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
+          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-3 sm:p-4 md:p-5 hover:shadow-md transition-shadow duration-150">
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#005187]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                 </svg>
               </div>
               <div class="text-right min-w-0 flex-1 ml-2">
-                <div class="text-2xl sm:text-3xl font-semibold text-[#005187] truncate" :class="ultimaMedicionColor">{{ ultimaMedicion }}</div>
-                <div class="text-xs sm:text-sm text-[#4d82bc] mt-1">Última medición</div>
+                <div class="text-xl sm:text-2xl md:text-3xl font-semibold text-[#005187] truncate" :class="ultimaMedicionColor">{{ ultimaMedicion }}</div>
+                <div class="text-xs text-[#4d82bc] mt-0.5 sm:mt-1">Última medición</div>
               </div>
             </div>
-            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block">Tiempo real</div>
+            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block whitespace-nowrap">Tiempo real</div>
           </div>
 
           <!-- Promedio -->
-          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-150">
-            <div class="flex items-center justify-between mb-3 sm:mb-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
+          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-3 sm:p-4 md:p-5 hover:shadow-md transition-shadow duration-150">
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#005187]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                 </svg>
               </div>
               <div class="text-right min-w-0 flex-1 ml-2">
-                <div class="text-2xl sm:text-3xl font-semibold text-[#005187] truncate" :class="promedioColor">{{ promedio }}</div>
-                <div class="text-xs sm:text-sm text-[#4d82bc] mt-1">Promedio</div>
+                <div class="text-xl sm:text-2xl md:text-3xl font-semibold text-[#005187] truncate" :class="promedioColor">{{ promedio }}</div>
+                <div class="text-xs text-[#4d82bc] mt-0.5 sm:mt-1">Promedio</div>
               </div>
             </div>
-            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block">Valor promedio</div>
+            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block whitespace-nowrap">Valor promedio</div>
           </div>
 
           <!-- Máximo -->
-          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-150">
-            <div class="flex items-center justify-between mb-3 sm:mb-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
+          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-3 sm:p-4 md:p-5 hover:shadow-md transition-shadow duration-150">
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#005187]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12"></path>
                 </svg>
               </div>
               <div class="text-right min-w-0 flex-1 ml-2">
-                <div class="text-2xl sm:text-3xl font-semibold text-[#005187] truncate" :class="maximoColor">{{ maximo }}</div>
-                <div class="text-xs sm:text-sm text-[#4d82bc] mt-1">Máximo</div>
+                <div class="text-xl sm:text-2xl md:text-3xl font-semibold text-[#005187] truncate" :class="maximoColor">{{ maximo }}</div>
+                <div class="text-xs text-[#4d82bc] mt-0.5 sm:mt-1">Máximo</div>
               </div>
             </div>
-            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block">Valor más alto</div>
+            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block whitespace-nowrap">Valor más alto</div>
           </div>
 
           <!-- Mínimo -->
-          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow duration-150">
-            <div class="flex items-center justify-between mb-3 sm:mb-4">
-              <div class="w-9 h-9 sm:w-10 sm:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
+          <div class="bg-[#fcffff] border border-[#c4dafa] rounded-lg p-3 sm:p-4 md:p-5 hover:shadow-md transition-shadow duration-150">
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#c4dafa] rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#005187]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6"></path>
                 </svg>
               </div>
               <div class="text-right min-w-0 flex-1 ml-2">
-                <div class="text-2xl sm:text-3xl font-semibold text-[#005187] truncate" :class="minimoColor">{{ minimo }}</div>
-                <div class="text-xs sm:text-sm text-[#4d82bc] mt-1">Mínimo</div>
+                <div class="text-xl sm:text-2xl md:text-3xl font-semibold text-[#005187] truncate" :class="minimoColor">{{ minimo }}</div>
+                <div class="text-xs text-[#4d82bc] mt-0.5 sm:mt-1">Mínimo</div>
               </div>
             </div>
-            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block">Valor más bajo</div>
+            <div class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-md px-2 py-1 inline-block whitespace-nowrap">Valor más bajo</div>
           </div>
         </div>
       </div>
