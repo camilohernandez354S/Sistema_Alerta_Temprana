@@ -10,96 +10,145 @@ Sistema de monitoreo en tiempo real del nivel de agua con alertas automáticas p
 - **Hardware**: Arduino ESP8266/ESP32 con sensor ultrasónico HC-SR04
 - **Comunicación**: WiFi (HTTP/HTTPS)
 
-## 🚀 Despliegue en Render
+## 🚀 Inicio Rápido - Desarrollo Local
 
-**Despliegue remoto desde la terminal:**
+### Requisitos Previos
 
-1. **Configurar API Key de Render**
-```powershell
-.\scripts\configurar-render-api-key.ps1
-```
+- Docker Desktop instalado y ejecutándose
+- Git
 
-2. **Subir código a GitHub**
+### 1. Configurar entorno
+
 ```bash
-git add .
-git commit -m "Configuración para Render"
-git push origin main
+# Copiar archivo de configuración
+cp config/example.env .env
+
+# Editar .env y configurar:
+# - SERVER_IP: Tu IP local
+# - WIFI_SSID: Nombre de tu red WiFi
+# - WIFI_PASSWORD: Contraseña de tu red WiFi
 ```
 
-3. **Crear servicios en Render (primera vez)**
-   - Ve a https://dashboard.render.com
-   - New → Blueprint
-   - Conecta tu repositorio
-   - Render detectará `render.yaml` automáticamente
+### 2. Iniciar servicios
 
-4. **Desplegar desde terminal**
+```bash
+docker compose up -d
+```
+
+### 3. Acceder a la aplicación
+
+- **Frontend**: http://localhost:8080
+- **Backend API**: http://localhost:5000
+- **Mongo Express** (Admin DB): http://localhost:8081
+  - Usuario: `admin` / Contraseña: `admin123`
+
+### 4. Crear usuario administrador
+
+```bash
+docker compose exec backend python create_user.py
+```
+
+### 5. Generar códigos QR (Opcional)
+
+Para generar códigos QR de WiFi y URL del sistema automáticamente:
+
 ```powershell
-.\scripts\desplegar-render.ps1 -All
+# Windows PowerShell
+powershell -ExecutionPolicy Bypass -File scripts\generar-qr-completo-host.ps1
 ```
 
-**📖 Ver guía completa:** [docs/DESPLIEGUE_TERMINAL.md](docs/DESPLIEGUE_TERMINAL.md)
+Este comando:
+1. Detecta automáticamente tu IP de red y red WiFi actual
+2. Actualiza el archivo `.env` con la configuración detectada
+3. Genera códigos QR para:
+   - Conectar a la red WiFi (en `qr_codes/wifi/`)
+   - Acceder al sistema (en `qr_codes/url/`)
+4. Reinicia los contenedores con la nueva configuración
 
-### Configurar Arduino WiFi
+**Nota**: Requiere permisos de administrador para obtener la contraseña WiFi automáticamente.
 
-Una vez desplegado en Render, configura el Arduino para usar la URL remota:
+**📖 Ver guía completa:** [DESARROLLO_LOCAL.md](DESARROLLO_LOCAL.md)
 
-1. **Configurar Arduino para producción**
-```powershell
-.\scripts\configurar-arduino-remoto.ps1
-```
+## 🔌 Configurar Arduino WiFi
 
-Este script te pedirá la URL de tu backend en Render (ej: `https://sat-backend.onrender.com`)
+### 1. Generar configuración WiFi
 
-2. **Generar configuración WiFi**
 ```powershell
 .\scripts\verificar-config-arduino.ps1
 ```
 
-3. **Subir código al Arduino**
+Este script lee `.env` y genera `backend/arduino/wifi_config.h`
+
+### 2. Subir código al Arduino
+
 - Abre `backend/arduino/nivel_agua_wifi.ino` en Arduino IDE
 - Selecciona tu placa (ESP8266 o ESP32)
 - Sube el código
 
 **📖 Ver guía completa:** [docs/CONFIGURACION_ARDUINO_WIFI.md](docs/CONFIGURACION_ARDUINO_WIFI.md)
 
+## 🔲 Generar Códigos QR
+
+### Generar QR de WiFi y URL automáticamente:
+
+```powershell
+.\scripts\generar-qr.ps1
+```
+
+Este script:
+- ✅ Lee el `.env` automáticamente
+- ✅ Detecta la IP de la red si no está configurada
+- ✅ Genera QR de WiFi (para conectar a la red)
+- ✅ Genera QR de URL (para acceder al sistema)
+
+Los QR codes se guardan en `qr_codes/`:
+- `qr-wifi.png` - Escanea para conectar a WiFi
+- `qr-url.png` - Escanea para acceder al sistema
+
+**📖 Ver guía completa:** [docs/GENERAR_QR.md](docs/GENERAR_QR.md)
 
 ## 📚 Documentación
 
-- [Despliegue desde Terminal](docs/DESPLIEGUE_TERMINAL.md) - Guía completa de despliegue
-- [Configuración WiFi Arduino](docs/CONFIGURACION_ARDUINO_WIFI.md) - Configurar Arduino para producción
+- [Desarrollo Local](DESARROLLO_LOCAL.md) - Guía completa de desarrollo local
+- [Configuración WiFi Arduino](docs/CONFIGURACION_ARDUINO_WIFI.md) - Configurar Arduino WiFi
+- [Generar Códigos QR](docs/GENERAR_QR.md) - Generar QR de WiFi y URL
+- [Flujo de Configuración](docs/FLUJO_CONFIGURACION.md) - Cómo funciona la lectura del .env
 
 ## 🛠️ Scripts Esenciales
 
-- `scripts/configurar-render-api-key.ps1` - Configurar API Key de Render (primera vez)
-- `scripts/desplegar-render.ps1` - Desplegar en Render desde terminal
-- `scripts/configurar-arduino-remoto.ps1` - Configurar Arduino para producción
-- `scripts/verificar-config-arduino.ps1` - Verificar configuración Arduino
+- `scripts/verificar-config-arduino.ps1` - Verificar y generar configuración Arduino WiFi
+- `scripts/generar-qr.ps1` - Generar códigos QR (WiFi y URL) automáticamente
 - `scripts/generar-secret-key.py` - Generar clave secreta para Flask
 
-## 📝 Variables de Entorno para Arduino
+## 📝 Variables de Entorno
 
-Configura estas variables en tu `.env` local para el Arduino:
+Configura estas variables en tu `.env`:
 
 ```env
 # WiFi (para Arduino)
 WIFI_SSID=nombre_de_tu_red
 WIFI_PASSWORD=tu_contraseña
 
-# URL del servidor en Render
-FLASK_SERVER_URL=https://sat-backend.onrender.com
+# URL del servidor (local)
+FLASK_SERVER_URL=http://192.168.137.24:5000
 ```
 
 ## 🐛 Solución de Problemas
+
+### Servicios no inician
+- Verifica que Docker Desktop esté ejecutándose
+- Revisa logs: `docker compose logs`
+- Verifica puertos disponibles (5000, 8080, 27017)
 
 ### Arduino no se conecta
 - Verifica credenciales WiFi en `.env`
 - Ejecuta `.\scripts\verificar-config-arduino.ps1`
 - Revisa monitor serial del Arduino
 
-### Error de despliegue en Render
-- Verifica que `render.yaml` esté correcto
-- Revisa los logs en el dashboard de Render
-- Asegúrate de que todas las variables de entorno estén configuradas
+### Frontend no se conecta al backend
+- Verifica que ambos servicios estén corriendo: `docker compose ps`
+- Revisa la configuración en `frontend/src/config/api.js`
+- Verifica CORS en el backend
 
 ## 📄 Licencia
 
