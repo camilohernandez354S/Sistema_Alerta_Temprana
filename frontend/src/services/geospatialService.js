@@ -4,6 +4,7 @@
  * Principio SRP: Responsabilidad única de manejar datos geoespaciales
  */
 import { ref } from 'vue'
+import { API_URL } from '../config/api.js'
 
 // Estado reactivo global para alertas geoespaciales
 const alerts = ref([])
@@ -14,7 +15,7 @@ const selectedRadius = ref(5000) // Radio por defecto: 5km
 
 class GeospatialService {
   constructor() {
-    this.baseURL = 'http://localhost:5000/api'
+    this.baseURL = API_URL
     this.token = localStorage.getItem('token')
   }
 

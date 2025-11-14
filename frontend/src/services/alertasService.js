@@ -3,7 +3,9 @@
  * Sigue el principio SRP (Single Responsibility Principle)
  */
 
-const API_BASE_URL = 'http://localhost:5000/api/sensor';
+import { SENSOR_API_URL } from '../config/api.js'
+
+const API_BASE_URL = SENSOR_API_URL;
 
 /**
  * Obtiene las alertas activas del sistema

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import API_BASE_URL from '../config/api.js'
 
 export const useArduinoStore = defineStore('arduino', () => {
   // Estado reactivo
@@ -8,9 +9,6 @@ export const useArduinoStore = defineStore('arduino', () => {
   const commandHistory = ref([])
   const connectionStatus = ref(false)
   const notifications = ref([])
-
-  // Configuración
-  const API_BASE_URL = 'http://localhost:5000'
 
   // Getters
   const isConnected = computed(() => connectionStatus.value)

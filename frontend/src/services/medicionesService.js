@@ -1,7 +1,9 @@
-const API_URL = 'http://localhost:5000/api/mediciones';
+import { API_URL } from '../config/api.js'
+
+const MEDICIONES_API_URL = `${API_URL}/mediciones`;
 
 export async function obtenerMediciones() {
-  const response = await fetch(API_URL);
+  const response = await fetch(MEDICIONES_API_URL);
   if (!response.ok) {
     throw new Error('Error al obtener las mediciones');
   }

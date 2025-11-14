@@ -1,52 +1,54 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50" 
+  <div class="min-h-screen bg-[#aaaaaa]" 
        :class="alertClass">
     <!-- Encabezado mejorado -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-lg border-b border-blue-200/50 px-6 py-6">
+    <header class="bg-[#fcffff] shadow-md border-b border-[#c4dafa] px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5">
       <div class="max-w-7xl mx-auto">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center space-x-4">
-            <div class="flex items-center space-x-3">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+          <div class="flex items-center space-x-2 sm:space-x-3 md:space-x-4 w-full sm:w-auto">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#005187] rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <svg class="w-5 h-5 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-[#005187] truncate">
+                Sistema de Alerta Temprana
+              </h1>
+              <p class="text-xs sm:text-sm text-[#4d82bc] mt-1 flex items-center space-x-1 sm:space-x-2">
+                <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-              </div>
-              <div>
-                <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                  Sistema de Alerta Temprana
-                </h1>
-                <p class="text-sm text-gray-600 mt-1 flex items-center space-x-2">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                  </svg>
-                  <span>{{ fechaActual }}</span>
-                </p>
-              </div>
+                <span class="truncate">{{ fechaActual }}</span>
+              </p>
             </div>
           </div>
-          <div class="flex items-center space-x-4">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 w-full sm:w-auto justify-end">
             <!-- Indicador de alerta -->
-            <div v-if="isFloodAlert || isDroughtAlert" class="flex items-center space-x-3 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-lg border-2 border-white/50">
-              <div class="flex items-center space-x-2">
-                <div class="w-4 h-4 rounded-full alert-indicator animate-pulse"></div>
-                <span class="text-sm font-bold" :class="isFloodAlert ? 'text-red-700' : 'text-orange-700'">
+            <div v-if="isFloodAlert || isDroughtAlert" class="flex items-center space-x-2 sm:space-x-3 bg-[#fcffff] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-md border border-[#c4dafa]">
+              <div class="flex items-center space-x-1 sm:space-x-2">
+                <div class="w-3 h-3 sm:w-4 sm:h-4 rounded-full alert-indicator animate-pulse"></div>
+                <span class="text-xs sm:text-sm font-bold" :class="isFloodAlert ? 'text-red-700' : 'text-orange-700'">
                   {{ isFloodAlert ? '⚠️ INUNDACIÓN' : '⚠️ SEQUÍA' }}
                 </span>
               </div>
             </div>
             
             <!-- Indicador de conexión -->
-            <div class="flex items-center space-x-3 bg-white/60 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm border border-gray-200/50">
-              <div class="flex items-center space-x-2">
-                <div class="w-3 h-3 rounded-full animate-pulse" :class="connectionStatus ? 'bg-emerald-500' : 'bg-red-500'"></div>
-                <span class="text-sm font-medium" :class="connectionStatus ? 'text-emerald-700' : 'text-red-700'">
+            <div class="flex items-center space-x-2 sm:space-x-3 bg-[#c4dafa] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 shadow-sm border border-[#84b6f4]">
+              <div class="flex items-center space-x-1 sm:space-x-2">
+                <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full animate-pulse" :class="connectionStatus ? 'bg-emerald-500' : 'bg-red-500'"></div>
+                <span class="text-xs sm:text-sm font-medium text-[#005187] hidden sm:inline">
                   {{ connectionStatus ? 'Sensor Activo' : 'Sensor Inactivo' }}
+                </span>
+                <span class="text-xs font-medium text-[#005187] sm:hidden">
+                  {{ connectionStatus ? 'Activo' : 'Inactivo' }}
                 </span>
               </div>
             </div>
-            <button @click="handleLogout" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-2.5 rounded-xl hover:from-red-600 hover:to-red-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-medium">
-              Cerrar sesión
+            <button @click="handleLogout" class="bg-[#4d82bc] text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 rounded-lg hover:bg-[#005187] transition-all duration-200 shadow-md hover:shadow-lg font-medium text-sm sm:text-base whitespace-nowrap">
+              <span class="hidden sm:inline">Cerrar sesión</span>
+              <span class="sm:hidden">Salir</span>
             </button>
           </div>
         </div>
@@ -54,47 +56,49 @@
     </header>
 
     <!-- Contenido principal -->
-    <main class="max-w-7xl mx-auto px-6 py-8">
+    <main class="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 bg-[#fcffff] min-h-[calc(100vh-120px)]">
       <!-- Estado de carga global mejorado -->
       <div v-if="isLoading" class="flex flex-col justify-center items-center h-64 space-y-4">
         <div class="relative">
-          <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-200"></div>
-          <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent absolute top-0 left-0"></div>
+          <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#c4dafa]"></div>
+          <div class="animate-spin rounded-full h-16 w-16 border-4 border-[#005187] border-t-transparent absolute top-0 left-0"></div>
         </div>
         <div class="text-center">
-          <p class="text-lg font-medium text-gray-700">Cargando datos del sensor...</p>
-          <p class="text-sm text-gray-500 mt-1">Conectando con el sistema de monitoreo</p>
+          <p class="text-lg font-medium text-[#005187]">Cargando datos del sensor...</p>
+          <p class="text-sm text-[#4d82bc] mt-1">Conectando con el sistema de monitoreo</p>
         </div>
       </div>
 
       <!-- Estado de error/información global -->
       <div v-else-if="error" :class="[
-        'rounded-lg p-4 mb-6',
-        error.includes('demostración') ? 'bg-blue-50 border border-blue-200' : 'bg-red-50 border border-red-200'
+        'rounded-lg p-6 mb-6 border',
+        error.includes('demostración') ? 'bg-[#c4dafa] border-[#84b6f4]' : 'bg-red-50 border-red-200'
       ]">
         <div class="flex">
           <div class="flex-shrink-0">
-            <svg v-if="error.includes('demostración')" class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-            </svg>
-            <svg v-else class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
-            </svg>
+            <div class="w-10 h-10 rounded-lg flex items-center justify-center" :class="error.includes('demostración') ? 'bg-[#84b6f4]' : 'bg-red-100'">
+              <svg v-if="error.includes('demostración')" class="h-6 w-6 text-[#005187]" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+              </svg>
+              <svg v-else class="h-6 w-6 text-red-500" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </div>
           </div>
-          <div class="ml-3">
-            <h3 class="text-sm font-medium" :class="error.includes('demostración') ? 'text-blue-800' : 'text-red-800'">
+          <div class="ml-4 flex-1">
+            <h3 class="text-lg font-semibold mb-2" :class="error.includes('demostración') ? 'text-[#005187]' : 'text-red-800'">
               {{ error.includes('demostración') ? 'Modo Demostración' : 'Error al cargar datos' }}
             </h3>
-            <p class="mt-1 text-sm" :class="error.includes('demostración') ? 'text-blue-700' : 'text-red-700'">
+            <p class="text-sm mb-4" :class="error.includes('demostración') ? 'text-[#4d82bc]' : 'text-red-700'">
               {{ error }}
             </p>
-            <div class="mt-3 flex space-x-3">
-              <button @click="loadData" class="text-sm underline hover:no-underline" 
-                      :class="error.includes('demostración') ? 'text-blue-800 hover:text-blue-900' : 'text-red-800 hover:text-red-900'">
+            <div class="flex space-x-3">
+              <button @click="loadData" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors" 
+                      :class="error.includes('demostración') ? 'bg-[#005187] text-white hover:bg-[#4d82bc]' : 'bg-red-600 text-white hover:bg-red-700'">
                 {{ error.includes('demostración') ? 'Intentar conectar con API' : 'Reintentar' }}
               </button>
               <button v-if="!connectionStatus" @click="insertarDatosPrueba" 
-                      class="text-sm underline hover:no-underline text-green-800 hover:text-green-900"
+                      class="px-4 py-2 rounded-lg text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-700 transition-colors"
                       :disabled="insertandoDatos">
                 {{ insertandoDatos ? 'Insertando...' : 'Insertar datos de prueba' }}
               </button>
@@ -106,26 +110,26 @@
       <!-- Dashboard principal -->
       <div v-else class="space-y-8">
         <!-- Estado actual y predicciones -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
           <!-- Estado actual - Card grande mejorada -->
           <div class="lg:col-span-1">
-            <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
+            <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
               <div class="text-center">
-                <div class="flex items-center justify-center mb-6">
-                  <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
-                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="flex items-center justify-center mb-3 sm:mb-4">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#005187] rounded-lg flex items-center justify-center shadow-md">
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011 1v18a1 1 0 01-1 1H6a1 1 0 01-1-1V2a1 1 0 011-1h8z"></path>
                     </svg>
                   </div>
                 </div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-6">Estado Actual</h3>
+                <h3 class="text-base sm:text-lg font-semibold text-[#005187] mb-3 sm:mb-4">Estado Actual</h3>
                 
                 <!-- Nivel actual en texto grande -->
-                <div class="mb-6">
-                  <div class="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                <div class="mb-3 sm:mb-4">
+                  <div class="text-3xl sm:text-4xl font-bold text-[#005187]">
                     {{ currentState.nivel_cm || 'N/A' }}
                   </div>
-                  <div class="text-sm text-gray-500 font-medium">centímetros</div>
+                  <div class="text-xs sm:text-sm text-[#4d82bc] font-medium">centímetros</div>
                 </div>
                 
                 <!-- Estado textual -->
@@ -139,16 +143,16 @@
                 
                 <!-- Tendencia -->
                 <div class="flex items-center justify-center space-x-2 mb-3">
-                  <div class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                  <div class="w-8 h-8 rounded-full bg-[#c4dafa] flex items-center justify-center">
                     <svg class="w-4 h-4" :class="getTrendIconColor(currentState.tendencia)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="getTrendIcon(currentState.tendencia)"></path>
                     </svg>
                   </div>
-                  <span class="text-sm font-medium text-gray-700">{{ getTrendText(currentState.tendencia) }}</span>
+                  <span class="text-sm font-medium text-[#005187]">{{ getTrendText(currentState.tendencia) }}</span>
                 </div>
                 
                 <!-- Pendiente si está disponible -->
-                <div v-if="currentState.pendiente_cm_por_h !== undefined" class="text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2">
+                <div v-if="currentState.pendiente_cm_por_h !== undefined" class="text-xs text-[#4d82bc] bg-[#c4dafa] rounded-lg px-3 py-2">
                   {{ currentState.pendiente_cm_por_h > 0 ? '+' : '' }}{{ currentState.pendiente_cm_por_h?.toFixed(1) }} cm/h
                 </div>
               </div>
@@ -157,33 +161,33 @@
           
           <!-- Predicciones futuras - Tarjetas pequeñas mejoradas -->
           <div class="lg:col-span-3">
-            <div class="mb-4">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Predicciones Futuras</h3>
-              <p class="text-sm text-gray-600">Análisis predictivo basado en tendencias históricas</p>
+            <div class="mb-3 sm:mb-4">
+              <h3 class="text-lg sm:text-xl font-bold text-[#005187] mb-1 sm:mb-2">Predicciones Futuras</h3>
+              <p class="text-xs sm:text-sm text-[#4d82bc]">Análisis predictivo basado en tendencias históricas</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4">
               <div v-for="prediction in predictions" :key="prediction.horizon_min" 
-                   class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300 group">
+                   class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300 group">
                 <div class="text-center">
                   <!-- Icono de tiempo -->
-                  <div class="flex justify-center mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200">
-                      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div class="flex justify-center mb-3 sm:mb-4">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-[#4d82bc] rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-200">
+                      <svg class="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                     </div>
                   </div>
                   
                   <!-- Horizonte temporal -->
-                  <div class="text-sm font-semibold text-gray-700 mb-3">
+                  <div class="text-xs sm:text-sm font-semibold text-[#005187] mb-2 sm:mb-3">
                     {{ formatHorizon(prediction.horizon_min) }}
                   </div>
                   
                   <!-- Nivel predicho -->
-                  <div class="text-3xl font-bold text-gray-800 mb-3">
+                  <div class="text-2xl sm:text-3xl font-bold text-[#005187] mb-2 sm:mb-3">
                     {{ prediction.nivel_cm?.toFixed(1) || 'N/A' }}
                   </div>
-                  <div class="text-xs text-gray-500 mb-4">cm</div>
+                  <div class="text-xs text-[#4d82bc] mb-3 sm:mb-4">cm</div>
                   
                   <!-- Estado y confianza -->
                   <div class="space-y-3">
@@ -194,13 +198,13 @@
                         {{ prediction.estado || 'Sin datos' }}
                       </span>
                     </div>
-                    <div class="bg-gray-50 rounded-lg px-3 py-2">
+                    <div class="bg-[#c4dafa] rounded-lg px-3 py-2">
                       <div class="flex items-center justify-between">
-                        <span class="text-xs text-gray-600 font-medium">Confianza</span>
-                        <span class="text-xs font-bold text-gray-800">{{ Math.round((prediction.confianza || 0) * 100) }}%</span>
+                        <span class="text-xs text-[#4d82bc] font-medium">Confianza</span>
+                        <span class="text-xs font-bold text-[#005187]">{{ Math.round((prediction.confianza || 0) * 100) }}%</span>
                       </div>
-                      <div class="w-full bg-gray-200 rounded-full h-1.5 mt-1">
-                        <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full transition-all duration-500" 
+                      <div class="w-full bg-[#84b6f4] rounded-full h-1.5 mt-1">
+                        <div class="bg-[#005187] h-1.5 rounded-full transition-all duration-500" 
                              :style="{ width: (prediction.confianza || 0) * 100 + '%' }"></div>
                       </div>
                     </div>
@@ -212,52 +216,53 @@
         </div>
 
         <!-- Gráfico principal con datos históricos y predicciones mejorado -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
-          <div class="flex items-center justify-between mb-6">
+        <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-5 md:mb-6 gap-3 sm:gap-4">
             <div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Análisis Temporal</h3>
-              <p class="text-sm text-gray-600">Evolución del nivel de agua y predicciones futuras</p>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#005187] mb-1 sm:mb-2">Análisis Temporal</h3>
+              <p class="text-xs sm:text-sm text-[#4d82bc]">Evolución del nivel de agua y predicciones futuras</p>
             </div>
-            <div class="flex items-center space-x-6 text-sm">
-              <div class="flex items-center space-x-3 bg-blue-50 rounded-full px-4 py-2">
-                <div class="w-3 h-3 bg-blue-600 rounded-full shadow-sm"></div>
-                <span class="font-medium text-blue-800">Datos Históricos</span>
+            <div class="flex flex-wrap items-center gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm">
+              <div class="flex items-center space-x-2 sm:space-x-3 bg-[#c4dafa] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-[#84b6f4]">
+                <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#005187] rounded-full shadow-sm"></div>
+                <span class="font-medium text-[#005187]">Datos Históricos</span>
               </div>
-              <div class="flex items-center space-x-3 bg-purple-50 rounded-full px-4 py-2">
-                <div class="w-3 h-3 bg-purple-500 rounded-full shadow-sm"></div>
-                <span class="font-medium text-purple-800">Predicciones</span>
+              <div class="flex items-center space-x-2 sm:space-x-3 bg-[#c4dafa] rounded-full px-3 sm:px-4 py-1.5 sm:py-2 border border-[#84b6f4]">
+                <div class="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#4d82bc] rounded-full shadow-sm"></div>
+                <span class="font-medium text-[#005187]">Predicciones</span>
               </div>
             </div>
           </div>
-          <div class="h-96 bg-gradient-to-br from-gray-50 to-blue-50 rounded-xl p-4">
+          <div class="h-64 sm:h-80 md:h-96 bg-[#c4dafa] rounded-lg p-3 sm:p-4">
             <Line
               v-if="combinedChartData.labels.length > 0"
               :data="combinedChartData"
               :options="chartOptions"
             />
-            <div v-else class="flex flex-col items-center justify-center h-full text-gray-500">
-              <svg class="w-16 h-16 mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div v-else class="flex flex-col items-center justify-center h-full text-[#4d82bc]">
+              <svg class="w-16 h-16 mb-4 text-[#84b6f4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
               </svg>
-              <p class="text-lg font-medium">No hay datos disponibles</p>
-              <p class="text-sm">Conecta el sensor para ver el análisis temporal</p>
+              <p class="text-lg font-medium text-[#005187]">No hay datos disponibles</p>
+              <p class="text-sm text-[#4d82bc]">Conecta el sensor para ver el análisis temporal</p>
             </div>
           </div>
         </div>
 
         <!-- Mapa de alertas geoespaciales -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
-          <div class="flex items-center justify-between mb-6">
+        <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-5 md:mb-6 gap-3">
             <div>
-              <h3 class="text-2xl font-bold text-gray-900 mb-2">Mapa de Alertas</h3>
-              <p class="text-sm text-gray-600">Visualiza alertas en tiempo real por proximidad geográfica</p>
+              <h3 class="text-xl sm:text-2xl font-bold text-[#005187] mb-1 sm:mb-2">Mapa de Alertas</h3>
+              <p class="text-xs sm:text-sm text-[#4d82bc]">Visualiza alertas en tiempo real por proximidad geográfica</p>
             </div>
-            <div class="flex items-center space-x-2 text-sm text-gray-500">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center space-x-2 text-xs sm:text-sm text-[#4d82bc]">
+              <svg class="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
-              <span>Haz clic en el mapa para buscar alertas</span>
+              <span class="hidden sm:inline">Haz clic en el mapa para buscar alertas</span>
+              <span class="sm:hidden">Toca el mapa</span>
             </div>
           </div>
           <GeospatialMap 
@@ -268,57 +273,57 @@
         </div>
 
         <!-- Métricas adicionales mejoradas -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           <!-- Última actualización -->
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
+          <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#4d82bc] rounded-lg flex items-center justify-center shadow-md">
+                  <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
               </div>
-              <div class="ml-4 flex-1">
-                <h3 class="text-sm font-semibold text-gray-700 mb-1">Última Actualización</h3>
-                <p class="text-xl font-bold text-gray-900 mb-1">{{ lastUpdateTime }}</p>
-                <p class="text-xs text-gray-500">Datos del sensor</p>
+              <div class="ml-3 sm:ml-4 flex-1 min-w-0">
+                <h3 class="text-xs sm:text-sm font-semibold text-[#005187] mb-1">Última Actualización</h3>
+                <p class="text-lg sm:text-xl font-bold text-[#005187] mb-1 truncate">{{ lastUpdateTime }}</p>
+                <p class="text-xs text-[#4d82bc]">Datos del sensor</p>
               </div>
             </div>
           </div>
 
           <!-- Estado del sistema -->
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
+          <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg" :class="statusColor">
-                  <svg class="w-7 h-7" :class="statusIconColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center shadow-md" :class="statusColor">
+                  <svg class="w-6 h-6 sm:w-7 sm:h-7" :class="statusIconColor" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" :d="statusIcon"></path>
                   </svg>
                 </div>
               </div>
-              <div class="ml-4 flex-1">
-                <h3 class="text-sm font-semibold text-gray-700 mb-1">Estado del Sistema</h3>
-                <p class="text-xl font-bold text-gray-900 mb-1">{{ systemStatus }}</p>
-                <p class="text-xs font-medium" :class="statusTextColor">{{ systemStatusDescription }}</p>
+              <div class="ml-3 sm:ml-4 flex-1 min-w-0">
+                <h3 class="text-xs sm:text-sm font-semibold text-[#005187] mb-1">Estado del Sistema</h3>
+                <p class="text-lg sm:text-xl font-bold text-[#005187] mb-1 truncate">{{ systemStatus }}</p>
+                <p class="text-xs font-medium truncate" :class="statusTextColor">{{ systemStatusDescription }}</p>
               </div>
             </div>
           </div>
 
           <!-- Datos de predicción -->
-          <div class="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-white/30 p-6 hover:shadow-xl hover:bg-white/80 transition-all duration-300">
+          <div class="bg-[#fcffff] rounded-lg shadow-md border border-[#c4dafa] p-4 sm:p-5 md:p-6 hover:shadow-lg transition-all duration-300">
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg">
-                  <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-[#4d82bc] rounded-lg flex items-center justify-center shadow-md">
+                  <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                   </svg>
                 </div>
               </div>
-              <div class="ml-4 flex-1">
-                <h3 class="text-sm font-semibold text-gray-700 mb-1">Predicciones</h3>
-                <p class="text-xl font-bold text-gray-900 mb-1">{{ predictions.length }}</p>
-                <p class="text-xs text-gray-500">Horizontes disponibles</p>
+              <div class="ml-3 sm:ml-4 flex-1 min-w-0">
+                <h3 class="text-xs sm:text-sm font-semibold text-[#005187] mb-1">Predicciones</h3>
+                <p class="text-lg sm:text-xl font-bold text-[#005187] mb-1">{{ predictions.length }}</p>
+                <p class="text-xs text-[#4d82bc]">Horizontes disponibles</p>
               </div>
             </div>
           </div>
@@ -576,9 +581,11 @@ const fallbackPredictions = {
  * Función para obtener niveles de agua desde la API
  * Maneja la transformación de datos del backend al formato esperado por el frontend
  */
+import { API_URL } from '../config/api.js'
+
 const fetchWaterLevels = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/mediciones')
+    const response = await fetch(`${API_URL}/mediciones`)
     
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`)
@@ -634,7 +641,7 @@ const fetchWaterLevels = async () => {
 const fetchPredictions = async () => {
   try {
     console.log("🔍 Iniciando fetch de predicciones...")
-    const response = await fetch('http://localhost:5000/api/sensor/predicciones')
+    const response = await fetch(`${API_URL}/sensor/predicciones`)
     
     console.log("📡 Respuesta recibida:", {
       status: response.status,
@@ -709,7 +716,7 @@ const insertarDatosPrueba = async () => {
   try {
     insertandoDatos.value = true
     
-    const response = await fetch('http://localhost:5000/api/sensor/datos-prueba', {
+    const response = await fetch(`${API_URL}/sensor/datos-prueba`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -747,7 +754,7 @@ const insertarDatosPrueba = async () => {
  */
 const fetchConnectionStatus = async () => {
   try {
-    const response = await fetch('http://localhost:5000/api/sensor/estado-conexion')
+    const response = await fetch(`${API_URL}/sensor/estado-conexion`)
     
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`)

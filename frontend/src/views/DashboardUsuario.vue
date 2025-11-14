@@ -35,6 +35,7 @@ import { ref, onMounted } from 'vue'
 import { obtenerMediciones } from '../services/medicionesService'
 import { getToken, logout } from '../services/authService'
 import { useRouter } from 'vue-router'
+import { API_URL } from '../config/api.js'
 
 const ultimaMedicion = ref('--')
 const promedio = ref('--')
@@ -51,7 +52,7 @@ function handleLogout() {
 onMounted(async () => {
   // Saludo personalizado
   try {
-    const resp = await fetch('http://localhost:5000/api/saludo-usuario', {
+    const resp = await fetch(`${API_URL}/saludo-usuario`, {
       headers: { 'Authorization': 'Bearer ' + getToken() }
     })
     const data = await resp.json()

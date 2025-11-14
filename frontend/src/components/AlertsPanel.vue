@@ -207,6 +207,7 @@
 import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { getToken, getRol } from '../services/authService'
 import { useArduinoStore } from '../stores/arduinoStore'
+import API_BASE_URL from '../config/api.js'
 
 // Store de Arduino
 const arduinoStore = useArduinoStore()
@@ -232,7 +233,6 @@ const filtros = ref({
 })
 
 // Configuración
-const API_BASE_URL = 'http://localhost:5000'
 const esAdmin = computed(() => getRol() === 'admin')
 const tieneAlertasActivas = computed(() => estadoSistema.value.alertas_activas > 0)
 

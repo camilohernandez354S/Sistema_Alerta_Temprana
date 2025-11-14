@@ -1,7 +1,9 @@
 // authService.js
 // Servicio de autenticación para el frontend
 
-const API_BASE_URL = 'http://localhost:5000'
+import { API_URL } from '../config/api.js'
+
+const API_BASE_URL = API_URL.replace('/api', '')
 
 // Función para realizar login
 export async function login(username, password) {
