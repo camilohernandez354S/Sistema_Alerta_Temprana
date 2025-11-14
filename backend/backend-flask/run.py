@@ -4,6 +4,7 @@ Archivo para ejecutar la aplicación en modo desarrollo local
 """
 
 from app import create_app
+from app.services.websocket_service import websocket_service
 import os
 from dotenv import load_dotenv
 
@@ -28,5 +29,7 @@ if __name__ == '__main__':
     print(f"📍 Servidor: http://{host}:{port}")
     print(f"🔧 Debug: {debug}")
     print(f"🗄️ Base de datos: {os.getenv('MONGO_DB', 'sistema_alerta')}")
+    print(f"🔌 WebSocket habilitado")
     
-    app.run(host=host, port=port, debug=debug)
+    # Ejecutar con SocketIO
+    websocket_service.run(app, host=host, port=port, debug=debug, allow_unsafe_werkzeug=True)

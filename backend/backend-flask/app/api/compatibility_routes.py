@@ -176,6 +176,28 @@ def recibir_medicion_compatibilidad():
         except Exception as e:
             current_app.logger.warning(f"Error procesando alerta: {e}")
 
+        # Preparar datos para WebSocket
+        medicion_data = {
+            'distancia': distancia,
+            'estado': estado,
+            'fecha': medicion['fecha'].isoformat() + 'Z',
+            'medicion_id': str(resultado_medicion.inserted_id),
+            'device_type': medicion['device_type']
+        }
+        
+        # Emitir por WebSocket
+        try:
+            from app.services.websocket_service import websocket_service
+            websocket_service.emit_medicion(medicion_data)
+            websocket_service.emit_estado({
+                'estado': estado,
+                'nivel_cm': distancia,
+                'timestamp': medicion_data['fecha']
+            })
+            current_app.logger.info(f"📡 Datos emitidos por WebSocket: {estado} - {distancia} cm")
+        except Exception as e:
+            current_app.logger.warning(f"Error emitiendo por WebSocket: {e}")
+
         current_app.logger.info(f"Medición guardada: {distancia} cm, estado: {estado}")
         return jsonify({
             'mensaje': 'Medición guardada', 

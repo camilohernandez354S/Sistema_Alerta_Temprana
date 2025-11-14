@@ -114,6 +114,10 @@ def create_app(config_name=None):
     # Log de configuración CORS
     app.logger.info(f"CORS configurado con orígenes: {cors_origins}")
     
+    # Inicializar WebSocket
+    from app.services.websocket_service import websocket_service
+    websocket_service.init_app(app)
+    
     # Registrar blueprints
     register_blueprints(app)
     

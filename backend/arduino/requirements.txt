@@ -1,5 +1,12 @@
-# Dependencias para el servicio Arduino Reader
+# Dependencias mínimas para leer_serial.py
+# No requiere Flask, solo las dependencias necesarias para comunicación serial y HTTP
+
+# Comunicación serial con Arduino
 pyserial==3.5
+
+# Variables de entorno
 python-dotenv==1.1.0
+
+# Cliente HTTP para enviar datos al servidor
 requests==2.32.5
 
