@@ -107,6 +107,15 @@
       <div v-else class="space-y-8">
         <!-- Estado actual y predicciones -->
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <!-- Semáforo de Estado -->
+          <div class="lg:col-span-1">
+            <Semaforo 
+              :estado="currentState.estado"
+              :nivel="currentState.nivel_cm"
+              :ultima-actualizacion="lastUpdateTime"
+            />
+          </div>
+          
           <!-- Estado actual - Card grande mejorada -->
           <div class="lg:col-span-1">
             <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8 hover:shadow-2xl transition-all duration-300">
@@ -150,6 +159,12 @@
                 <!-- Pendiente si está disponible -->
                 <div v-if="currentState.pendiente_cm_por_h !== undefined" class="text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2">
                   {{ currentState.pendiente_cm_por_h > 0 ? '+' : '' }}{{ currentState.pendiente_cm_por_h?.toFixed(1) }} cm/h
+                </div>
+                
+                <!-- Indicador de WebSocket -->
+                <div class="mt-4 flex items-center justify-center space-x-2">
+                  <div class="w-2 h-2 rounded-full" :class="wsConnected ? 'bg-green-500' : 'bg-red-500'"></div>
+                  <span class="text-xs text-gray-500">{{ wsConnected ? 'Tiempo real activo' : 'Desconectado' }}</span>
                 </div>
               </div>
             </div>
@@ -344,6 +359,8 @@ import {
 import { Line } from 'vue-chartjs'
 import AlertsPanel from '../components/dashboard/AlertsPanel.vue'
 import GeospatialMap from '../components/GeospatialMap.vue'
+import Semaforo from '../components/Semaforo.vue'
+import { io } from 'socket.io-client'
 import { logout } from '../services/authService'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -382,6 +399,10 @@ const alertClass = ref('')
 
 // Intervalo para actualización automática
 let refreshInterval = null
+
+// WebSocket connection
+let socket = null
+const wsConnected = ref(false)
 
 // Fecha actual
 const fechaActual = computed(() => {
@@ -1079,17 +1100,103 @@ const manejarAlertaProcesada = (evento) => {
   // loadData()
 }
 
+// Función para conectar WebSocket
+const connectWebSocket = () => {
+  const WS_URL = 'http://localhost:5000'
+  
+  try {
+    socket = io(WS_URL, {
+      transports: ['websocket', 'polling'],
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 5
+    })
+    
+    socket.on('connect', () => {
+      console.log('✅ WebSocket conectado')
+      wsConnected.value = true
+      connectionStatus.value = true
+    })
+    
+    socket.on('disconnect', () => {
+      console.log('❌ WebSocket desconectado')
+      wsConnected.value = false
+    })
+    
+    socket.on('status', (data) => {
+      console.log('📡 Estado WebSocket:', data)
+      if (data.connected) {
+        wsConnected.value = true
+      }
+    })
+    
+    socket.on('nueva_medicion', (data) => {
+      console.log('📊 Nueva medición recibida por WebSocket:', data)
+      
+      // Actualizar datos en tiempo real
+      if (data.distancia !== undefined) {
+        const nuevaMedicion = {
+          level: data.distancia,
+          timestamp: data.fecha || new Date().toISOString()
+        }
+        
+        // Agregar al inicio del array
+        waterLevels.value.unshift(nuevaMedicion)
+        
+        // Mantener solo las últimas 50 mediciones
+        if (waterLevels.value.length > 50) {
+          waterLevels.value = waterLevels.value.slice(0, 50)
+        }
+      }
+      
+      // Actualizar estado actual
+      if (data.estado) {
+        currentState.value.estado = data.estado
+        currentState.value.nivel_cm = data.distancia
+        updateAlertStatus()
+      }
+    })
+    
+    socket.on('cambio_estado', (data) => {
+      console.log('🔄 Cambio de estado recibido por WebSocket:', data)
+      
+      if (data.estado) {
+        currentState.value.estado = data.estado
+        currentState.value.nivel_cm = data.nivel_cm
+        updateAlertStatus()
+      }
+    })
+    
+    socket.on('connect_error', (error) => {
+      console.error('❌ Error de conexión WebSocket:', error)
+      wsConnected.value = false
+    })
+    
+  } catch (error) {
+    console.error('❌ Error inicializando WebSocket:', error)
+    wsConnected.value = false
+  }
+}
+
 // Lifecycle hooks
 onMounted(async () => {
   await loadData()
   
-  // Configurar actualización automática cada 30 segundos
+  // Conectar WebSocket
+  connectWebSocket()
+  
+  // Configurar actualización automática cada 30 segundos (fallback)
   refreshInterval = setInterval(loadData, 30000)
 })
 
 onUnmounted(() => {
   if (refreshInterval) {
     clearInterval(refreshInterval)
+  }
+  
+  if (socket) {
+    socket.disconnect()
+    socket = null
   }
 })
 </script>
