@@ -7,13 +7,22 @@ import serial.tools.list_ports
 import sys
 
 # Agregar el directorio backend-flask al path
-backend_flask_path = Path(__file__).resolve().parent / "../backend-flask"
+# En Docker, backend-flask está en el mismo nivel que el código arduino (/app/backend-flask)
+# En desarrollo local, está en ../backend-flask
+backend_flask_path = Path("/app/backend-flask")
+if not backend_flask_path.exists():
+    # Fallback para desarrollo local
+    backend_flask_path = Path(__file__).resolve().parent / "../backend-flask"
 sys.path.append(str(backend_flask_path))
 
 # Importar el servicio desde backend-flask
 from app.services.arduino_client_service import arduino_client_service
 
-env_path = Path(__file__).resolve().parent / "../backend-flask/.env"
+# Buscar el archivo .env en diferentes ubicaciones
+env_path = Path("/app/backend-flask/.env")
+if not env_path.exists():
+    # Fallback para desarrollo local
+    env_path = Path(__file__).resolve().parent / "../backend-flask/.env"
 load_dotenv(dotenv_path=env_path)
 
 # Cargar configuración
