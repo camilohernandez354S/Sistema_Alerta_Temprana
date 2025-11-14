@@ -32,3 +32,7 @@ flask-mail==0.9.1
 # Rate limiting y caching
 flask-limiter==3.8.0
 redis==5.0.1
+
+# Generación de códigos QR
+qrcode[pil]==7.4.2
+Pillow==10.4.0

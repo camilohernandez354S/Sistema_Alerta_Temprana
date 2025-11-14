@@ -21,25 +21,68 @@ def create_app(config_name=None):
     
     # Configurar CORS usando variables de entorno
     cors_origins_env = os.getenv('CORS_ORIGINS', '')
+    
+    # Orígenes locales para desarrollo
+    local_origins = [
+        'http://localhost:3000',    # React dev server
+        'http://127.0.0.1:3000',
+        'http://localhost:8080',    # Vue/otros
+        'http://127.0.0.1:8080',
+        'http://localhost:5173',    # Vite
+        'http://127.0.0.1:5173',
+        'http://localhost:4200',    # Angular
+        'http://127.0.0.1:4200'
+    ]
+    
+    # Función para verificar si un origen es una IP local o localhost
+    def is_local_origin(origin):
+        """Verifica si un origen es localhost o una IP de red local"""
+        if not origin:
+            return False
+        origin_lower = origin.lower()
+        # Verificar localhost
+        if 'localhost' in origin_lower or '127.0.0.1' in origin_lower:
+            return True
+        # Verificar IPs de red local (10.x.x.x, 192.168.x.x, 172.16-31.x.x)
+        import re
+        ip_pattern = r'http[s]?://(\d+\.\d+\.\d+\.\d+)'
+        match = re.search(ip_pattern, origin_lower)
+        if match:
+            ip = match.group(1)
+            parts = ip.split('.')
+            if len(parts) == 4:
+                first_octet = int(parts[0])
+                second_octet = int(parts[1])
+                # 10.0.0.0/8, 192.168.0.0/16, 172.16.0.0/12
+                if (first_octet == 10 or 
+                    (first_octet == 192 and second_octet == 168) or
+                    (first_octet == 172 and 16 <= second_octet <= 31)):
+                    return True
+        return False
+    
     if cors_origins_env:
         # En producción, usar las URLs de CORS desde variables de entorno
+        # Pero siempre incluir localhost para desarrollo local
         cors_origins = [origin.strip() for origin in cors_origins_env.split(',')]
+        # Agregar localhost si no está ya incluido (para desarrollo)
+        for local_origin in local_origins:
+            if local_origin not in cors_origins:
+                cors_origins.append(local_origin)
     else:
         # En desarrollo, usar configuración local
-        cors_origins = [
-            'http://localhost:3000',    # React dev server
-            'http://127.0.0.1:3000',
-            'http://localhost:8080',    # Vue/otros
-            'http://127.0.0.1:8080',
-            'http://localhost:5173',    # Vite
-            'http://127.0.0.1:5173',
-            'http://localhost:4200',    # Angular
-            'http://127.0.0.1:4200'
-        ]
+        cors_origins = local_origins
     
     # Configurar CORS con Flask-CORS
+    # Usar una función para validar orígenes dinámicamente
+    def cors_origin_validator(origin, request):
+        """Validador dinámico de orígenes CORS"""
+        if not origin:
+            return False
+        # Permitir si está en la lista o si es una IP local
+        return origin in cors_origins or is_local_origin(origin)
+    
     CORS(app, 
-         origins=cors_origins,
+         origins=cors_origin_validator,
          supports_credentials=True,
          methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
          allow_headers=['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
@@ -52,8 +95,12 @@ def create_app(config_name=None):
     def after_request(response):
         origin = request.headers.get('Origin')
         
-        if origin and origin in cors_origins:
-            response.headers['Access-Control-Allow-Origin'] = origin
+        # Permitir el origen si está en la lista o si es una IP local
+        if origin:
+            if origin in cors_origins or is_local_origin(origin):
+                response.headers['Access-Control-Allow-Origin'] = origin
+            elif cors_origins:
+                response.headers['Access-Control-Allow-Origin'] = cors_origins[0]
         elif cors_origins:
             response.headers['Access-Control-Allow-Origin'] = cors_origins[0]
         

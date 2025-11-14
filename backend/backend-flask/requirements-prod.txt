@@ -1,26 +1,38 @@
 # ===========================================
-# DEPENDENCIAS MÍNIMAS PARA PRODUCCIÓN
+# DEPENDENCIAS PARA PRODUCCIÓN
 # ===========================================
 
-# Core Flask
+# Core Flask y dependencias principales
 Flask==3.1.2
 Flask-CORS==6.0.1
-
-# Base de datos
 pymongo==4.15.1
-
-# Autenticación
 PyJWT==2.10.1
-
-# HTTP requests
 requests==2.32.5
 
-# Configuración
+# Configuración y variables de entorno
 python-dotenv==1.1.0
 
-# Servidor WSGI
+# Autenticación y seguridad
+bcrypt==4.1.2
+email-validator==2.1.0
+
+# Servidor WSGI para producción
 gunicorn==22.0.0
 
-# WebSocket (opcional, comentar si no se usa)
+# Comunicación serial (para Arduino local - opcional en producción)
+pyserial==3.5
+
+# WebSocket para comunicación en tiempo real
 flask-socketio==5.3.6
 python-socketio==5.10.0
+
+# Email notifications
+flask-mail==0.9.1
+
+# Rate limiting y caching
+flask-limiter==3.8.0
+redis==5.0.1
+
+# Generación de códigos QR
+qrcode[pil]==7.4.2
+Pillow==10.4.0
