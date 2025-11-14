@@ -29,4 +29,6 @@ venv/
 env/
 ENV/
 .venv/
+# QR codes (generados localmente, no necesarios en contenedor)
+qr_codes
 

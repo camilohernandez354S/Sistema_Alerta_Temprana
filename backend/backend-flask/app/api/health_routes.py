@@ -20,6 +20,32 @@ def health_check():
         'service': 'Sistema de Alerta Temprana API'
     })
 
+@health_bp.route('/api/config', methods=['GET'])
+def get_config():
+    """
+    Endpoint para obtener la configuración del servidor desde .env
+    Permite que el frontend conozca la IP y puerto del servidor
+    """
+    try:
+        # Leer configuración del .env
+        server_ip = os.getenv('SERVER_IP', 'localhost')
+        server_port = os.getenv('SERVER_PORT', '5000')
+        frontend_port = os.getenv('FRONTEND_PORT', '8080')
+        flask_server_url = os.getenv('FLASK_SERVER_URL', f'http://{server_ip}:{server_port}')
+        
+        return jsonify({
+            'server_ip': server_ip,
+            'server_port': server_port,
+            'frontend_port': frontend_port,
+            'flask_server_url': flask_server_url,
+            'api_url': f'{flask_server_url}/api'
+        })
+    except Exception as e:
+        return jsonify({
+            'error': 'Error al obtener configuración',
+            'message': str(e)
+        }), 500
+
 @health_bp.route('/', methods=['GET'])
 def root_health_check():
     """
