@@ -14,17 +14,25 @@ def cargar_config_red():
     Returns:
         dict: Diccionario con la configuración de red
     """
-    # Buscar .env en el directorio raíz del proyecto
-    project_root = Path(__file__).parent.parent.parent
-    env_file = project_root / '.env'
+    # Detectar si estamos en Docker o localmente
+    env_file = None
     
-    if not env_file.exists():
-        # Intentar con example.env
-        env_file = project_root / 'config' / 'example.env'
+    # Primero intentar con /app/.env (Docker)
+    if Path('/app/.env').exists():
+        env_file = Path('/app/.env')
+    else:
+        # Buscar .env en el directorio raíz del proyecto (local)
+        project_root = Path(__file__).parent.parent.parent
+        env_file = project_root / '.env'
+        
         if not env_file.exists():
-            raise FileNotFoundError("No se encontró archivo .env")
+            # Intentar con example.env
+            env_file = project_root / 'config' / 'example.env'
+            if not env_file.exists():
+                raise FileNotFoundError("No se encontró archivo .env")
     
-    load_dotenv(env_file)
+    # Cargar el .env
+    load_dotenv(env_file, override=True)  # override=True para forzar recarga
     
     config = {
         'server_ip': os.getenv('SERVER_IP', '192.168.137.24'),

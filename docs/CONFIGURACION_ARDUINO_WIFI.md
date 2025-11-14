@@ -41,10 +41,8 @@ Edita tu archivo `.env` en la raíz del proyecto:
 WIFI_SSID=MiRedWiFi
 WIFI_PASSWORD=mi_contraseña_123
 
-# Servidor (local o remoto)
+# Servidor (local)
 FLASK_SERVER_URL=http://192.168.137.24:5000
-# O para producción:
-# FLASK_SERVER_URL=https://sat-backend.onrender.com
 ```
 
 ### Paso 2: Generar configuración WiFi
@@ -97,16 +95,7 @@ FLASK_SERVER_URL=http://192.168.137.24:5000
 
 **Resultado:** Arduino se conecta a `MiCasa_WiFi` y envía datos a `http://192.168.137.24:5000`
 
-### Ejemplo 2: Servidor Remoto (Producción)
-```env
-WIFI_SSID=MiCasa_WiFi
-WIFI_PASSWORD=password123
-FLASK_SERVER_URL=https://sat-backend.onrender.com
-```
-
-**Resultado:** Arduino se conecta a `MiCasa_WiFi` y envía datos a `https://sat-backend.onrender.com` (HTTPS automático)
-
-### Ejemplo 3: Sin FLASK_SERVER_URL (usa SERVER_IP)
+### Ejemplo 2: Sin FLASK_SERVER_URL (usa SERVER_IP)
 ```env
 WIFI_SSID=MiCasa_WiFi
 WIFI_PASSWORD=password123
@@ -139,9 +128,9 @@ Abre `backend/arduino/wifi_config.h` y verifica:
 ```cpp
 #define WIFI_SSID "MiCasa_WiFi"
 #define WIFI_PASSWORD "password123"
-#define SERVER_HOST "sat-backend.onrender.com"
-#define SERVER_PORT 443
-#define USE_HTTPS 1
+#define SERVER_HOST "192.168.137.24"
+#define SERVER_PORT 5000
+#define USE_HTTPS 0
 ```
 
 ---

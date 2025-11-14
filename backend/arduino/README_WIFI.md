@@ -39,16 +39,14 @@ El Arduino WiFi usa **automáticamente** las siguientes variables del archivo `.
 WIFI_SSID=nombre_de_tu_red_wifi
 WIFI_PASSWORD=tu_contraseña_wifi
 
-# URL del servidor Flask (puede ser IP local o URL remota)
+# URL del servidor Flask (local)
 FLASK_SERVER_URL=http://192.168.137.24:5000
-# O para producción remota:
-# FLASK_SERVER_URL=https://sat-backend.onrender.com
 ```
 
 **Notas:**
 - El script `generar_config_wifi.py` lee estas variables del `.env`
 - Si `FLASK_SERVER_URL` no está definido, se genera desde `SERVER_IP` y `SERVER_PORT`
-- Soporta tanto IPs locales (`http://192.168.x.x:5000`) como URLs remotas (`https://...`)
+- Soporta IPs locales (`http://192.168.x.x:5000`)
 
 ### 3. Generar configuración WiFi
 
