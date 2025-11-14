@@ -43,7 +43,9 @@ logs/
 .docker/
 
 # QR Codes (generados automáticamente)
-qr_codes/
+# Ignorar las subcarpetas url y wifi, pero mantener la carpeta qr_codes
+qr_codes/url/
+qr_codes/wifi/
 *.png
 !qr_codes/.gitkeep
 
