@@ -15,16 +15,18 @@ services:
         value: false
       - key: SECRET_KEY
         value: 962dcfefd06ec551f095af1b24dd6ff96548e9e31ed6f7161dce07a41e689dfe
-      - key: MONGO_URI
-        fromDatabase:
-          name: sat-mongo
-          property: connectionString
+      # MONGO_URI: Configurar manualmente en Render con MongoDB Atlas (gratis)
+      # Ve a Environment Variables y agrega:
+      # MONGO_URI=mongodb+srv://usuario:password@cluster.mongodb.net/sat_database
+      # Obtén tu URI de: https://www.mongodb.com/cloud/atlas
       - key: MONGO_DB
         value: sat_database
       - key: CORS_ORIGINS
         value: https://sat-frontend.onrender.com
       - key: ARDUINO_ENABLED
         value: false
+      - key: FLASK_SERVER_URL
+        value: https://sat-backend.onrender.com
       - key: LOG_LEVEL
         value: INFO
       - key: SESSION_COOKIE_SECURE
@@ -52,8 +54,12 @@ services:
       - key: VITE_APP_TITLE
         value: Sistema de Alerta Temprana
 
-databases:
-  - name: sat-mongo
-    databaseName: sat_database
-    user: sat_user
-    plan: starter
+# MongoDB: Usar MongoDB Atlas (gratis) en lugar de Render
+# 1. Crea una cuenta en https://www.mongodb.com/cloud/atlas
+# 2. Crea un cluster gratuito (M0)
+# 3. Obtén la connection string
+# 4. Configura MONGO_URI como variable de entorno en Render
+# databases:
+#   - name: sat-mongo
+#     databaseName: sat_database
+#     user: sat_user
